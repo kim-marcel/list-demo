@@ -1,6 +1,6 @@
 import webapp2
 import json
-import user_utilities as uu
+from utilities import user_utilities as uu
 from google.appengine.api import users
 
 
