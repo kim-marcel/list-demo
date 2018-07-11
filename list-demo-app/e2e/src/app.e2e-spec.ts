@@ -9,6 +9,6 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to list-demo-api!');
+    expect(page.getParagraphText()).toEqual('Welcome to list-demo-app!');
   });
 });
