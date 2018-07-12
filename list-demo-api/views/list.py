@@ -7,6 +7,8 @@ from utilities import user_utilities as uu
 class List(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/json'
+        self.response.headers['Access-Control-Allow-Origin'] = 'http://localhost:4200'
+        self.response.headers['Access-Control-Allow-Credentials'] = 'true'
 
         # check whether user is logged in and in datastore
         if uu.is_user_authorized():
@@ -22,6 +24,8 @@ class List(webapp2.RequestHandler):
 
     def post(self):
         self.response.headers['Content-Type'] = 'text/json'
+        self.response.headers['Access-Control-Allow-Origin'] = 'http://localhost:4200'
+        self.response.headers['Access-Control-Allow-Credentials'] = 'true'
 
         # check whether user is logged in and in datastore
         if uu.is_user_authorized():
