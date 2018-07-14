@@ -27,11 +27,16 @@ class List(webapp2.RequestHandler):
         self.response.headers['Access-Control-Allow-Origin'] = 'http://localhost:4200'
         self.response.headers['Access-Control-Allow-Credentials'] = 'true'
 
+        request_body = json.loads(self.request.body)
+        new_list_element = request_body.get('input')
+
         # check whether user is logged in and in datastore
         if uu.is_user_authorized():
-            request_body = json.loads(self.request.body)
-            uu.add_element_to_user_list(request_body.get('input'))
-            response = json.dumps({"response_code": "200", "response_message": "Successfully added to list"})
+            if new_list_element:
+                uu.add_element_to_user_list(new_list_element)
+                response = json.dumps({"response_code": "200", "response_message": "Successfully added to list"})
+            else:
+                response = json.dumps({"response_code": "200", "response_message": "Nothing was added to list"})
 
         # if no user is logged return error
         else:
