@@ -1,10 +1,18 @@
-<div>
-  <button (click)="showList()">GET</button><br>
-  Result:{{list}}<br>
+<section class="mat-typography">
 
-  <br>
+  <ul>
 
-  <input (change)="onChange($event)" (input)="onChange($event)" value="{{input}}"><br>
-  Your input: {{input}}<br>
-  <button (click)="addListEntry()">POST</button>
-</div>
+    <li *ngFor="let listElement of list">
+      {{listElement}}
+    </li>
+
+    <li>
+      <mat-form-field>
+        <input matInput placeholder="Input" value="{{input}}" (change)="onChange($event)" (input)="onChange($event)">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="addListEntry()">Add</button>
+    </li>
+
+  </ul>
+
+</section>

@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { ListService} from './services/list.service';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ListService} from './services/list.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [
     ListService
