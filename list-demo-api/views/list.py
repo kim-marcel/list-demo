@@ -29,7 +29,8 @@ class List(webapp2.RequestHandler):
 
         # check whether user is logged in and in datastore
         if uu.is_user_authorized():
-            uu.add_element_to_user_list(self.request.get("input"))
+            request_body = json.loads(self.request.body)
+            uu.add_element_to_user_list(request_body.get('input'))
             response = json.dumps({"response_code": "200", "response_message": "Successfully added to list"})
 
         # if no user is logged return error
@@ -38,3 +39,9 @@ class List(webapp2.RequestHandler):
             self.response.set_status(401)
 
         self.response.write(response)
+
+    def options(self):
+        self.response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        self.response.headers['Access-Control-Allow-Methods'] = 'POST'
+        self.response.headers['Access-Control-Allow-Origin'] = 'http://localhost:4200'
+        self.response.headers['Access-Control-Allow-Credentials'] = 'true'

@@ -1,5 +1,10 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <button (click)="showList()">Click me!</button>
-  {{list}}
+<div>
+  <button (click)="showList()">GET</button><br>
+  Result:{{list}}<br>
+
+  <br>
+
+  <input (change)="onChange($event)" (input)="onChange($event)" value="{{input}}"><br>
+  Your input: {{input}}<br>
+  <button (click)="addListEntry()">POST</button>
 </div>
