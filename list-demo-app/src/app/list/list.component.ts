@@ -17,19 +17,26 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getList();
   }
 
   onChange(event: any) {
     this.input = event.target.value;
   }
 
-  showList() {
+  getList() {
     this.listService.getList()
-      .subscribe(data => this.list = data['list']);
+      .subscribe(data => {
+        this.list = data['list'];
+        console.log(this.list);
+      });
   }
 
   addListEntry() {
-    this.listService.addToList(this.input);
-    this.input = '';
+    this.listService.addToList(this.input)
+      .subscribe(() => {
+        this.getList();
+        this.input = '';
+      });
   }
 }

@@ -17,10 +17,7 @@ export class ListService {
 
   addToList(listElement) {
     return this.http.post(this.listUrl, {input: listElement}, {withCredentials: true})
-      .subscribe(
-        response => console.log(response),
-        err => console.log(err)
-      );
+      .pipe();
   }
 
 }
