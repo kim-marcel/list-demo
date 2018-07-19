@@ -1,5 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ListService} from '../services/list.service';
+import { Component, Input, OnInit, ɵunv } from '@angular/core';
+import { ListService } from '../services/list.service';
+import { ActivatedRoute } from '@angular/router';
+import { LogoutService } from '../services/logout.service';
 
 @Component({
   selector: 'app-list',
@@ -13,11 +15,11 @@ export class ListComponent implements OnInit {
   @Input()
   input: String;
 
-  constructor(private listService: ListService) {
+  constructor(private route: ActivatedRoute, private listService: ListService, private logoutService: LogoutService) {
   }
 
   ngOnInit() {
-    this.getList();
+    this.list = this.route.snapshot.data['listData']['body']['list'];
   }
 
   onChange(event: any) {
@@ -26,10 +28,14 @@ export class ListComponent implements OnInit {
 
   getList() {
     this.listService.getList()
-      .subscribe(data => {
-        this.list = data['list'];
-        console.log(this.list);
-      });
+      .subscribe(
+        data => {
+          console.log(data);
+          if (data.body !== undefined) {
+            this.list = data['body']['list'];
+          }
+        }
+      );
   }
 
   addListEntry() {
@@ -38,5 +44,9 @@ export class ListComponent implements OnInit {
         this.getList();
         this.input = '';
       });
+  }
+
+  logout() {
+    this.logoutService.logout();
   }
 }
