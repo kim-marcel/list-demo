@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ListService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  listUrl = 'http://localhost:8080/list';
+  listUrl = this.getAPIHostURL() + '/list';
 
   getList(): Observable<any> {
     return this.http.get(this.listUrl, {withCredentials: true, observe: 'response'})
@@ -44,6 +45,10 @@ export class ListService {
           `Backend returned code ${error.status}, ` + `body was: ${error.error}`);
       }
     }
+  }
+
+  getAPIHostURL(): string {
+    return environment.apiHost;
   }
 
 }
