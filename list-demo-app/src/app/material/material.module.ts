@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import {
   MatButtonModule,
   MatListModule,
@@ -11,6 +11,7 @@ import {
 
 @NgModule({
   imports: [
+    CommonModule,
     MatButtonModule,
     MatListModule,
     MatIconModule,

@@ -7,7 +7,7 @@ import { ListComponent } from './list/list.component';
 import { ListResolver } from './services/resolver/list-resolver';
 import { LoginService } from './services/login.service';
 import { ListService } from './services/list.service';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './material/material.module';
 import { LoginComponent } from './login/login.component';
 import { LogoutService } from './services/logout.service';
 import { RoutingModule } from './routing/routing.module';
