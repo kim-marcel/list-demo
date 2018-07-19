@@ -6,7 +6,7 @@ from views.list import List
 
 # starts the web application we specify the full routing table here as well
 app = webapp2.WSGIApplication([
-    ('/list', List),
-    ('/login', Login),
-    ('/logout', Logout)
+    ('/api/list', List),
+    ('/api/login', Login),
+    ('/api/logout', Logout)
 ], debug=True)
