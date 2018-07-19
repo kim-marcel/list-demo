@@ -22,7 +22,7 @@ Others:
 #### Use devstart-script:
 Start API and App with one command using the devstart-script and pm2.
 ```
-./devstart
+./devstart.sh
 ```
 Use ```pm2 stop [id | all]```, ```pm2 status```, ```pm2 log [id]``` to manage the processes. For more commands check out the [pm2-documentation](https://pm2.io/doc/en/runtime/quick-start/).
 

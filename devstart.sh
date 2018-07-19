@@ -6,7 +6,7 @@ pm2 delete all
 
 # start api
 cd list-demo-api
-pm2 start dev_appserver.py --name "list-info-api" -- app.yaml
+pm2 start dev_appserver.py --name "list-info-api" -- --clear_datastore=yes app.yaml
 cd ..
 
 # start app
