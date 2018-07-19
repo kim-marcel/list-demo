@@ -17,7 +17,7 @@ class List(webapp2.RequestHandler):
 
         # if no user is logged return error
         else:
-            response = json.dumps({"error_code": "401", "error_message": "Unauthorized"})
+            response = json.dumps({"errorCode": "401", "errorMessage": "Unauthorized"})
             self.response.set_status(401)
 
         self.response.write(response)
@@ -34,13 +34,15 @@ class List(webapp2.RequestHandler):
         if uu.is_user_authorized():
             if new_list_element:
                 uu.add_element_to_user_list(new_list_element)
-                response = json.dumps({"response_code": "200", "response_message": "Successfully added to list"})
+                response = json.dumps(
+                    {"responseCode": "200", "responseMessage": "Successfully added to list"})
             else:
-                response = json.dumps({"response_code": "200", "response_message": "Nothing was added to list"})
+                response = json.dumps(
+                    {"responseCode": "200", "responseMessage": "Nothing was added to list"})
 
         # if no user is logged return error
         else:
-            response = json.dumps({"response_code": "401", "response_message": "Unauthorized"})
+            response = json.dumps({"responseCode": "401", "responseMessage": "Unauthorized"})
             self.response.set_status(401)
 
         self.response.write(response)
