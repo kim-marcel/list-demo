@@ -1,12 +1,14 @@
-import webapp2
+from flask import Flask, request
 
-from views.login import Login
-from views.logout import Logout
-from views.list import List
+app = Flask(__name__)
 
-# starts the web application we specify the full routing table here as well
-app = webapp2.WSGIApplication([
-    ('/api/list', List),
-    ('/api/login', Login),
-    ('/api/logout', Logout)
-], debug=True)
+
+@app.route('/api/list')
+def get_list():
+    return '{"list": ["milch", "eier", "brot"]}'
+
+
+@app.route('/api/list', methods=['POST'])
+def add_element_to_list():
+    element = request.form['element']
+    return element + ' was successfully added to the list!'
