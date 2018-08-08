@@ -2,8 +2,7 @@ from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 from google.appengine.api import users
 
-from utilities import user_utilities as uu
-
+from src.utilities import user_utilities as uu
 
 user_bp = Blueprint('user', __name__)
 CORS(user_bp, origins="http://localhost:4200")

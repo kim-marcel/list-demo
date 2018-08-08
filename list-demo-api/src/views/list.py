@@ -1,8 +1,7 @@
 from flask import Blueprint, request, abort, jsonify
 from flask_cors import CORS
 
-from utilities import user_utilities as uu
-
+from src.utilities import user_utilities as uu
 
 list_bp = Blueprint('list', __name__)
 CORS(list_bp, origins="http://localhost:4200", supports_credentials=True)

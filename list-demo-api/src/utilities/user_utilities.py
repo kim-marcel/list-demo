@@ -1,8 +1,8 @@
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
-from models.myuser import MyUser
-from models.mylist import MyList
+from src.models import MyUser
+from src.models import MyList
 
 
 # Get user from this page

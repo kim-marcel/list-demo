@@ -1,7 +1,7 @@
 from flask import Flask
 
-from views.list import list_bp
-from views.user import user_bp
+from views import list_bp
+from views import user_bp
 
 
 app = Flask(__name__)
