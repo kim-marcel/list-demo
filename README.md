@@ -16,6 +16,29 @@ App:
  
 Others:
  - [pm2](https://pm2.io/doc/en/runtime/quick-start/)
+ 
+### Setup
+
+In API-directory:
+
+Create and enter a virtual Python environment using ```virtualenv```:
+```
+virtualenv venv
+source venv/bin/activate
+```
+
+Install dependencies using ```pip```:
+```
+pip install -r requirements.txt
+pip install -t lib -r requirements.txt
+```
+
+In App-directory:
+
+Install dependencies using ```npm```:
+```
+npm install
+```
 
 ### Run the application
 
