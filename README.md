@@ -65,3 +65,7 @@ cd list-demo-app
 ng serve
 ```
 The App can be viewed on [http://localhost:4200](http://localhost:4200).
+
+Make sure to insert your custom generated Client-ID in
+ - /list-demo/list-demo-api/src/utilities/auth.py
+ - /list-demo/list-demo-app/src/app/app.module.ts

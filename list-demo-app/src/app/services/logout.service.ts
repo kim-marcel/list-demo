@@ -1,33 +1,20 @@
+import { AuthService } from 'angular-6-social-login';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LogoutService {
 
-  constructor(private http: HttpClient) { }
-
-  logoutUrl = this.getAPIHostURL() + '/logout';
-
-  logout() {
-    this.getLogoutUrl()
-      .subscribe(data => {
-        document.location.href = this.getHostURL() + data['logoutUrl'];
-      });
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {
   }
 
-  getLogoutUrl() {
-    return this.http.get(this.logoutUrl);
-  }
-
-  getAPIHostURL(): string {
-    return environment.apiHost;
-  }
-
-  getHostURL(): string {
-    return environment.host;
+  socialLogout() {
+    this.authService.signOut();
+    sessionStorage.removeItem('idToken');
+    this.router.navigate(['/login']);
   }
 
 }

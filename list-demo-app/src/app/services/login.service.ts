@@ -1,33 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment} from '../../environments/environment';
+import { AuthService, GoogleLoginProvider } from 'angular-6-social-login';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {
   }
 
-  loginUrl = this.getAPIHostURL() + '/login';
+  socialLogin(socialPlatform: string) {
+    let socialPlatformProvider;
 
-  login() {
-    this.getLoginUrl()
-      .subscribe(data => {
-        document.location.href = this.getHostURL() + data['loginUrl'];
-      });
-  }
+    if (socialPlatform === 'google') {
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    }
 
-  getLoginUrl() {
-    return this.http.get(this.loginUrl);
-  }
-
-  getAPIHostURL(): string {
-    return environment.apiHost;
-  }
-
-  getHostURL(): string {
-    return environment.host;
+    this.authService.signIn(socialPlatformProvider).then(
+      (userData) => {
+        sessionStorage.setItem('idToken', userData.idToken);
+        this.router.navigate(['/list']);
+      }
+    );
   }
 }

@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    this.loginService.login();
+  socialLogin(socialPlatform: string) {
+    this.loginService.socialLogin(socialPlatform);
   }
 
 }

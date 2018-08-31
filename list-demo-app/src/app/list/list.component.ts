@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ɵunv } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ListService } from '../services/list.service';
 import { ActivatedRoute } from '@angular/router';
 import { LogoutService } from '../services/logout.service';
@@ -46,7 +46,7 @@ export class ListComponent implements OnInit {
       });
   }
 
-  logout() {
-    this.logoutService.logout();
+  socialLogout() {
+    this.logoutService.socialLogout();
   }
 }
