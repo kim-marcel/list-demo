@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
@@ -11,6 +11,21 @@ import { MaterialModule } from './material/material.module';
 import { LoginComponent } from './login/login.component';
 import { LogoutService } from './services/logout.service';
 import { RoutingModule } from './routing/routing.module';
+import { AuthServiceConfig, GoogleLoginProvider, SocialLoginModule } from 'angular-6-social-login';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+
+// Configs
+export function getAuthServiceConfigs() {
+  const config = new AuthServiceConfig(
+    [
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('INSERT_CLIENT_ID_HERE')
+      }
+    ]
+  );
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -22,13 +37,23 @@ import { RoutingModule } from './routing/routing.module';
     BrowserModule,
     HttpClientModule,
     MaterialModule,
-    RoutingModule
+    RoutingModule,
+    SocialLoginModule
   ],
   providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi   : true,
+    },
     ListResolver,
     ListService,
     LoginService,
-    LogoutService
+    LogoutService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }
   ],
   bootstrap: [
     AppComponent
