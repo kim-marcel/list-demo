@@ -1,13 +1,11 @@
 from flask import Blueprint, request, abort, jsonify
-from flask_cors import CORS
 
 from src.utilities import auth
 
 list_bp = Blueprint('list', __name__)
-CORS(list_bp, origins="http://localhost:4200", supports_credentials=True)
 
 
-@list_bp.route('/list')
+@list_bp.route('/list', methods=['GET'])
 def get_list():
     id_token = request.headers['Authorization'].split(' ').pop()
     user_info = auth.verify_token(id_token)

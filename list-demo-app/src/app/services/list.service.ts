@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class ListService {
   listUrl = this.getAPIHostURL() + '/list';
 
   getList(): Observable<any> {
-    return this.http.get(this.listUrl, {withCredentials: true, observe: 'response'})
+    return this.http.get(this.listUrl, {observe: 'response'})
       .pipe(catchError(error => {
         this.handleError(error);
         return of('Error');
@@ -24,7 +24,7 @@ export class ListService {
   }
 
   addToList(listElement) {
-    return this.http.post(this.listUrl, {input: listElement}, {withCredentials: true})
+    return this.http.post(this.listUrl, {input: listElement})
       .pipe(catchError(error => {
         this.handleError(error);
         return of('Error');
