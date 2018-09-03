@@ -9,8 +9,8 @@ CORS(list_bp, origins="http://localhost:4200", supports_credentials=True)
 
 @list_bp.route('/list')
 def get_list():
-    user_token = request.headers['Authorization']
-    user_info = auth.get_id_info(user_token)
+    id_token = request.headers['Authorization'].split(' ').pop()
+    user_info = auth.verify_token(id_token)
     user_id = auth.get_user_id(user_info)
 
     # check whether user is logged in and in datastore
@@ -29,8 +29,8 @@ def get_list():
 @list_bp.route('/list', methods=['POST'])
 def add_element_to_list():
     new_list_element = request.get_json()['input']
-    user_token = request.headers['Authorization']
-    user_info = auth.get_id_info(user_token)
+    id_token = request.headers['Authorization'].split(' ').pop()
+    user_info = auth.get_id_info(id_token)
     user_id = auth.get_user_id(user_info)
 
     # check whether user is logged in and in datastore

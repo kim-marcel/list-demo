@@ -1,31 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AuthService } from './services/auth.service';
+import { environment } from '../environments/environment';
 import { ListComponent } from './list/list.component';
 import { ListResolver } from './services/resolver/list-resolver';
-import { LoginService } from './services/login.service';
 import { ListService } from './services/list.service';
-import { MaterialModule } from './material/material.module';
 import { LoginComponent } from './login/login.component';
-import { LogoutService } from './services/logout.service';
+import { MaterialModule } from './material/material.module';
 import { RoutingModule } from './routing/routing.module';
-import { AuthServiceConfig, GoogleLoginProvider, SocialLoginModule } from 'angular-6-social-login';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
-
-// Configs
-export function getAuthServiceConfigs() {
-  const config = new AuthServiceConfig(
-    [
-      {
-        id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider('INSERT_CLIENT_ID_HERE')
-      }
-    ]
-  );
-  return config;
-}
 
 @NgModule({
   declarations: [
@@ -34,11 +22,12 @@ export function getAuthServiceConfigs() {
     LoginComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     BrowserModule,
     HttpClientModule,
     MaterialModule,
     RoutingModule,
-    SocialLoginModule
   ],
   providers: [
     {
@@ -46,14 +35,9 @@ export function getAuthServiceConfigs() {
       useClass: AuthInterceptor,
       multi   : true,
     },
+    AuthService,
     ListResolver,
     ListService,
-    LoginService,
-    LogoutService,
-    {
-      provide: AuthServiceConfig,
-      useFactory: getAuthServiceConfigs
-    }
   ],
   bootstrap: [
     AppComponent

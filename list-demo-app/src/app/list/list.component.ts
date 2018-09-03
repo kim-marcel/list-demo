@@ -1,7 +1,7 @@
+import { ActivatedRoute, Router} from '@angular/router';
+import { AuthService } from '../services/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ListService } from '../services/list.service';
-import { ActivatedRoute } from '@angular/router';
-import { LogoutService } from '../services/logout.service';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +15,7 @@ export class ListComponent implements OnInit {
   @Input()
   input: String;
 
-  constructor(private route: ActivatedRoute, private listService: ListService, private logoutService: LogoutService) {
+  constructor(private authService: AuthService, private listService: ListService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -46,7 +46,12 @@ export class ListComponent implements OnInit {
       });
   }
 
-  socialLogout() {
-    this.logoutService.socialLogout();
+  signOut() {
+    this.authService.signOut()
+      .then(() => {
+        sessionStorage.removeItem('idToken');
+        this.router.navigate(['/login']);
+      }
+    );
   }
 }

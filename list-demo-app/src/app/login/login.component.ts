@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../services/login.service';
+import { AuthService } from '../services/auth.service';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +9,21 @@ import { LoginService } from '../services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private authService: AuthService, private router: Router, private zone: NgZone) {
+  }
 
   ngOnInit() {
   }
 
-  socialLogin(socialPlatform: string) {
-    this.loginService.socialLogin(socialPlatform);
+  signInWithGoogle() {
+    this.authService.signInWithGoogle().then(
+      () => this.authService.getIdToken().then(
+        (idToken) => {
+          sessionStorage.setItem('idToken', idToken);
+          this.zone.run(() => this.router.navigate(['/list']));
+        }
+      )
+    );
   }
 
 }
