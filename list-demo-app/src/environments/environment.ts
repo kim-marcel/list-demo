@@ -3,9 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+
   production: false,
   host: 'http://localhost:8080',
-  apiHost: 'http://localhost:8080/api'
+  apiHost: 'http://localhost:8080/api',
+
+  firebase: {
+    apiKey: 'YOUR_API_KEY',
+    authDomain: 'YOUR_AUTH_DOMAIN',
+    databaseURL: 'YOUR_DATABASE_URL',
+    projectId: 'YOUR_PROJECT_ID',
+    storageBucket: 'YOUR_STORAGE_BUCKET',
+    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+  }
+
 };
 
 /*

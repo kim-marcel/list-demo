@@ -1,30 +1,29 @@
 from google.appengine.ext import ndb
 from google.oauth2 import id_token
 from google.auth.transport import requests
+from requests_toolbelt.adapters import appengine
 
 from src.models import MyUser
 from src.models import MyList
 
-CLIENT_ID = 'INSERT_CLIENT_ID_HERE'
+# Patch to use requests module with GAE (see: https://stackoverflow.com/questions/9604799/can-python-requests-library
+# -be-used-on-google-app-engine/37304524#37304524)
+appengine.monkeypatch()
+
+HTTP_REQUEST = requests.Request()
 
 
 # Returns id_info if token can be successfully verified, else None
 def verify_token(token):
-    # verify integrity of the id-token (see: https://developers.google.com/identity/sign-in/web/backend-auth)
     try:
-        id_info = id_token.verify_oauth2_token(token, requests.Request(), CLIENT_ID)
+        claims = id_token.verify_firebase_token(token, HTTP_REQUEST)
 
-        if id_info:
-            if id_info['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
-                raise ValueError('Wrong issuer.')
-        else:
-            raise ValueError('Value is None.')
+        if claims:
+            return claims
 
     except ValueError:
-        # Invalid token
+        # invalid id_token
         return None
-
-    return id_info
 
 
 def get_id_info(token):
