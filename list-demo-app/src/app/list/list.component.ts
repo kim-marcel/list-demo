@@ -1,7 +1,7 @@
-import { ActivatedRoute, Router} from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../services';
 import { Component, Input, OnInit } from '@angular/core';
-import { ListService } from '../services/list.service';
+import { ListService } from '../services';
 
 @Component({
   selector: 'app-list',

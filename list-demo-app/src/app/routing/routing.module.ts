@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from '../login/login.component';
 import { ListComponent } from '../list/list.component';
-import { ListResolver } from '../services/resolver/list-resolver';
+import { ListResolver } from '../services';
 
 const appRoutes: Routes = [
   {

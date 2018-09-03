@@ -1,4 +1,4 @@
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
