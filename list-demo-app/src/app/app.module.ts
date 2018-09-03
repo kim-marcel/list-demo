@@ -12,6 +12,7 @@ import { ListComponent } from './list/list.component';
 import { ListResolver } from './services/resolver/list-resolver';
 import { ListService } from './services/list.service';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 import { MaterialModule } from './material/material.module';
 import { RoutingModule } from './routing/routing.module';
 
@@ -19,7 +20,8 @@ import { RoutingModule } from './routing/routing.module';
   declarations: [
     AppComponent,
     ListComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

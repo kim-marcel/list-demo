@@ -15,7 +15,7 @@ export class ListComponent implements OnInit {
   @Input()
   input: String;
 
-  constructor(private authService: AuthService, private listService: ListService, private route: ActivatedRoute, private router: Router) {
+  constructor(private authService: AuthService, private listService: ListService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -44,14 +44,5 @@ export class ListComponent implements OnInit {
         this.getList();
         this.input = '';
       });
-  }
-
-  signOut() {
-    this.authService.signOut()
-      .then(() => {
-        sessionStorage.removeItem('idToken');
-        this.router.navigate(['/login']);
-      }
-    );
   }
 }
