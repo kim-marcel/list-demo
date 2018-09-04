@@ -70,7 +70,7 @@ Make sure to insert your project credentials in
  - /list-demo/list-demo-api/src/app.yaml
  - /list-demo/list-demo-app/src/environments/environment.ts
  
- ### TODO
+ ## TODO
  - decide which css framework should be used (material, bootstrap, primeng,...)? + implementation
  - text-service: get texts (button, headlines,...) from json-file
  - add content page (homepage)
@@ -78,3 +78,4 @@ Make sure to insert your project credentials in
  - write tests
  - refactor project structure (packages-folder, rename angular-app)
  - use yarn instead of npm??
+ - deploy
