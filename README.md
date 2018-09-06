@@ -74,8 +74,11 @@ Make sure to insert your project credentials in
  - decide which css framework should be used (material, bootstrap, primeng,...)? + implementation
  - text-service: get texts (button, headlines,...) from json-file
  - add content page (homepage)
- - refactor list-service
+ - ~~refactor list-service~~
  - write tests
  - refactor project structure (packages-folder, rename angular-app)
  - use yarn instead of npm??
  - deploy
+ - ~~add central error-handling~~
+ - logging
+ - which database should be used (google cloud datastore, firebase,...)?

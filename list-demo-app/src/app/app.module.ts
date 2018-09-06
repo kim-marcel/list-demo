@@ -1,13 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
+import { BrowserModule } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ErrorHandler, NgModule } from '@angular/core';
+
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthService } from './services';
 import { environment } from '../environments/environment';
+import { AppErrorHandler } from './errors-handler/app-error-handler';
 import { ListComponent } from './list/list.component';
 import { ListResolver } from './services';
 import { ListService } from './services';
@@ -32,6 +33,10 @@ import { RoutingModule } from './routing/routing.module';
     RoutingModule,
   ],
   providers: [
+    {
+      provide: ErrorHandler,
+      useClass: AppErrorHandler,
+    },
     {
       provide : HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
