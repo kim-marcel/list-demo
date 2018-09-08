@@ -1,4 +1,4 @@
-import { AuthService } from '../services';
+import { AuthService } from '../../services';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
       () => this.authService.getIdToken().then(
         (idToken) => {
           sessionStorage.setItem('idToken', idToken);
+          sessionStorage.setItem('isLoggedIn', 'true');
           this.zone.run(() => this.router.navigate(['/list']));
         }
       )

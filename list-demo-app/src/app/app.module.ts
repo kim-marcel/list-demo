@@ -1,27 +1,37 @@
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { AppErrorHandler } from './error-handler/app-error-handler';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthService } from './services';
 import { environment } from '../environments/environment';
-import { AppErrorHandler } from './errors-handler/app-error-handler';
-import { ListComponent } from './list/list.component';
+import { ErrorPageComponent } from './pages';
+import { HeaderComponent } from './components';
+import { HomePageComponent } from './pages';
+import { ListComponent } from './components';
+import { ListPageComponent } from './pages';
 import { ListResolver } from './services';
 import { ListService } from './services';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
-import { MaterialModule } from './material/material.module';
-import { RoutingModule } from './routing/routing.module';
+import { LoginComponent } from './components';
+import { LoginPageComponent } from './pages';
+import { LogoutComponent } from './components';
+import { MaterialModule } from './modules/material/material.module';
+import { RoutingModule } from './modules/routing/routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ErrorPageComponent,
+    HeaderComponent,
+    HomePageComponent,
     ListComponent,
+    ListPageComponent,
     LoginComponent,
+    LoginPageComponent,
     LogoutComponent,
   ],
   imports: [

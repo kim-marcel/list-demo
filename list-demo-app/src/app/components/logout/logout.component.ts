@@ -1,4 +1,4 @@
-import { AuthService } from '../services';
+import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -18,6 +18,7 @@ export class LogoutComponent implements OnInit {
     this.authService.signOut()
       .then(() => {
           sessionStorage.removeItem('idToken');
+          sessionStorage.setItem('isLoggedIn', 'false');
           this.router.navigate(['/login']);
         }
       );
