@@ -73,7 +73,7 @@ Make sure to insert your project credentials in
  ## TODO
  - decide which css framework should be used (material, bootstrap, primeng,...)? + implementation
  - text-service: get texts (button, headlines,...) from json-file
- - add content page (homepage)
+ - ~~add content page (homepage)~~
  - ~~refactor list-service~~
  - write tests
  - refactor project structure (packages-folder, rename angular-app)
