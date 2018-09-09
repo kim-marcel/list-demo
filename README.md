@@ -72,7 +72,7 @@ Make sure to insert your project credentials in
  
  ## TODO
  - decide which css framework should be used (material, bootstrap, primeng,...)? + implementation
- - text-service: get texts (button, headlines,...) from json-file
+ - ~~text-service: get texts (button, headlines,...) from json-file~~
  - ~~add content page (homepage)~~
  - ~~refactor list-service~~
  - write tests
@@ -81,4 +81,4 @@ Make sure to insert your project credentials in
  - deploy
  - ~~add central error-handling~~
  - logging
- - which database should be used (google cloud datastore, firebase,...)?
+ - ~~which database should be used (google cloud datastore, firebase,...)?~~: Google Cloud Datastore for now!

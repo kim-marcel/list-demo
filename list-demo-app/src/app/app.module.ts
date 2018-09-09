@@ -7,20 +7,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppErrorHandler } from './error-handler/app-error-handler';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { AuthService } from './services';
+import { AuthService, ListResolver, ListService, TextService } from './services';
 import { environment } from '../environments/environment';
-import { ErrorPageComponent } from './pages';
-import { HeaderComponent } from './components';
-import { HomePageComponent } from './pages';
-import { ListComponent } from './components';
-import { ListPageComponent } from './pages';
-import { ListResolver } from './services';
-import { ListService } from './services';
-import { LoginComponent } from './components';
-import { LoginPageComponent } from './pages';
-import { LogoutComponent } from './components';
+import { ErrorPageComponent, HomePageComponent, ListPageComponent, LoginPageComponent } from './pages';
+import { HeaderComponent, ListComponent, LoginComponent, LogoutComponent } from './components';
 import { MaterialModule } from './modules/material/material.module';
 import { RoutingModule } from './modules/routing/routing.module';
+import { TextPipe } from './pipes/text.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +26,7 @@ import { RoutingModule } from './modules/routing/routing.module';
     LoginComponent,
     LoginPageComponent,
     LogoutComponent,
+    TextPipe,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -55,6 +49,7 @@ import { RoutingModule } from './modules/routing/routing.module';
     AuthService,
     ListResolver,
     ListService,
+    TextService,
   ],
   bootstrap: [
     AppComponent
