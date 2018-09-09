@@ -29,7 +29,7 @@ yarn install
 #### Alternative:
 Install API and App dependencies individually.
 
-#### In API-directory:
+###### In API-directory:
 
 Create and enter a virtual Python environment using ```virtualenv```:
 ```
@@ -43,7 +43,7 @@ pip install -r requirements.txt
 pip install -t lib -r requirements.txt
 ```
 
-#### In App-directory:
+###### In App-directory:
 
 Install dependencies using ```npm``` or ```yarn```:
 ```
@@ -55,13 +55,13 @@ yarn
 ```
 
 Make sure to insert your project credentials in
- - /list-demo/list-demo-api/src/app.yaml
- - /list-demo/list-demo-app/src/environments/environment.ts
+ - /list-demo/packages/list-demo-api/src/app.yaml
+ - /list-demo/packages/list-demo-app/src/environments/environment.ts
 
 ### Run the application
 
 #### Use yarn:
-Start API and App with one command using the devstart-script and pm2.
+Start API and App with yarn using the devstart-script and pm2.
 ```
 yarn start
 ```
@@ -70,7 +70,7 @@ Use ```pm2 stop [id | all]```, ```pm2 status```, ```pm2 log [id]``` to manage th
 #### Alternative:
 Start API and App individually.
 
-#### In API-directory:
+###### In API-directory:
 
 Start the API-server
 ```
@@ -78,7 +78,7 @@ dev_appserver.py app.yaml
 ```
 The API will be served on [http://localhost:8080](http://localhost:8080).
 
-#### In App-directory:
+###### In App-directory:
 
 Start the Angular-App
 ```
@@ -91,11 +91,11 @@ The App can be viewed on [http://localhost:4200](http://localhost:4200).
  - ~~text-service: get texts (button, headlines,...) from json-file~~
  - ~~add content page (homepage)~~
  - ~~refactor list-service~~
- - write tests
+ - write tests + run them with yarn + test-coverage
  - ~~refactor project structure (packages-folder)~~
  - rename angular-app
  - ~~use yarn instead of npm??~~
- - deploy
+ - deploy + deploy-script
  - ~~add central error-handling~~
  - logging
  - ~~which database should be used (google cloud datastore, firebase,...)?~~: Google Cloud Datastore for now!
