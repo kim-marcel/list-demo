@@ -16,10 +16,20 @@ App:
  
 Others:
  - [pm2](https://pm2.io/doc/en/runtime/quick-start/)
+ - [yarn](https://yarnpkg.com/)
  
 ### Setup
 
-In API-directory:
+#### Use yarn:
+Install API and App dependencies.
+```
+yarn install
+```
+
+#### Alternative:
+Install API and App dependencies individually.
+
+#### In API-directory:
 
 Create and enter a virtual Python environment using ```virtualenv```:
 ```
@@ -33,42 +43,48 @@ pip install -r requirements.txt
 pip install -t lib -r requirements.txt
 ```
 
-In App-directory:
+#### In App-directory:
 
-Install dependencies using ```npm```:
+Install dependencies using ```npm``` or ```yarn```:
 ```
 npm install
 ```
+or
+```
+yarn
+```
+
+Make sure to insert your project credentials in
+ - /list-demo/list-demo-api/src/app.yaml
+ - /list-demo/list-demo-app/src/environments/environment.ts
 
 ### Run the application
 
-#### Use devstart-script:
+#### Use yarn:
 Start API and App with one command using the devstart-script and pm2.
 ```
-./devstart.sh
+yarn start
 ```
 Use ```pm2 stop [id | all]```, ```pm2 status```, ```pm2 log [id]``` to manage the processes. For more commands check out the [pm2-documentation](https://pm2.io/doc/en/runtime/quick-start/).
 
 #### Alternative:
 Start API and App individually.
 
-Start the API-server:
+#### In API-directory:
+
+Start the API-server
 ```
-cd list-demo-api
 dev_appserver.py app.yaml
 ```
 The API will be served on [http://localhost:8080](http://localhost:8080).
 
-Start the Angular-App:
+#### In App-directory:
+
+Start the Angular-App
 ```
-cd list-demo-app
 ng serve
 ```
 The App can be viewed on [http://localhost:4200](http://localhost:4200).
-
-Make sure to insert your project credentials in
- - /list-demo/list-demo-api/src/app.yaml
- - /list-demo/list-demo-app/src/environments/environment.ts
  
  ## TODO
  - decide which css framework should be used (material, bootstrap, primeng,...)? + implementation
@@ -76,8 +92,9 @@ Make sure to insert your project credentials in
  - ~~add content page (homepage)~~
  - ~~refactor list-service~~
  - write tests
- - refactor project structure (packages-folder, rename angular-app)
- - use yarn instead of npm??
+ - ~~refactor project structure (packages-folder)~~
+ - rename angular-app
+ - ~~use yarn instead of npm??~~
  - deploy
  - ~~add central error-handling~~
  - logging

@@ -1,0 +1,15 @@
+{
+  "name": "list-demo",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "run-s 'pm2:stop' 'pm2:delete' 'devstart'",
+    "install": "cd packages; ./install.sh",
+    "pm2:stop": "pm2 stop all || :",
+    "pm2:delete": "pm2 delete all || :",
+    "devstart": "cd packages; ./devstart.sh"
+  },
+  "private": true,
+  "devDependencies": {
+    "npm-run-all": "^4.1.2"
+  }
+}
