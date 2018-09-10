@@ -1,4 +1,4 @@
-<section class="mat-typography">
+<section>
 
   <ul>
 
@@ -7,10 +7,9 @@
     </li>
 
     <li>
-      <mat-form-field>
-        <input matInput placeholder="{{'app.component.list.input.placeholder' | text}}" value="{{input}}" (change)="onChange($event)" (input)="onChange($event)">
-      </mat-form-field>
-      <button mat-raised-button color="primary" (click)="addListEntry()">
+      <input placeholder="{{'app.component.list.input.placeholder' | text}}" value="{{input}}"
+             (change)="onChange($event)" (input)="onChange($event)">
+      <button (click)="addListEntry()">
         {{'app.component.list.button.add' | text}}
       </button>
     </li>
