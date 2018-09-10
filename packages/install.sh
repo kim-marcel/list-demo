@@ -10,4 +10,4 @@ cd ..
 
 # install app dependencies
 cd list-demo-app
-yarngit
+yarn
