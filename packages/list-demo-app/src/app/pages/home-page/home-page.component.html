@@ -1,9 +1,3 @@
-<section>
-
-  <h1>{{'app.page.home.title' | text}}</h1>
-  {{'app.page.home.text.login' | text}}
-  <button (click)="goToLogin()">
-    {{'app.page.home.button.login' | text}}
-  </button>
-
-</section>
+<h1>{{'app.page.home.title' | text}}</h1>
+{{'app.page.home.text.login' | text}}
+<button pButton type="button" (click)="goToLogin()" label="{{'app.page.home.button.login' | text}}"></button>

@@ -1,7 +1,7 @@
-<section>
-  <button (click)="goToHome()">
-    {{'app.component.header.button.home' | text}}
+<h3>
+  <button pButton type="button" (click)="goToHome()" label="{{'app.component.header.button.home' | text}}"
+          icon="pi pi-home">
   </button>
   {{'app.component.header.title' | text}}
-  <hr>
-</section>
+</h3>
+<hr>

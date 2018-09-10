@@ -7,11 +7,12 @@
     </li>
 
     <li>
-      <input placeholder="{{'app.component.list.input.placeholder' | text}}" value="{{input}}"
-             (change)="onChange($event)" (input)="onChange($event)">
-      <button (click)="addListEntry()">
-        {{'app.component.list.button.add' | text}}
-      </button>
+      <div class="ui-inputgroup">
+        <input type="text" pInputText placeholder="{{'app.component.list.input.placeholder' | text}}"
+               value="{{input}}" (change)="onChange($event)" (input)="onChange($event)">
+        <button pButton type="button" label="{{'app.component.list.button.add' | text}}"
+                (click)="addListEntry()"></button>
+      </div>
     </li>
 
   </ul>

@@ -91,6 +91,12 @@
     "@angular-devkit/core" "0.6.8"
     rxjs "^6.0.0"
 
+"@angular/animations@^6.1.7":
+  version "6.1.7"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-6.1.7.tgz#5d1ca6a2f2e5827ac751c88265b7916d17a732d0"
+  dependencies:
+    tslib "^1.9.0"
+
 "@angular/cli@~6.0.8":
   version "6.0.8"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-6.0.8.tgz#65070958b944be30053232c51f8449b7ddd4d92a"
@@ -138,6 +144,12 @@
 "@angular/fire@5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@angular/fire/-/fire-5.0.0.tgz#2f07bd7b429d4752badbd53c15a9a3848009e2d5"
+
+"@angular/forms@^6.1.7":
+  version "6.1.7"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-6.1.7.tgz#42484c2ab1079fd34ddd637eb143db6a17be4990"
+  dependencies:
+    tslib "^1.9.0"
 
 "@angular/http@^6.0.3":
   version "6.1.7"
@@ -4813,6 +4825,14 @@ pretty-error@^2.0.2:
   dependencies:
     renderkid "^2.0.1"
     utila "~0.4"
+
+primeicons@^1.0.0-beta.10:
+  version "1.0.0-beta.10"
+  resolved "https://registry.yarnpkg.com/primeicons/-/primeicons-1.0.0-beta.10.tgz#b1a27a8a279c0b28d4bd537a29709b39cfebbd9f"
+
+primeng@^6.1.3:
+  version "6.1.3"
+  resolved "https://registry.yarnpkg.com/primeng/-/primeng-6.1.3.tgz#720590da9e671fd47de15911636d1c0a7a442852"
 
 process-nextick-args@~1.0.6:
   version "1.0.7"
