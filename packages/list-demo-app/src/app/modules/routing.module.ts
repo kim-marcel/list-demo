@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ErrorPageComponent } from '../pages/index';
-import { HomePageComponent } from '../pages/index';
-import { ListPageComponent } from '../pages/index';
-import { ListResolver } from '../services/index';
-import { LoginPageComponent } from '../pages/index';
+import { ErrorPageComponent } from '../pages';
+import { HomePageComponent } from '../pages';
+import { ListPageComponent } from '../pages';
+import { ListResolver } from '../services';
+import { LoginPageComponent } from '../pages';
 
 const appRoutes: Routes = [
   {
