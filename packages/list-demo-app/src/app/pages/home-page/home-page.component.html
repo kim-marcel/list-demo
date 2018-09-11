@@ -1,9 +1,9 @@
-<section class="mat-typography">
-
-  <h1>{{'app.page.home.title' | text}}</h1>
-  {{'app.page.home.text.login' | text}}
-  <button mat-raised-button color="primary" (click)="goToLogin()">
-    {{'app.page.home.button.login' | text}}
-  </button>
-
-</section>
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-4">{{'app.page.home.title' | text}}</h1>
+    <p class="lead">{{'app.page.home.text.lead' | text}}</p>
+    <hr class="my-4">
+    <p>{{'app.page.home.text.login' | text}}</p>
+    <button type="button" class="btn btn-primary btn-lg" (click)="goToLogin()">{{'app.page.home.button.login' | text}}</button>
+  </div>
+</div>
