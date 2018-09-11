@@ -1,7 +1,7 @@
 export const texts = {
   // components
-  'app.component.header.title': 'Demo List App',
-  'app.component.header.button.home': 'Home',
+  'app.component.header.title': 'Shopping List App',
+  'app.component.header.button.login': 'Login',
 
   'app.component.list.button.add': 'Add',
   'app.component.list.input.placeholder': 'Input',
@@ -10,10 +10,11 @@ export const texts = {
   'app.component.logout.button.logout': 'Logout',
 
   // pages
-  'app.page.home.title': 'Welcome to Demo List App!',
-  'app.page.home.text.login': 'Click here to login and view your list:',
+  'app.page.home.title': 'Demo Shopping List App',
+  'app.page.home.text.lead': 'This website allows you to have your shopping-list always with you. Wherever you are. Whenever you need it. Online.',
+  'app.page.home.text.login': 'Please login to view your list:',
   'app.page.home.button.login': 'Login',
 
-  'app.page.error.title': 'Sorry, this page does not exist.',
-  'app.page.error.text.body': 'Please check your URL',
+  'app.page.error.title': 'Sorry, the page you\'re looking for does not exist.',
+  'app.page.error.text.body': 'Please go back to the homepage.',
 };

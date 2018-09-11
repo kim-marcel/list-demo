@@ -1,7 +1,4 @@
-<section>
-  <button (click)="goToHome()">
-    {{'app.component.header.button.home' | text}}
-  </button>
-  {{'app.component.header.title' | text}}
-  <hr>
-</section>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/home">{{'app.component.header.title' | text}}</a>
+  <button class="btn btn-light" (click)="goToLogin()">{{'app.component.header.button.login' | text}}</button>
+</nav>

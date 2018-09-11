@@ -1,19 +1,16 @@
-<section>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="{{'app.component.list.input.placeholder' | text}}"
+         value="{{input}}"
+         (change)="onChange($event)" (input)="onChange($event)">
+  <div class="input-group-append">
+    <button button type="button" class="btn btn-primary" (click)="addListEntry()">
+      {{'app.component.list.button.add' | text}}
+    </button>
+  </div>
+</div>
 
-  <ul>
-
-    <li *ngFor="let listElement of list">
-      {{listElement}}
-    </li>
-
-    <li>
-      <input placeholder="{{'app.component.list.input.placeholder' | text}}" value="{{input}}"
-             (change)="onChange($event)" (input)="onChange($event)">
-      <button (click)="addListEntry()">
-        {{'app.component.list.button.add' | text}}
-      </button>
-    </li>
-
-  </ul>
-
-</section>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item" *ngFor="let listElement of list">
+    {{listElement}}
+  </li>
+</ul>
