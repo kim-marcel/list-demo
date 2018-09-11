@@ -87,7 +87,7 @@ ng serve
 The App can be viewed on [http://localhost:4200](http://localhost:4200).
  
  ## TODO
- - decide which css framework should be used (material, bootstrap, primeng,...)? + implementation
+ - ~~decide which css framework should be used (material, bootstrap, primeng,...)? + implementation~~
  - ~~text-service: get texts (button, headlines,...) from json-file~~
  - ~~add content page (homepage)~~
  - ~~refactor list-service~~
@@ -99,3 +99,5 @@ The App can be viewed on [http://localhost:4200](http://localhost:4200).
  - ~~add central error-handling~~
  - logging
  - ~~which database should be used (google cloud datastore, firebase,...)?~~: Google Cloud Datastore for now!
+ - add ability to delete list-entries
+ - show login/logout-button dynamically depending whether user is logged in or not
