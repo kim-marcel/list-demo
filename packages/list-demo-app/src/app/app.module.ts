@@ -11,7 +11,7 @@ import { AuthService, ListResolver, ListService, TextService } from './services'
 import { environment } from '../environments/environment';
 import { ErrorPageComponent, HomePageComponent, ListPageComponent, LoginPageComponent } from './pages';
 import { HeaderComponent, ListComponent, LoginComponent, LogoutComponent } from './components';
-import { RoutingModule } from './modules/routing/routing.module';
+import { RoutingModule } from './modules/routing.module';
 import { TextPipe } from './pipes/text.pipe';
 
 @NgModule({
