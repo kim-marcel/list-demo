@@ -2,6 +2,7 @@ export const texts = {
   // components
   'app.component.header.title': 'Shopping List App',
   'app.component.header.button.login': 'Login',
+  'app.component.header.button.logout': 'Logout',
 
   'app.component.list.button.add': 'Add',
   'app.component.list.input.placeholder': 'Input',

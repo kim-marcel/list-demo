@@ -10,7 +10,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthService, ListResolver, ListService, TextService } from './services';
 import { environment } from '../environments/environment';
 import { ErrorPageComponent, HomePageComponent, ListPageComponent, LoginPageComponent } from './pages';
-import { HeaderComponent, ListComponent, LoginComponent, LogoutComponent } from './components';
+import { HeaderComponent, ListComponent, LoginComponent } from './components';
 import { RoutingModule } from './modules/routing.module';
 import { TextPipe } from './pipes/text.pipe';
 
@@ -24,7 +24,6 @@ import { TextPipe } from './pipes/text.pipe';
     ListPageComponent,
     LoginComponent,
     LoginPageComponent,
-    LogoutComponent,
     TextPipe,
   ],
   imports: [

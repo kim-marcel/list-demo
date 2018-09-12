@@ -21,6 +21,7 @@ export class AppErrorHandler implements ErrorHandler {
     console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
     if (error.status === 401) {
       const router = this.injector.get(Router);
+      sessionStorage.setItem('isLoggedIn', 'false');
       this.zone.run(() => router.navigateByUrl('/login'));
     }
   }
