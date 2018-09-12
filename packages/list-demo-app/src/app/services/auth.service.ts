@@ -12,6 +12,10 @@ export class AuthService {
   constructor(private afAuth: AngularFireAuth) {
   }
 
+  static isUserLoggedIn() {
+    return sessionStorage.getItem('isLoggedIn') === 'true';
+  }
+
   signInWithGoogle() {
     return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }

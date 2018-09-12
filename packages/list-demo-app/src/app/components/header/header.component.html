@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-dark bg-dark">
   <a class="navbar-brand" href="/home">{{'app.component.header.title' | text}}</a>
-  <button *ngIf="!isLoggedIn()" class="btn btn-light" (click)="goToLogin()">{{'app.component.header.button.login' | text}}</button>
-  <button *ngIf="isLoggedIn()" class="btn btn-outline-light" (click)="signOut()">{{'app.component.header.button.logout' | text}}</button>
+  <button *ngIf="!isUserLoggedIn()" class="btn btn-light" (click)="goToLogin()">{{'app.component.header.button.login' | text}}</button>
+  <button *ngIf="isUserLoggedIn()" class="btn btn-outline-light" (click)="signOut()">{{'app.component.header.button.logout' | text}}</button>
 </nav>

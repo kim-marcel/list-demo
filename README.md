@@ -101,3 +101,7 @@ The App can be viewed on [http://localhost:4200](http://localhost:4200).
  - ~~which database should be used (google cloud datastore, firebase,...)?~~: Google Cloud Datastore for now!
  - add ability to delete list-entries
  - ~~show login/logout-button dynamically depending whether user is logged in or not~~
+ - session expired error notification
+ - more login possibilities (github, email, facebook, ...)
+ - redesign of login page
+ - refactor auth service

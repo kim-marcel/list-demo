@@ -1,6 +1,6 @@
+import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services';
 
 @Component({
   selector: 'app-header',
@@ -18,8 +18,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('login');
   }
 
-  isLoggedIn() {
-    return sessionStorage.getItem('isLoggedIn') === 'true';
+  isUserLoggedIn() {
+    return AuthService.isUserLoggedIn();
   }
 
   signOut() {
