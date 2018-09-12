@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.list = this.route.snapshot.data['listData']['body']['list'];
+    this.list = this.route.snapshot.data['listData']['body']['list'].reverse();
   }
 
   onChange(event: any) {
@@ -32,7 +32,7 @@ export class ListComponent implements OnInit {
         data => {
           console.log(data);
           if (data.body !== undefined) {
-            this.list = data['body']['list'];
+            this.list = data['body']['list'].reverse();
           }
         }
       );

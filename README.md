@@ -145,4 +145,4 @@ For further help checkout the [Firebase Documentation](https://firebase.google.c
 - more login possibilities (github, email, facebook, ...)
 - redesign of login page
 - refactor auth service
-- bugfix: revert order of list in list-component
+- ~~bugfix: revert order of list in list-component~~
