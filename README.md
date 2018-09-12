@@ -1,6 +1,6 @@
 # List Demo App
 
-This is a demo "shopping-list"-App using a python Google App Engine Backend-API and an Angular 6 Frontend-App.
+This is a demo "shopping-list"-App using a python Google App Engine Backend-API and an Angular 6 Frontend.
 
 ## Getting started
 
@@ -17,6 +17,24 @@ App:
 Others:
  - [pm2](https://pm2.io/doc/en/runtime/quick-start/)
  - [yarn](https://yarnpkg.com/)
+ 
+Authentication:
+ - a Google account with a firebase project: [Documentation](https://firebase.google.com/docs/web/setup)
+ - Make sure to insert your project-id and other credentials here:
+    - /list-demo/packages/list-demo-api/src/app.yaml
+    - /list-demo/packages/list-demo-app/src/environments/environment.ts
+ 
+If you want to deploy this project you also need:
+ - [firebase-tools](https://firebase.google.com/docs/cli/)
+ - a Google account with a GAE and a firebase project set up: [Documentation](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+ - Make sure to insert your firebase project-id here...
+    - /list-demo/packages/list-demo-app/.firebaserc
+ - ... and your Google Cloud project-id here:
+    - /list-demo/packages/deploy.sh
+ - Don't forget to set the production api-URL in:
+    - /list-demo/packages/list-demo-app/src/environment/environment.prod.ts
+    
+*** NOTE: Your project-id can be the same for Google Cloud, Firebase Hosting & Firebase Authentication ***
  
 ### Setup
 
@@ -54,10 +72,6 @@ or
 yarn
 ```
 
-Make sure to insert your project credentials in
- - /list-demo/packages/list-demo-api/src/app.yaml
- - /list-demo/packages/list-demo-app/src/environments/environment.ts
-
 ### Run the application
 
 #### Use yarn:
@@ -85,23 +99,50 @@ Start the Angular-App
 ng serve
 ```
 The App can be viewed on [http://localhost:4200](http://localhost:4200).
- 
- ## TODO
- - ~~decide which css framework should be used (material, bootstrap, primeng,...)? + implementation~~
- - ~~text-service: get texts (button, headlines,...) from json-file~~
- - ~~add content page (homepage)~~
- - ~~refactor list-service~~
- - write tests + run them with yarn + test-coverage
- - ~~refactor project structure (packages-folder)~~
- - rename angular-app
- - ~~use yarn instead of npm??~~
- - deploy + deploy-script
- - ~~add central error-handling~~
- - logging
- - ~~which database should be used (google cloud datastore, firebase,...)?~~: Google Cloud Datastore for now!
- - add ability to delete list-entries
- - ~~show login/logout-button dynamically depending whether user is logged in or not~~
- - session expired error notification
- - more login possibilities (github, email, facebook, ...)
- - redesign of login page
- - refactor auth service
+
+### Deploy the application
+
+#### Use yarn:
+Deploy API to Google Cloud and the App to Firebase Hosting.
+```
+yarn deploy
+```
+#### Alternative:
+Deploy API and App individually.
+
+###### In API-directory:
+
+Deploy the API
+```
+gcloud app deploy app.yaml -q --project [PROJECT_ID]
+```
+For further help checkout the [Google Cloud Documentation](https://cloud.google.com/appengine/docs/flexible/python/testing-and-deploying-your-app).
+
+###### In App-directory:
+
+Deploy the Angular-App
+```
+firebase deploy
+```
+For further help checkout the [Firebase Documentation](https://firebase.google.com/docs/hosting/deploying).
+
+## TODO
+- ~~decide which css framework should be used (material, bootstrap, primeng,...)? + implementation~~
+- ~~text-service: get texts (button, headlines,...) from json-file~~
+- ~~add content page (homepage)~~
+- ~~refactor list-service~~
+- write tests + run them with yarn + test-coverage
+- ~~refactor project structure (packages-folder)~~
+- rename angular-app
+- ~~use yarn instead of npm??~~
+- ~~deploy + deploy-script~~
+- ~~add central error-handling~~
+- logging
+- ~~which database should be used (google cloud datastore, firebase,...)?~~: Google Cloud Datastore for now!
+- add ability to delete list-entries
+- ~~show login/logout-button dynamically depending whether user is logged in or not~~
+- add session expired error notification
+- more login possibilities (github, email, facebook, ...)
+- redesign of login page
+- refactor auth service
+- bugfix: revert order of list in list-component

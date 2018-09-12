@@ -4,6 +4,7 @@
   "scripts": {
     "start": "run-s 'pm2:stop' 'pm2:delete' 'devstart'",
     "install": "cd packages; ./install.sh",
+    "deploy": "cd packages; ./deploy.sh",
     "pm2:stop": "pm2 stop all || :",
     "pm2:delete": "pm2 delete all || :",
     "devstart": "cd packages; ./devstart.sh"
