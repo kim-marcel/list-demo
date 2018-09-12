@@ -1,3 +1,4 @@
+import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -15,6 +16,14 @@ export class HomePageComponent implements OnInit {
 
   goToLogin() {
     this.router.navigateByUrl('/login');
+  }
+
+  goToList() {
+    this.router.navigateByUrl('/list');
+  }
+
+  isUserLoggedIn() {
+    return AuthService.isUserLoggedIn();
   }
 
 }

@@ -15,6 +15,8 @@ export const texts = {
   'app.page.home.text.lead': 'This website allows you to have your shopping-list always with you. Wherever you are. Whenever you need it. Online.',
   'app.page.home.text.login': 'Please login to view your list:',
   'app.page.home.button.login': 'Login',
+  'app.page.home.text.list': 'You\'re already logged in. Go back to your list.',
+  'app.page.home.button.list': 'Show me my list!',
 
   'app.page.error.title': 'Sorry, the page you\'re looking for does not exist.',
   'app.page.error.text.body': 'Please go back to the homepage.',
