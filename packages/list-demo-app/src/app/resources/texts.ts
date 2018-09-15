@@ -5,7 +5,7 @@ export const texts = {
   'app.component.header.button.logout': 'Logout',
 
   'app.component.list.button.add': 'Add',
-  'app.component.list.input.placeholder': 'Type something here you want to add to your list...',
+  'app.component.list.input.placeholder': 'What do you want to add to your list?',
 
   'app.component.login.button.google-login': 'Login with Google',
   'app.component.logout.button.logout': 'Logout',
