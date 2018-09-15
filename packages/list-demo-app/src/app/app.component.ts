@@ -7,18 +7,19 @@ import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rout
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  loading = false;
+  private loading = false;
 
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
-      switch (true) {
-        case event instanceof NavigationStart: {
+
+      switch (event.constructor) {
+        case NavigationStart: {
           this.loading = true;
           break;
         }
-        case event instanceof NavigationEnd:
-        case event instanceof NavigationCancel:
-        case event instanceof NavigationError: {
+        case NavigationEnd:
+        case NavigationCancel:
+        case NavigationError: {
           this.loading = false;
           break;
         }
@@ -26,7 +27,12 @@ export class AppComponent {
           break;
         }
       }
+
     });
+  }
+
+  isLoading(): boolean {
+    return this.loading;
   }
 
 }

@@ -16,8 +16,24 @@ export class AuthService {
     return sessionStorage.getItem('isLoggedIn') === 'true';
   }
 
-  signInWithGoogle() {
-    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  socialSignIn(provider: string) {
+    let authProvider;
+
+    switch (provider) {
+      case 'github': {
+        authProvider = new firebase.auth.GithubAuthProvider();
+        break;
+      }
+      case 'google': {
+        authProvider = new firebase.auth.GoogleAuthProvider();
+        break;
+      }
+      default: {
+        throw new Error('No valid AuthProvider provided in socialSignIn()-method.');
+      }
+    }
+
+    return this.afAuth.auth.signInWithPopup(authProvider);
   }
 
   getIdToken() {

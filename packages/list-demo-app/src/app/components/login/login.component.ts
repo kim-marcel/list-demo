@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  signInWithGoogle() {
-    this.authService.signInWithGoogle().then(
+  socialSignIn(provider: string) {
+    this.authService.socialSignIn(provider).then(
       () => this.authService.getIdToken().then(
         (idToken) => {
           sessionStorage.setItem('idToken', idToken);
