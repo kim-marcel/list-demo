@@ -146,5 +146,5 @@ For further help checkout the [Firebase Documentation](https://firebase.google.c
 - ~~redesign of login page~~
 - refactor auth service
 - ~~bugfix: revert order of list in list-component~~
-- loading-indicator (spinner/ progress-bar) when navigating between routes
+- ~~loading-indicator (spinner/ progress-bar) when navigating between routes~~
 - ~~add alert, that says that this is just a demo and no sensitive/ important data should be stored there + no liability~~
