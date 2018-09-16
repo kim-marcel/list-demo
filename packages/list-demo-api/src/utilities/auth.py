@@ -69,3 +69,12 @@ def add_element_to_user_list(user_id, element):
         mylist = myuser.list.get()
         mylist.list_elements.append(element)
         mylist.put()
+
+
+def delete_element_from_user_list(user_id, element):
+    myuser = get_user_from_datastore(user_id)
+    if myuser:
+        mylist = myuser.list.get()
+        mylist.list_elements.remove(element)
+        mylist.put()
+
