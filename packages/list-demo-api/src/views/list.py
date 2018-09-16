@@ -1,6 +1,7 @@
 from flask import Blueprint, request, abort, jsonify
 
 from src.utilities import auth
+from src.utilities import user
 
 list_bp = Blueprint('list', __name__)
 
@@ -9,15 +10,15 @@ list_bp = Blueprint('list', __name__)
 def get_list():
     id_token = request.headers['Authorization'].split(' ').pop()
     user_info = auth.verify_token(id_token)
-    user_id = auth.get_user_id(user_info)
+    user_id = user.get_user_id(user_info)
 
     # check whether user is logged in and in datastore
-    if auth.is_user_authorized(user_id):
-        if not auth.is_user_in_datastore(user_id):
-            auth.add_user_to_datastore(user_id)
+    if user.is_user_authorized(user_id):
+        if not user.is_user_in_datastore(user_id):
+            user.add_user_to_datastore(user_id)
 
         # Get content and add to response
-        return jsonify(list=auth.get_list_of_user(user_id))
+        return jsonify(list=user.get_list_of_user(user_id))
 
     # if no user is logged in return error
     else:
@@ -28,10 +29,10 @@ def get_list():
 def post_to_list():
     id_token = request.headers['Authorization'].split(' ').pop()
     user_info = auth.get_id_info(id_token)
-    user_id = auth.get_user_id(user_info)
+    user_id = user.get_user_id(user_info)
 
     # check whether user is logged in and in datastore
-    if auth.is_user_authorized(user_id):
+    if user.is_user_authorized(user_id):
         list_element_action = request.get_json()['action']
 
         if list_element_action == 'add':
@@ -50,7 +51,7 @@ def post_to_list():
 
 def add_to_list(new_list_element, user_id):
     if new_list_element:
-        auth.add_element_to_user_list(user_id, new_list_element)
+        user.add_element_to_user_list(user_id, new_list_element)
         return jsonify(responseCode=200, responseMessage="Successfully added to list")
     else:
         return jsonify(responseCode=200, responseMessage="Empty String: Nothing was added to list")
@@ -58,7 +59,7 @@ def add_to_list(new_list_element, user_id):
 
 def delete_from_list(list_element, user_id):
     if list_element:
-        auth.delete_element_from_user_list(user_id, list_element)
+        user.delete_element_from_user_list(user_id, list_element)
         return jsonify(responseCode=200, responseMessage="Successfully deleted from list")
     else:
         return jsonify(responseCode=200, responseMessage="Empty String: Nothing was deleted from list")
