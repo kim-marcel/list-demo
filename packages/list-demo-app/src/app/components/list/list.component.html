@@ -12,5 +12,8 @@
 <ul class="list-group list-group-flush">
   <li class="list-group-item" *ngFor="let listElement of list">
     {{listElement}}
+    <button type="button" class="btn close" (click)="deleteListEntry(listElement)">
+      <i class="fa fa-close" aria-hidden="true"></i>
+    </button>
   </li>
 </ul>

@@ -45,4 +45,8 @@ export class ListComponent implements OnInit {
         this.input = '';
       });
   }
+
+  deleteListEntry(listElement: string) {
+    console.log('delete: ' + listElement);
+  }
 }
