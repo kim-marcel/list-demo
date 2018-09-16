@@ -23,12 +23,7 @@ export class HeaderComponent implements OnInit {
   }
 
   signOut() {
-    this.authService.signOut()
-      .then(() => {
-          sessionStorage.removeItem('idToken');
-          this.router.navigateByUrl('/home');
-        }
-      );
+    this.authService.signOut();
   }
 
 }

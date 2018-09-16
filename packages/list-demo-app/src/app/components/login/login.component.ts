@@ -9,21 +9,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private zone: NgZone) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
   }
 
   socialSignIn(provider: string) {
-    this.authService.socialSignIn(provider).then(
-      () => this.authService.getIdToken().then(
-        (idToken) => {
-          sessionStorage.setItem('idToken', idToken);
-          this.zone.run(() => this.router.navigate(['/list']));
-        }
-      )
-    );
+    this.authService.socialSignIn(provider);
   }
 
 }

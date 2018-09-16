@@ -2,8 +2,9 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
 
   private jwtHelper = new JwtHelperService();
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth, private router: Router, private zone: NgZone) {
   }
 
   isAuthenticated(): boolean {
@@ -37,15 +38,26 @@ export class AuthService {
       }
     }
 
-    return this.afAuth.auth.signInWithPopup(authProvider);
+    this.afAuth.auth.signInWithPopup(authProvider).then(
+      () => this.getIdToken().then(
+        (idToken) => {
+          sessionStorage.setItem('idToken', idToken);
+          this.zone.run(() => this.router.navigateByUrl('/list'));
+        }
+      )
+    );
+  }
+
+  signOut() {
+    this.afAuth.auth.signOut().then(() => {
+        sessionStorage.removeItem('idToken');
+        this.router.navigateByUrl('/home');
+      }
+    );
   }
 
   getIdToken() {
     return this.afAuth.auth.currentUser.getIdToken();
-  }
-
-  signOut() {
-    return this.afAuth.auth.signOut();
   }
 
 }
