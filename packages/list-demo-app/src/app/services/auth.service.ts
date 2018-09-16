@@ -3,17 +3,21 @@ import 'firebase/auth';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private jwtHelper = new JwtHelperService();
+
   constructor(private afAuth: AngularFireAuth) {
   }
 
-  static isUserLoggedIn() {
-    return sessionStorage.getItem('isLoggedIn') === 'true';
+  isAuthenticated(): boolean {
+    const idToken = sessionStorage.getItem('idToken');
+    return !this.jwtHelper.isTokenExpired(idToken);
   }
 
   socialSignIn(provider: string) {

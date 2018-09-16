@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
       () => this.authService.getIdToken().then(
         (idToken) => {
           sessionStorage.setItem('idToken', idToken);
-          sessionStorage.setItem('isLoggedIn', 'true');
           this.zone.run(() => this.router.navigate(['/list']));
         }
       )

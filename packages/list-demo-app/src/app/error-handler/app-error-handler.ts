@@ -20,8 +20,8 @@ export class AppErrorHandler implements ErrorHandler {
     console.error(`${error.statusText}: ${error.status}`);
     console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
     if (error.status === 401) {
+      sessionStorage.removeItem('idToken');
       const router = this.injector.get(Router);
-      sessionStorage.setItem('isLoggedIn', 'false');
       this.zone.run(() => router.navigateByUrl('/login'));
     }
   }

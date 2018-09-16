@@ -21,7 +21,7 @@ def verify_token(token):
         if claims:
             return claims
 
-    except ValueError:
+    except (ValueError, TypeError):
         # invalid id_token
         return None
 

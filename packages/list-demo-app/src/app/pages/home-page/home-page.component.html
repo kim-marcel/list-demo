@@ -5,14 +5,14 @@
     <p class="lead">{{'app.page.home.text.lead' | text}}</p>
     <hr class="my-4">
 
-    <div *ngIf="!isUserLoggedIn()">
+    <div *ngIf="!isUserSignedIn()">
       <p>{{'app.page.home.text.login' | text}}</p>
       <button type="button" class="btn btn-primary btn-lg" (click)="goToLogin()">
         {{'app.page.home.button.login' | text}}
       </button>
     </div>
 
-    <div *ngIf="isUserLoggedIn()">
+    <div *ngIf="isUserSignedIn()">
       <p>{{'app.page.home.text.list' | text}}</p>
       <button type="button" class="btn btn-primary btn-lg" (click)="goToList()">
         {{'app.page.home.button.list' | text}}

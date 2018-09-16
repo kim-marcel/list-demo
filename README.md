@@ -146,7 +146,7 @@ For further help checkout the [Firebase Documentation](https://firebase.google.c
 - ~~add github-login~~
 - ~~redesign of login page~~
 - refactor auth service
-- auth-guard: https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3
+- ~~auth-guard~~
 - ~~bugfix: revert order of list in list-component~~
 - ~~loading-indicator (spinner/ progress-bar) when navigating between routes~~
 - ~~add alert, that says that this is just a demo and no sensitive/ important data should be stored there + no liability~~

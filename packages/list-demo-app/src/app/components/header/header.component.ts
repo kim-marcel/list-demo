@@ -15,19 +15,18 @@ export class HeaderComponent implements OnInit {
   }
 
   goToLogin() {
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('/login');
   }
 
-  isUserLoggedIn() {
-    return AuthService.isUserLoggedIn();
+  isUserSignedIn() {
+    return this.authService.isAuthenticated();
   }
 
   signOut() {
     this.authService.signOut()
       .then(() => {
           sessionStorage.removeItem('idToken');
-          sessionStorage.setItem('isLoggedIn', 'false');
-          this.router.navigate(['/home']);
+          this.router.navigateByUrl('/home');
         }
       );
   }

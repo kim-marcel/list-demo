@@ -1,7 +1,8 @@
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuardService } from '../services';
 import { ErrorPageComponent } from '../pages';
 import { HomePageComponent } from '../pages';
 import { ListPageComponent } from '../pages';
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   {
     path: 'list',
     component: ListPageComponent,
+    canActivate: [AuthGuardService],
     resolve: {
       listData: ListResolver,
     }

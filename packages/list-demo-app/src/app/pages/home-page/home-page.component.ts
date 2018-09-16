@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -22,8 +22,8 @@ export class HomePageComponent implements OnInit {
     this.router.navigateByUrl('/list');
   }
 
-  isUserLoggedIn() {
-    return AuthService.isUserLoggedIn();
+  isUserSignedIn() {
+    return this.authService.isAuthenticated();
   }
 
 }
