@@ -24,7 +24,11 @@ export class ListService {
   }
 
   addToList(listElement) {
-    return this.http.post(this.listUrl, {input: listElement});
+    return this.http.post(this.listUrl, {action: 'add', input: listElement});
+  }
+
+  deleteFromList(listElementId) {
+    return this.http.post(this.listUrl, {action: 'delete', id: listElementId});
   }
 
 }

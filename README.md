@@ -139,7 +139,7 @@ For further help checkout the [Firebase Documentation](https://firebase.google.c
 - ~~add central error-handling~~
 - logging
 - ~~which database should be used (google cloud datastore, firebase,...)?~~: Google Cloud Datastore for now!
-- add ability to delete list-entries
+- ~~add ability to delete list-entries~~
 - ~~show login/logout-button dynamically depending whether user is logged in or not~~
 - add session expired error notification
 - add email-login
@@ -151,3 +151,5 @@ For further help checkout the [Firebase Documentation](https://firebase.google.c
 - ~~loading-indicator (spinner/ progress-bar) when navigating between routes~~
 - ~~add alert, that says that this is just a demo and no sensitive/ important data should be stored there + no liability~~
 - make alert in list-view removeable
+- add ability to "star"/ pin a list entry
+- use structured property in user for list (API)

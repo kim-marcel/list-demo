@@ -5,4 +5,5 @@ from mylist import MyList
 
 class MyUser(ndb.Model):
     # Reference the users list with the key of the list (key = user id + "/list")
+    # use StructuredProperty??
     list = ndb.KeyProperty(MyList)
