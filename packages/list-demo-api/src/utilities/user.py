@@ -1,6 +1,7 @@
 from google.appengine.ext import ndb
 
 from src.models import MyList
+from src.models import MyListEntry
 from src.models import MyUser
 
 
@@ -30,23 +31,30 @@ def add_user_to_datastore(user_id):
 def get_list_of_user(user_id):
     myuser = get_user_from_datastore(user_id)
     if myuser:
-        return myuser.list.get().list_elements
+        list_of_keys = myuser.list.get().list_elements
+        element_list = [key.get().serialize() for key in list_of_keys]
+        return element_list
 
 
 def add_element_to_user_list(user_id, element):
     myuser = get_user_from_datastore(user_id)
     if myuser:
+        mylistentry = MyListEntry(list_element=element)
+        mylistentry.put()
         mylist = myuser.list.get()
-        mylist.list_elements.append(element)
+        mylist.list_elements.append(mylistentry.key)
         mylist.put()
 
 
-def delete_element_from_user_list(user_id, element):
+def delete_element_from_user_list(user_id, element_id):
     myuser = get_user_from_datastore(user_id)
     if myuser:
+        mylistelement_key = ndb.Key(MyListEntry, element_id)
         mylist = myuser.list.get()
-        mylist.list_elements.remove(element)
-        mylist.put()
+        if mylistelement_key.get():
+            mylist.list_elements.remove(mylistelement_key)
+            mylist.put()
+            mylistelement_key.delete()
 
 
 def is_user_authorized(user_id):
