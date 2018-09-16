@@ -47,6 +47,9 @@ export class ListComponent implements OnInit {
   }
 
   deleteListEntry(listElement: string) {
-    console.log('delete: ' + listElement);
+    this.listService.deleteFromList(listElement)
+      .subscribe(() => {
+        this.getList();
+      });
   }
 }
