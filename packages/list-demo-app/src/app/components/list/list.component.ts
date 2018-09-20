@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ListService } from '../../services';
 
 @Component({
@@ -11,8 +11,6 @@ import { ListService } from '../../services';
 export class ListComponent implements OnInit {
 
   list: any[];
-
-  @Input()
   input: String;
 
   constructor(private authService: AuthService, private listService: ListService, private route: ActivatedRoute) {
@@ -22,15 +20,10 @@ export class ListComponent implements OnInit {
     this.list = this.route.snapshot.data['listData']['body'].reverse();
   }
 
-  onChange(event: any) {
-    this.input = event.target.value;
-  }
-
   getList() {
     this.listService.getList()
       .subscribe(
         data => {
-          console.log(data);
           if (data.body !== undefined) {
             this.list = data['body'].reverse();
           }
