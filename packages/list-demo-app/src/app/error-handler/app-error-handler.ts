@@ -22,7 +22,7 @@ export class AppErrorHandler implements ErrorHandler {
     if (error.status === 401) {
       sessionStorage.removeItem('idToken');
       const router = this.injector.get(Router);
-      this.zone.run(() => router.navigateByUrl('/login'));
+      this.zone.run(() => router.navigateByUrl('/sign-in'));
     }
   }
 

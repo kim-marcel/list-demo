@@ -14,8 +14,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToLogin() {
-    this.router.navigateByUrl('/login');
+  goToSignIn() {
+    this.router.navigateByUrl('/sign-in');
   }
 
   isUserSignedIn() {
