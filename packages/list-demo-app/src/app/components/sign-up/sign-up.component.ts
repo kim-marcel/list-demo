@@ -1,3 +1,4 @@
+import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,14 +12,14 @@ export class SignUpComponent implements OnInit {
   password: string;
   passwordRepeated: string;
 
-  constructor() {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
   }
 
   emailSignUp() {
-    console.log('Register: ', this.email, this.password, this.passwordRepeated);
+    this.authService.emailSignUp(this.email, this.password);
   }
 
   // TODO: refactor validation, make extra validation service, check email valid, password length,...
