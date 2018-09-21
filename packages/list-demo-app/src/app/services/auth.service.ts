@@ -48,6 +48,17 @@ export class AuthService {
     );
   }
 
+  emailSignIn(email: string, password: string) {
+    this.afAuth.auth.signInWithEmailAndPassword(email, password).then(
+      () => this.getIdToken().then(
+        (idToken) => {
+          sessionStorage.setItem('idToken', idToken);
+          this.zone.run(() => this.router.navigateByUrl('/list'));
+        }
+      )
+    );
+  }
+
   signOut() {
     this.afAuth.auth.signOut().then(() => {
         sessionStorage.removeItem('idToken');

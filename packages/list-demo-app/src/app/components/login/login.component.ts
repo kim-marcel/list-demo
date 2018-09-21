@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  email: string;
+  password: string;
+
   constructor(private authService: AuthService) {
   }
 
@@ -16,6 +19,10 @@ export class LoginComponent implements OnInit {
 
   socialSignIn(provider: string) {
     this.authService.socialSignIn(provider);
+  }
+
+  emailSignIn() {
+    this.authService.emailSignIn(this.email, this.password);
   }
 
 }

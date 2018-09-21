@@ -7,6 +7,9 @@ export const texts = {
   'app.component.list.button.add': 'Add',
   'app.component.list.input.placeholder': 'What do you want to add to your list?',
 
+  'app.component.login.input.email': 'E-Mail',
+  'app.component.login.input.password': 'Password',
+  'app.component.login.button.email-login': 'Login with E-Mail',
   'app.component.login.button.google-login': 'Login with Google',
   'app.component.login.button.github-login': 'Login with Github',
 
