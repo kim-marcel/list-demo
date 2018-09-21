@@ -15,6 +15,11 @@ export const texts = {
   'app.component.sign-in.button.google-sign-in': 'Login with Google',
   'app.component.sign-in.button.github-sign-in': 'Login with Github',
 
+  'app.component.sign-up.input.email': 'E-Mail',
+  'app.component.sign-up.input.password': 'Password',
+  'app.component.sign-up.input.passwordRepeated': 'Repeate your Password',
+  'app.component.sign-up.button.sign-up': 'Create a new account',
+
   // pages
   'app.page.error.title': 'Sorry, the page you\'re looking for does not exist.',
   'app.page.error.text.body': 'Please go back to the homepage.',
@@ -29,4 +34,6 @@ export const texts = {
   'app.page.list.alert.disclaimer': 'Disclaimer: This Website is just a demo. Please do not use this website to store any important information. Your data is not secured and can be deleted at any time. This website can go offline temporarily or permanently.',
 
   'app.page.sign-in.header': 'Please Login',
+
+  'app.page.sign-up.header': 'Create a new account',
 };

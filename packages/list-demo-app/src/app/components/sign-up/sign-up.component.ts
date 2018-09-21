@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+  passwordRepeated: string;
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  emailSignUp() {
+    console.log('Register: ', this.email, this.password, this.passwordRepeated);
+  }
+
+  // TODO: refactor validation, make extra validation service, check email valid, password length,...
+  inputIsValid() {
+    return this.email === undefined ||
+      this.password === undefined ||
+      this.passwordRepeated === undefined ||
+      this.password !== this.passwordRepeated;
   }
 
 }

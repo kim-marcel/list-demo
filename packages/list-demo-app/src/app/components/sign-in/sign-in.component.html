@@ -4,7 +4,7 @@
            placeholder="{{'app.component.sign-in.input.email' | text}}">
   </div>
   <div class="form-group">
-    <input [(ngModel)]="password" name="password" type="password" class="form-control" required
+    <input [(ngModel)]="password" name="password" type="password" class="form-control" autocomplete="current_password" required
            placeholder="{{'app.component.sign-in.input.password' | text}}">
   </div>
   <button type="submit" class="btn btn-primary btn-block" [disabled]="formCtrl.form.invalid">
