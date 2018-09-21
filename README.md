@@ -153,3 +153,4 @@ For further help checkout the [Firebase Documentation](https://firebase.google.c
 - make alert in list-view removeable
 - add ability to "star"/ pin a list entry
 - use structured property in user for list (API)
+- delete main.py in packages/list-demo-api --> not needed
