@@ -3,22 +3,32 @@ import 'firebase/auth';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable, NgZone } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { User } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private jwtHelper = new JwtHelperService();
+  private user: User;
 
   constructor(private afAuth: AngularFireAuth, private router: Router, private zone: NgZone) {
+    afAuth.authState.subscribe((data) => {
+      this.user = data;
+    });
+  }
+
+  getAuthState() {
+    return this.afAuth.authState;
   }
 
   isAuthenticated(): boolean {
-    const idToken = sessionStorage.getItem('idToken');
-    return !this.jwtHelper.isTokenExpired(idToken);
+    return !(this.user === null || this.user === undefined);
+  }
+
+  getIdToken() {
+    return this.isAuthenticated() ? this.afAuth.auth.currentUser.getIdToken() : null;
   }
 
   socialSignIn(provider: string) {
@@ -39,47 +49,29 @@ export class AuthService {
     }
 
     this.afAuth.auth.signInWithPopup(authProvider).then(
-      () => this.getIdToken().then(
-        (idToken) => {
-          sessionStorage.setItem('idToken', idToken);
-          this.zone.run(() => this.router.navigateByUrl('/list'));
-        }
-      )
+      () => this.zone.run(() => this.router.navigateByUrl('/list'))
     );
   }
 
   emailSignIn(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then(
-      () => this.getIdToken().then(
-        (idToken) => {
-          sessionStorage.setItem('idToken', idToken);
-          this.zone.run(() => this.router.navigateByUrl('/list'));
-        }
-      )
+      () => this.zone.run(() => this.router.navigateByUrl('/list'))
     );
   }
 
   emailSignUp(email: string, password: string) {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
-      () => this.getIdToken().then(
-        (idToken) => {
-          sessionStorage.setItem('idToken', idToken);
-          this.zone.run(() => this.router.navigateByUrl('/list'));
-        }
-      )
-    );
-  }
-
-  signOut() {
-    this.afAuth.auth.signOut().then(() => {
-        sessionStorage.removeItem('idToken');
-        this.router.navigateByUrl('/home');
+      () => {
+        // Add E-Mail-Verification (send E-Mail to user)
+        // this.getCurrentUser().sendEmailVerification().then(() => console.log('Email sent to: ', email));
+        this.zone.run(() => this.router.navigateByUrl('/sign-in'));
       }
     );
   }
 
-  getIdToken() {
-    return this.afAuth.auth.currentUser.getIdToken();
+  signOut() {
+    this.afAuth.auth.signOut().then(
+      () => this.router.navigateByUrl('/home'));
   }
 
 }
