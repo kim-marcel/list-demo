@@ -156,5 +156,5 @@ For further help checkout the [Firebase Documentation](https://firebase.google.c
 - add email-verification when new sign-up with email
 - add settings, where user can change name, password and email
 - add possibility to reset password when forgotten
-- delete main.py in packages/list-demo-api --> not needed
+- ~~delete main.py in packages/list-demo-api --> not needed~~
 - ~~add proper field + form validation (e.g. ValidationService)~~

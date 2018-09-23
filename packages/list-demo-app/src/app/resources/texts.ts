@@ -21,6 +21,8 @@ export const texts = {
   'app.component.sign-up.input.password': 'Password',
   'app.component.sign-up.input.passwordRepeated': 'Confirm Password',
   'app.component.sign-up.button.sign-up': 'Create a new account',
+  'app.component.sign-up.hasAccount.text': 'You already have an account?',
+  'app.component.sign-up.hasAccount.link': 'Login',
 
   // pages
   'app.page.error.title': 'Sorry, the page you\'re looking for does not exist.',
