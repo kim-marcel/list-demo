@@ -1,6 +1,7 @@
 # List Demo App
 
 This is a demo "shopping-list"-App using a python Google App Engine Backend-API and an Angular 6 Frontend.
+Check it out [here](https://listdemo-1533812564459.firebaseapp.com/home).
 
 ## Getting started
 
@@ -131,17 +132,13 @@ For further help checkout the [Firebase Documentation](https://firebase.google.c
 - ~~text-service: get texts (button, headlines,...) from json-file~~
 - ~~add content page (homepage)~~
 - ~~refactor list-service~~
-- write tests + run them with yarn + test-coverage
 - ~~refactor project structure (packages-folder)~~
-- rename angular-app
 - ~~use yarn instead of npm??~~
 - ~~deploy + deploy-script~~
 - ~~add central error-handling~~
-- logging
 - ~~which database should be used (google cloud datastore, firebase,...)?~~: Google Cloud Datastore for now!
 - ~~add ability to delete list-entries~~
 - ~~show login/logout-button dynamically depending whether user is logged in or not~~
-- add session expired error notification
 - ~~add email-login and sign-up~~
 - ~~add github-login~~
 - ~~redesign of login page~~
@@ -150,11 +147,17 @@ For further help checkout the [Firebase Documentation](https://firebase.google.c
 - ~~bugfix: revert order of list in list-component~~
 - ~~loading-indicator (spinner/ progress-bar) when navigating between routes~~
 - ~~add alert, that says that this is just a demo and no sensitive/ important data should be stored there + no liability~~
+- ~~delete main.py in packages/list-demo-api --> not needed~~
+- ~~add proper field + form validation (e.g. ValidationService)~~
+- write tests + run them with yarn + test-coverage
+- rename angular-app
+- logging
+- add session expired error notification
 - make alert in list-view removeable
 - add ability to "star"/ pin a list entry
 - use structured property in user for list (API)
 - add email-verification when new sign-up with email
 - add settings, where user can change name, password and email
 - add possibility to reset password when forgotten
-- ~~delete main.py in packages/list-demo-api --> not needed~~
-- ~~add proper field + form validation (e.g. ValidationService)~~
+- footer
+- error-messages for input-field-validation
