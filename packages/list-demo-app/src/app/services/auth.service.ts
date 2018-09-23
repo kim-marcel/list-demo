@@ -1,7 +1,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
@@ -62,7 +62,7 @@ export class AuthService {
   emailSignUp(email: string, password: string) {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
       () => {
-        // Add E-Mail-Verification (send E-Mail to user)
+        // TODO: Add E-Mail-Verification (send E-Mail to user)
         // this.getCurrentUser().sendEmailVerification().then(() => console.log('Email sent to: ', email));
         this.zone.run(() => this.router.navigateByUrl('/sign-in'));
       }
