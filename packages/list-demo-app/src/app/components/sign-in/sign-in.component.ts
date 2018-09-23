@@ -1,6 +1,7 @@
 import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StringValidator } from '../../validators';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,7 +17,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, StringValidator.isEmail]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }

@@ -1,7 +1,7 @@
 import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PasswordValidator } from '../../validators';
+import { PasswordValidator, StringValidator } from '../../validators';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,13 +17,13 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
-        name: ['', [Validators.required, Validators.minLength(3)]],
-        surname: ['', [Validators.required, Validators.minLength(3)]],
-        email: ['', [Validators.required, Validators.email]],
+        name: ['', [Validators.required, Validators.minLength(3), StringValidator.isOnlyLetters]],
+        surname: ['', [Validators.required, Validators.minLength(3), StringValidator.isOnlyLetters]],
+        email: ['', [Validators.required, StringValidator.isEmail]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         passwordConfirm: ['', [Validators.required, Validators.minLength(6)]],
       }, {
-        validator: PasswordValidator.MatchPassword
+        validator: PasswordValidator.matchPassword
       }
     );
   }
