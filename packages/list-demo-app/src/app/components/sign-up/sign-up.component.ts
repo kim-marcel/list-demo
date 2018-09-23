@@ -1,7 +1,7 @@
 import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PasswordValidation } from '../../validators';
+import { PasswordValidator } from '../../validators';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
         password: ['', [Validators.required, Validators.minLength(6)]],
         passwordConfirm: ['', [Validators.required, Validators.minLength(6)]],
       }, {
-        validator: PasswordValidation.MatchPassword
+        validator: PasswordValidator.MatchPassword
       }
     );
   }
