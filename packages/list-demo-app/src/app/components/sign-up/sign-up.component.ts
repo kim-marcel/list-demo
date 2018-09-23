@@ -1,5 +1,7 @@
 import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PasswordValidation } from '../../validators';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,32 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  user = {
-    name: '',
-    surname: '',
-    email: '',
-    password: '',
-    passwordRepeated: '',
-  };
+  signUpForm: FormGroup;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    this.signUpForm = this.formBuilder.group({
+        name: ['', [Validators.required, Validators.minLength(3)]],
+        surname: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        passwordConfirm: ['', [Validators.required, Validators.minLength(6)]],
+      }, {
+        validator: PasswordValidation.MatchPassword
+      }
+    );
   }
 
   emailSignUp() {
-    this.authService.emailSignUp(this.user);
-  }
-
-  // TODO: refactor validation, make extra validation service, check email valid, password length,...
-  inputIsValid() {
-    return this.user.name === '' ||
-      this.user.surname === '' ||
-      this.user.email === '' ||
-      this.user.password === '' ||
-      this.user.passwordRepeated === '' ||
-      this.user.password !== this.user.passwordRepeated;
+    this.authService.emailSignUp(this.signUpForm.value);
   }
 
 }
