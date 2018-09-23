@@ -8,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  name: string;
-  surname: string;
-  email: string;
-  password: string;
-  passwordRepeated: string;
+  user = {
+    name: '',
+    surname: '',
+    email: '',
+    password: '',
+    passwordRepeated: '',
+  };
 
   constructor(private authService: AuthService) {
   }
@@ -21,17 +23,17 @@ export class SignUpComponent implements OnInit {
   }
 
   emailSignUp() {
-    this.authService.emailSignUp(this.name, this.surname, this.email, this.password);
+    this.authService.emailSignUp(this.user);
   }
 
   // TODO: refactor validation, make extra validation service, check email valid, password length,...
   inputIsValid() {
-    return this.name === undefined ||
-      this.surname === undefined ||
-      this.email === undefined ||
-      this.password === undefined ||
-      this.passwordRepeated === undefined ||
-      this.password !== this.passwordRepeated;
+    return this.user.name === '' ||
+      this.user.surname === '' ||
+      this.user.email === '' ||
+      this.user.password === '' ||
+      this.user.passwordRepeated === '' ||
+      this.user.password !== this.user.passwordRepeated;
   }
 
 }

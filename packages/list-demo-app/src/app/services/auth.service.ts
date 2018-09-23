@@ -59,10 +59,10 @@ export class AuthService {
     );
   }
 
-  emailSignUp(name: string, surname: string, email: string, password: string) {
-    this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
+  emailSignUp(user) {
+    this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(
       () => {
-        this.updateUserInfo(name, surname);
+        this.updateUserInfo(user.name, user.surname);
         // TODO: Add E-Mail-Verification (send E-Mail to user)
         // this.getCurrentUser().sendEmailVerification().then(() => console.log('Email sent to: ', email));
         this.zone.run(() => this.router.navigateByUrl('/list'));
