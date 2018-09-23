@@ -2,17 +2,17 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuardService } from '../services';
-import { ErrorPageComponent } from '../pages';
-import { HomePageComponent } from '../pages';
-import { ListPageComponent } from '../pages';
-import { ListResolver } from '../services';
-import { LoginPageComponent } from '../pages';
+import { AuthGuardService, ListResolver } from '../services';
+import { ErrorPageComponent, HomePageComponent, ListPageComponent, SignInPageComponent, SignUpPageComponent } from '../pages';
 
 const appRoutes: Routes = [
   {
-    path: 'login',
-    component: LoginPageComponent,
+    path: 'sign-in',
+    component: SignInPageComponent,
+  },
+  {
+    path: 'sign-up',
+    component: SignUpPageComponent,
   },
   {
     path: 'list',

@@ -142,7 +142,7 @@ For further help checkout the [Firebase Documentation](https://firebase.google.c
 - ~~add ability to delete list-entries~~
 - ~~show login/logout-button dynamically depending whether user is logged in or not~~
 - add session expired error notification
-- add email-login
+- ~~add email-login and sign-up~~
 - ~~add github-login~~
 - ~~redesign of login page~~
 - ~~refactor auth service~~
@@ -153,5 +153,8 @@ For further help checkout the [Firebase Documentation](https://firebase.google.c
 - make alert in list-view removeable
 - add ability to "star"/ pin a list entry
 - use structured property in user for list (API)
+- add email-verification when new sign-up with email
+- add settings, where user can change name, password and email
+- add possibility to reset password when forgotten
 - delete main.py in packages/list-demo-api --> not needed
 - add proper fiedl + form validation (e.g. ValidationService)

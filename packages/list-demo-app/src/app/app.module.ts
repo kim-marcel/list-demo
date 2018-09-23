@@ -1,8 +1,8 @@
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -10,8 +10,8 @@ import { AppErrorHandler } from './error-handler/app-error-handler';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthService, ListResolver, ListService, TextService } from './services';
 import { environment } from '../environments/environment';
-import { ErrorPageComponent, HomePageComponent, ListPageComponent, LoginPageComponent } from './pages';
-import { HeaderComponent, ListComponent, LoginComponent } from './components';
+import { ErrorPageComponent, HomePageComponent, ListPageComponent, SignInPageComponent, SignUpPageComponent } from './pages';
+import { HeaderComponent, ListComponent, SignInComponent, SignUpComponent } from './components';
 import { RoutingModule } from './modules/routing.module';
 import { TextPipe } from './pipes/text.pipe';
 
@@ -23,8 +23,10 @@ import { TextPipe } from './pipes/text.pipe';
     HomePageComponent,
     ListComponent,
     ListPageComponent,
-    LoginComponent,
-    LoginPageComponent,
+    SignInComponent,
+    SignInPageComponent,
+    SignUpComponent,
+    SignUpPageComponent,
     TextPipe,
   ],
   imports: [
@@ -33,6 +35,7 @@ import { TextPipe } from './pipes/text.pipe';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RoutingModule,
   ],
   providers: [
