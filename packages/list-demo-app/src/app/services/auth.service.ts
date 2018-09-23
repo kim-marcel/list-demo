@@ -59,13 +59,21 @@ export class AuthService {
     );
   }
 
-  emailSignUp(email: string, password: string) {
+  emailSignUp(name: string, surname: string, email: string, password: string) {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
       () => {
+        this.updateUserInfo(name, surname);
         // TODO: Add E-Mail-Verification (send E-Mail to user)
         // this.getCurrentUser().sendEmailVerification().then(() => console.log('Email sent to: ', email));
-        this.zone.run(() => this.router.navigateByUrl('/sign-in'));
+        this.zone.run(() => this.router.navigateByUrl('/list'));
       }
+    );
+  }
+
+  updateUserInfo(name: string, surname: string, photoURL = null) {
+    const displayName = [name, surname].join(' ');
+    this.getAuthState().subscribe(
+      (user) => user.updateProfile({displayName, photoURL})
     );
   }
 

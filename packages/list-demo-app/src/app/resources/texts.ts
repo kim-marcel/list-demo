@@ -15,6 +15,8 @@ export const texts = {
   'app.component.sign-in.button.google-sign-in': 'Login with Google',
   'app.component.sign-in.button.github-sign-in': 'Login with Github',
 
+  'app.component.sign-up.input.name': 'Name',
+  'app.component.sign-up.input.surname': 'Surname',
   'app.component.sign-up.input.email': 'E-Mail',
   'app.component.sign-up.input.password': 'Password',
   'app.component.sign-up.input.passwordRepeated': 'Repeate your Password',
