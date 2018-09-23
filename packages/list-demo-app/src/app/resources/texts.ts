@@ -16,10 +16,10 @@ export const texts = {
   'app.component.sign-in.button.github-sign-in': 'Login with Github',
 
   'app.component.sign-up.input.name': 'Name',
-  'app.component.sign-up.input.surname': 'Surname',
+  'app.component.sign-up.input.surname': 'Family Name',
   'app.component.sign-up.input.email': 'E-Mail',
   'app.component.sign-up.input.password': 'Password',
-  'app.component.sign-up.input.passwordRepeated': 'Repeate your Password',
+  'app.component.sign-up.input.passwordRepeated': 'Confirm Password',
   'app.component.sign-up.button.sign-up': 'Create a new account',
 
   // pages
@@ -28,7 +28,7 @@ export const texts = {
 
   'app.page.home.title': 'Demo Shopping List App',
   'app.page.home.text.lead': 'This website allows you to have your shopping-list always with you. Wherever you are. Whenever you need it. Online.',
-  'app.page.home.text.sign-in': 'Please login to view your list:',
+  'app.page.home.text.sign-in': 'Please login to view your list',
   'app.page.home.button.sign-in': 'Login',
   'app.page.home.text.list': 'You\'re already logged in. Go back to your list.',
   'app.page.home.button.list': 'Show me my list!',
@@ -37,5 +37,5 @@ export const texts = {
 
   'app.page.sign-in.header': 'Please Login',
 
-  'app.page.sign-up.header': 'Create a new account',
+  'app.page.sign-up.header': 'Sign Up',
 };
