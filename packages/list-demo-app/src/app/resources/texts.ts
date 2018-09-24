@@ -1,4 +1,11 @@
 export const texts = {
+  // common
+  'app.common.error.badlyFormattedEmail': 'This is not a valid email-address.',
+  'app.common.error.notOnlyLetters': 'Only letters allowed.',
+  'app.common.error.passwordsDontMatch': 'The passwords don\'t match.',
+  'app.common.error.required': 'This field is required.',
+  'app.common.error.tooShort': 'The input is too small.',
+
   // components
   'app.component.header.title': 'Shopping List App',
   'app.component.header.button.sign-in': 'Login',

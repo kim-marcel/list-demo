@@ -1,6 +1,6 @@
 import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { PasswordValidator, StringValidator } from '../../validators';
 
 @Component({
@@ -17,11 +17,11 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
-        name: ['', [Validators.required, Validators.minLength(3), StringValidator.isOnlyLetters]],
-        surname: ['', [Validators.required, Validators.minLength(3), StringValidator.isOnlyLetters]],
-        email: ['', [Validators.required, StringValidator.isEmail]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        passwordConfirm: ['', [Validators.required, Validators.minLength(6)]],
+        name: ['', [StringValidator.isOnlyLetters, StringValidator.minLength(3), StringValidator.required]],
+        surname: ['', [StringValidator.isOnlyLetters, StringValidator.minLength(3), StringValidator.required]],
+        email: ['', [StringValidator.isEmail, StringValidator.required]],
+        password: ['', [StringValidator.minLength(6), StringValidator.required]],
+        passwordConfirm: ['', [StringValidator.minLength(6), StringValidator.required]],
       }, {
         validator: PasswordValidator.matchPassword
       }
@@ -29,7 +29,9 @@ export class SignUpComponent implements OnInit {
   }
 
   emailSignUp() {
-    this.authService.emailSignUp(this.signUpForm.value);
+    if (!this.signUpForm.invalid) {
+      this.authService.emailSignUp(this.signUpForm.value);
+    }
   }
 
 }

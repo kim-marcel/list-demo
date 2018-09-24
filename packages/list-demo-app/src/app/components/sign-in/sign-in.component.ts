@@ -1,6 +1,6 @@
 import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { StringValidator } from '../../validators';
 
 @Component({
@@ -17,13 +17,16 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
-      email: ['', [Validators.required, StringValidator.isEmail]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [StringValidator.isEmail, StringValidator.required]],
+      password: ['', [StringValidator.minLength(6), StringValidator.required]],
     });
+    console.log(this.signInForm);
   }
 
   emailSignIn() {
-    this.authService.emailSignIn(this.signInForm.value.email, this.signInForm.value.password);
+    if (!this.signInForm.invalid) {
+      this.authService.emailSignIn(this.signInForm.value.email, this.signInForm.value.password);
+    }
   }
 
   socialSignIn(provider: string) {

@@ -128,6 +128,7 @@ firebase deploy
 For further help checkout the [Firebase Documentation](https://firebase.google.com/docs/hosting/deploying).
 
 ## TODO
+Done:
 - ~~decide which css framework should be used (material, bootstrap, primeng,...)? + implementation~~
 - ~~text-service: get texts (button, headlines,...) from json-file~~
 - ~~add content page (homepage)~~
@@ -149,15 +150,22 @@ For further help checkout the [Firebase Documentation](https://firebase.google.c
 - ~~add alert, that says that this is just a demo and no sensitive/ important data should be stored there + no liability~~
 - ~~delete main.py in packages/list-demo-api --> not needed~~
 - ~~add proper field + form validation (e.g. ValidationService)~~
+- ~~error-messages for input-field-validation~~
+
+Not so important:
 - write tests + run them with yarn + test-coverage
-- rename angular-app
 - logging
+- footer
+- rename angular-app
 - add session expired error notification
 - make alert in list-view removeable
-- add ability to "star"/ pin a list entry
 - use structured property in user for list (API)
-- add email-verification when new sign-up with email
+
+Important:
+- add ability to "star"/ pin a list entry
 - add settings, where user can change name, password and email
+
+Very Important:
+- add email-verification when new sign-up with email
 - add possibility to reset password when forgotten
-- footer
-- error-messages for input-field-validation
+
