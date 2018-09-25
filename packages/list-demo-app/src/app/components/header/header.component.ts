@@ -18,6 +18,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/sign-in');
   }
 
+  goToSettings() {
+    this.router.navigateByUrl('/settings');
+  }
+
   isUserSignedIn() {
     return this.authService.isAuthenticated();
   }

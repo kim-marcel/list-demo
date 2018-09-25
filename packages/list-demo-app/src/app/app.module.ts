@@ -10,8 +10,15 @@ import { AppErrorHandler } from './error-handler/app-error-handler';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthService, ListResolver, ListService, TextService } from './services';
 import { environment } from '../environments/environment';
-import { ErrorPageComponent, HomePageComponent, ListPageComponent, SignInPageComponent, SignUpPageComponent } from './pages';
-import { HeaderComponent, ListComponent, SignInComponent, SignUpComponent } from './components';
+import {
+  ErrorPageComponent,
+  HomePageComponent,
+  ListPageComponent,
+  SettingsPageComponent,
+  SignInPageComponent,
+  SignUpPageComponent
+} from './pages';
+import { HeaderComponent, ListComponent, SettingsComponent, SignInComponent, SignUpComponent } from './components';
 import { RoutingModule } from './modules/routing.module';
 import { TextPipe } from './pipes/text.pipe';
 
@@ -23,6 +30,8 @@ import { TextPipe } from './pipes/text.pipe';
     HomePageComponent,
     ListComponent,
     ListPageComponent,
+    SettingsComponent,
+    SettingsPageComponent,
     SignInComponent,
     SignInPageComponent,
     SignUpComponent,

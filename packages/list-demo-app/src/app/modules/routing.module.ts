@@ -3,7 +3,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuardService, ListResolver } from '../services';
-import { ErrorPageComponent, HomePageComponent, ListPageComponent, SignInPageComponent, SignUpPageComponent } from '../pages';
+import {
+  ErrorPageComponent,
+  HomePageComponent,
+  ListPageComponent,
+  SettingsPageComponent,
+  SignInPageComponent,
+  SignUpPageComponent
+} from '../pages';
 
 const appRoutes: Routes = [
   {
@@ -21,6 +28,11 @@ const appRoutes: Routes = [
     resolve: {
       listData: ListResolver,
     }
+  },
+  {
+    path: 'settings',
+    component: SettingsPageComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: 'home',
