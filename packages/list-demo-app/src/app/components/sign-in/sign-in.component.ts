@@ -20,7 +20,6 @@ export class SignInComponent implements OnInit {
       email: ['', [StringValidator.isEmail, StringValidator.required]],
       password: ['', [StringValidator.minLength(6), StringValidator.required]],
     });
-    console.log(this.signInForm);
   }
 
   emailSignIn() {
