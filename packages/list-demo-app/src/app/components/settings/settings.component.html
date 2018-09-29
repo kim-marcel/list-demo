@@ -1,96 +1,119 @@
 <div *ngIf="isLoggedInWithEmail()">
 
-  <p class="mt-3">{{ 'app.component.settings.header.changePassword' | text }}</p>
+  <div class="accordion mb-3">
 
-  <form [formGroup]="changePasswordForm" (submit)="changePassword()">
-    <div class="form-group">
-      <input formControlName="passwordCurrent" name="passwordCurrent" type="password" class="form-control" autocomplete="current-password"
-             placeholder="{{'app.component.settings.input.passwordCurrent' | text}}">
-      <div class="alert alert-danger mt-2 text-left" role="alert"
-           *ngIf="changePasswordForm.controls.passwordCurrent.touched && changePasswordForm.controls.passwordCurrent.invalid">
-        {{ 'app.common.error.' + changePasswordForm.controls.passwordCurrent.errors?.error | text }}
-      </div>
+  <div class="card">
+    <h6 class="card-header">{{ 'app.component.settings.header.changePassword' | text }}</h6>
+    <div class="card-body">
+
+      <form [formGroup]="changePasswordForm" (submit)="changePassword()">
+        <div class="form-group">
+          <input formControlName="passwordCurrent" name="passwordCurrent" type="password" class="form-control"
+                 autocomplete="current-password"
+                 placeholder="{{'app.component.settings.input.passwordCurrent' | text}}">
+          <div class="alert alert-danger mt-2 text-left" role="alert"
+               *ngIf="changePasswordForm.controls.passwordCurrent.touched && changePasswordForm.controls.passwordCurrent.invalid">
+            {{ 'app.common.error.' + changePasswordForm.controls.passwordCurrent.errors?.error | text }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input formControlName="password" name="password" type="password" class="form-control"
+                 autocomplete="new-password"
+                 placeholder="{{'app.component.settings.input.passwordNew' | text}}">
+          <div class="alert alert-danger mt-2 text-left" role="alert"
+               *ngIf="changePasswordForm.controls.password.touched && changePasswordForm.controls.password.invalid">
+            {{ 'app.common.error.' + changePasswordForm.controls.password.errors?.error | text }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input formControlName="passwordConfirm" name="passwordConfirm" type="password" class="form-control"
+                 autocomplete="new-password"
+                 placeholder="{{'app.component.settings.input.passwordNewConfirm' | text}}">
+          <div class="alert alert-danger mt-2 text-left" role="alert"
+               *ngIf="changePasswordForm.controls.passwordConfirm.touched && changePasswordForm.controls.passwordConfirm.invalid">
+            {{ 'app.common.error.' + changePasswordForm.controls.passwordConfirm.errors?.error | text }}
+          </div>
+        </div>
+
+        <div class="alert alert-danger mt-2 text-left" role="alert"
+             *ngIf="changePasswordForm.controls.password.touched && changePasswordForm.controls.passwordConfirm.touched && changePasswordForm.errors !== null">
+          {{ 'app.common.error.' + changePasswordForm.errors?.error | text }}
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="changePasswordForm.invalid">
+          {{'app.component.settings.button.changePassword' | text}}
+        </button>
+      </form>
+
     </div>
+  </div>
 
-    <div class="form-group">
-      <input formControlName="password" name="password" type="password" class="form-control" autocomplete="new-password"
-             placeholder="{{'app.component.settings.input.passwordNew' | text}}">
-      <div class="alert alert-danger mt-2 text-left" role="alert"
-           *ngIf="changePasswordForm.controls.password.touched && changePasswordForm.controls.password.invalid">
-        {{ 'app.common.error.' + changePasswordForm.controls.password.errors?.error | text }}
-      </div>
+  <div class="card">
+    <h6 class="card-header">{{ 'app.component.settings.header.updateProfile' | text }}</h6>
+    <div class="card-body">
+
+      <form [formGroup]="updateProfileForm" (submit)="updateProfile()">
+        <div class="form-group">
+          <input formControlName="name" name="name" type="text" class="form-control" autocomplete="given-name"
+                 placeholder="{{'app.component.settings.input.name' | text}}">
+          <div class="alert alert-danger mt-2 text-left" role="alert"
+               *ngIf="updateProfileForm.controls.name.touched && updateProfileForm.controls.name.invalid">
+            {{ 'app.common.error.' + updateProfileForm.controls.name.errors?.error | text }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input formControlName="surname" name="surname" type="text" class="form-control" autocomplete="family-name"
+                 placeholder="{{'app.component.settings.input.surname' | text}}">
+          <div class="alert alert-danger mt-2 text-left" role="alert"
+               *ngIf="updateProfileForm.controls.surname.touched && updateProfileForm.controls.surname.invalid">
+            {{ 'app.common.error.' + updateProfileForm.controls.surname.errors?.error | text }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input formControlName="passwordCurrent" name="passwordCurrent" type="password" class="form-control"
+                 autocomplete="current-password"
+                 placeholder="{{'app.component.settings.input.passwordCurrent' | text}}">
+          <div class="alert alert-danger mt-2 text-left" role="alert"
+               *ngIf="updateProfileForm.controls.passwordCurrent.touched && updateProfileForm.controls.passwordCurrent.invalid">
+            {{ 'app.common.error.' + updateProfileForm.controls.passwordCurrent.errors?.error | text }}
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="updateProfileForm.invalid">
+          {{'app.component.settings.button.updateProfile' | text }}
+        </button>
+      </form>
+
     </div>
+  </div>
 
-    <div class="form-group">
-      <input formControlName="passwordConfirm" name="passwordConfirm" type="password" class="form-control" autocomplete="new-password"
-             placeholder="{{'app.component.settings.input.passwordNewConfirm' | text}}">
-      <div class="alert alert-danger mt-2 text-left" role="alert"
-           *ngIf="changePasswordForm.controls.passwordConfirm.touched && changePasswordForm.controls.passwordConfirm.invalid">
-        {{ 'app.common.error.' + changePasswordForm.controls.passwordConfirm.errors?.error | text }}
-      </div>
+  <div class="card">
+    <h6 class="card-header">{{ 'app.component.settings.header.deleteAccount' | text }}</h6>
+    <div class="card-body">
+
+      <form [formGroup]="deleteAccountForm" (submit)="deleteAccount()">
+        <div class="form-group">
+          <input formControlName="passwordCurrent" name="passwordCurrent" type="password" class="form-control"
+                 autocomplete="current-password"
+                 placeholder="{{'app.component.settings.input.passwordCurrent' | text}}">
+          <div class="alert alert-danger mt-2 text-left" role="alert"
+               *ngIf="deleteAccountForm.controls.passwordCurrent.touched && deleteAccountForm.controls.passwordCurrent.invalid">
+            {{ 'app.common.error.' + deleteAccountForm.controls.passwordCurrent.errors?.error | text }}
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-danger btn-block" [disabled]="deleteAccountForm.invalid">
+          {{'app.component.settings.button.deleteAccount' | text}}
+        </button>
+      </form>
+
     </div>
-
-    <div class="alert alert-danger mt-2 text-left" role="alert"
-         *ngIf="changePasswordForm.controls.password.touched && changePasswordForm.controls.passwordConfirm.touched && changePasswordForm.errors !== null">
-      {{ 'app.common.error.' + changePasswordForm.errors?.error | text }}
-    </div>
-
-    <button type="submit" class="btn btn-primary btn-block" [disabled]="changePasswordForm.invalid">
-      {{'app.component.settings.button.changePassword' | text}}
-    </button>
-  </form>
-
-  <p class="mt-5">{{ 'app.component.settings.header.updateProfile' | text }}</p>
-
-  <form [formGroup]="updateProfileForm" (submit)="updateProfile()">
-    <div class="form-group">
-      <input formControlName="name" name="name" type="text" class="form-control" autocomplete="given-name"
-             placeholder="{{'app.component.settings.input.name' | text}}">
-      <div class="alert alert-danger mt-2 text-left" role="alert"
-           *ngIf="updateProfileForm.controls.name.touched && updateProfileForm.controls.name.invalid">
-        {{ 'app.common.error.' + updateProfileForm.controls.name.errors?.error | text }}
-      </div>
-    </div>
-
-    <div class="form-group">
-      <input formControlName="surname" name="surname" type="text" class="form-control" autocomplete="family-name"
-             placeholder="{{'app.component.settings.input.surname' | text}}">
-      <div class="alert alert-danger mt-2 text-left" role="alert"
-           *ngIf="updateProfileForm.controls.surname.touched && updateProfileForm.controls.surname.invalid">
-        {{ 'app.common.error.' + updateProfileForm.controls.surname.errors?.error | text }}
-      </div>
-    </div>
-
-    <div class="form-group">
-      <input formControlName="passwordCurrent" name="passwordCurrent" type="password" class="form-control" autocomplete="current-password"
-             placeholder="{{'app.component.settings.input.passwordCurrent' | text}}">
-      <div class="alert alert-danger mt-2 text-left" role="alert"
-           *ngIf="updateProfileForm.controls.passwordCurrent.touched && updateProfileForm.controls.passwordCurrent.invalid">
-        {{ 'app.common.error.' + updateProfileForm.controls.passwordCurrent.errors?.error | text }}
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary btn-block" [disabled]="updateProfileForm.invalid">
-      {{'app.component.settings.button.updateProfile' | text }}
-    </button>
-  </form>
-
-  <p class="mt-5">{{ 'app.component.settings.header.deleteAccount' | text }}</p>
-
-  <form [formGroup]="deleteAccountForm" (submit)="deleteAccount()" class="mb-4">
-    <div class="form-group">
-      <input formControlName="passwordCurrent" name="passwordCurrent" type="password" class="form-control" autocomplete="current-password"
-             placeholder="{{'app.component.settings.input.passwordCurrent' | text}}">
-      <div class="alert alert-danger mt-2 text-left" role="alert"
-           *ngIf="deleteAccountForm.controls.passwordCurrent.touched && deleteAccountForm.controls.passwordCurrent.invalid">
-        {{ 'app.common.error.' + deleteAccountForm.controls.passwordCurrent.errors?.error | text }}
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-danger btn-block" [disabled]="deleteAccountForm.invalid">
-      {{'app.component.settings.button.deleteAccount' | text}}
-    </button>
-  </form>
+  </div>
+  </div>
 
 </div>
 
