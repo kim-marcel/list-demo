@@ -23,7 +23,7 @@
 
 <p class="mt-5">Update User information:</p>
 
-<form [formGroup]="updateUserInfoForm" (submit)="updateUserInfo()">
+<form [formGroup]="updateProfileForm" (submit)="updateProfile()">
   <div class="form-group">
     <input formControlName="name" name="name" type="text" class="form-control" autocomplete="given-name"
            placeholder="{{'app.component.settings.input.name' | text}}">
@@ -39,7 +39,7 @@
            placeholder="{{'app.component.settings.input.passwordCurrent' | text}}">
   </div>
 
-  <button type="submit" class="btn btn-primary btn-block" [disabled]="updateUserInfoForm.invalid">
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="updateProfileForm.invalid">
     {{'app.component.settings.button.updateUserInformation' | text}}
   </button>
 </form>

@@ -12,7 +12,7 @@ export class SettingsComponent implements OnInit {
 
   changePasswordForm: FormGroup;
   deleteAccountForm: FormGroup;
-  updateUserInfoForm: FormGroup;
+  updateProfileForm: FormGroup;
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder) {
   }
@@ -34,7 +34,7 @@ export class SettingsComponent implements OnInit {
       }
     );
 
-    this.updateUserInfoForm = this.formBuilder.group(
+    this.updateProfileForm = this.formBuilder.group(
       {
         name: ['', [StringValidator.isOnlyLetters, StringValidator.minLength(3), StringValidator.required]],
         surname: ['', [StringValidator.isOnlyLetters, StringValidator.minLength(3), StringValidator.required]],
@@ -46,7 +46,7 @@ export class SettingsComponent implements OnInit {
   changePassword() {
     this.authService.changePassword(
       this.changePasswordForm.value.passwordCurrent,
-      this.changePasswordForm.value.password
+      this.changePasswordForm.value.password,
     );
   }
 
@@ -54,8 +54,12 @@ export class SettingsComponent implements OnInit {
     console.log(this.deleteAccountForm.value);
   }
 
-  updateUserInfo() {
-    console.log(this.updateUserInfoForm.value);
+  updateProfile() {
+    this.authService.updateProfile(
+      this.updateProfileForm.value.passwordCurrent,
+      this.updateProfileForm.value.name,
+      this.updateProfileForm.value.surname,
+    );
   }
 
 }
