@@ -11,6 +11,8 @@ import { PasswordValidator, StringValidator } from '../../validators';
 export class SettingsComponent implements OnInit {
 
   changePasswordForm: FormGroup;
+  deleteAccountForm: FormGroup;
+  updateUserInfoForm: FormGroup;
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder) {
   }
@@ -25,6 +27,20 @@ export class SettingsComponent implements OnInit {
         validator: PasswordValidator.matchPassword
       }
     );
+
+    this.deleteAccountForm = this.formBuilder.group(
+      {
+        passwordCurrent: ['', [StringValidator.minLength(6), StringValidator.required]],
+      }
+    );
+
+    this.updateUserInfoForm = this.formBuilder.group(
+      {
+        name: ['', [StringValidator.isOnlyLetters, StringValidator.minLength(3), StringValidator.required]],
+        surname: ['', [StringValidator.isOnlyLetters, StringValidator.minLength(3), StringValidator.required]],
+        passwordCurrent: ['', [StringValidator.minLength(6), StringValidator.required]],
+      }
+    );
   }
 
   changePassword() {
@@ -32,6 +48,14 @@ export class SettingsComponent implements OnInit {
       this.changePasswordForm.value.passwordCurrent,
       this.changePasswordForm.value.password
     );
+  }
+
+  deleteAccount() {
+    console.log(this.deleteAccountForm.value);
+  }
+
+  updateUserInfo() {
+    console.log(this.updateUserInfoForm.value);
   }
 
 }
