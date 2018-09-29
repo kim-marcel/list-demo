@@ -65,4 +65,8 @@ export class SettingsComponent implements OnInit {
     );
   }
 
+  isLoggedInWithEmail() {
+    return this.authService.getProviderId() === 'password';
+  }
+
 }

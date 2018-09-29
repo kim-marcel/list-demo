@@ -19,6 +19,10 @@ export class AuthService {
     });
   }
 
+  getProviderId() {
+    return this.user.providerData[0].providerId;
+  }
+
   getAuthState() {
     return this.afAuth.authState;
   }
