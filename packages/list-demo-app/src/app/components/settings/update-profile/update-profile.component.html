@@ -1,0 +1,45 @@
+<div class="card">
+
+  <h6 class="card-header">{{ 'app.component.settings.header.updateProfile' | text }}</h6>
+
+  <div class="card-body">
+
+    <form [formGroup]="updateProfileForm" (submit)="updateProfile()">
+
+      <div class="form-group">
+        <input formControlName="name" name="name" type="text" class="form-control" autocomplete="given-name"
+               placeholder="{{'app.component.settings.input.name' | text}}">
+        <div class="alert alert-danger mt-2 text-left" role="alert"
+             *ngIf="updateProfileForm.controls.name.touched && updateProfileForm.controls.name.invalid">
+          {{ 'app.common.error.' + updateProfileForm.controls.name.errors?.error | text }}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input formControlName="surname" name="surname" type="text" class="form-control" autocomplete="family-name"
+               placeholder="{{'app.component.settings.input.surname' | text}}">
+        <div class="alert alert-danger mt-2 text-left" role="alert"
+             *ngIf="updateProfileForm.controls.surname.touched && updateProfileForm.controls.surname.invalid">
+          {{ 'app.common.error.' + updateProfileForm.controls.surname.errors?.error | text }}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input formControlName="passwordCurrent" name="passwordCurrent" type="password" class="form-control"
+               autocomplete="current-password"
+               placeholder="{{'app.component.settings.input.passwordCurrent' | text}}">
+        <div class="alert alert-danger mt-2 text-left" role="alert"
+             *ngIf="updateProfileForm.controls.passwordCurrent.touched && updateProfileForm.controls.passwordCurrent.invalid">
+          {{ 'app.common.error.' + updateProfileForm.controls.passwordCurrent.errors?.error | text }}
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="updateProfileForm.invalid">
+        {{'app.component.settings.button.updateProfile' | text }}
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

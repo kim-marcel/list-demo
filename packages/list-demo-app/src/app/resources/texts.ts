@@ -14,6 +14,20 @@ export const texts = {
   'app.component.list.button.add': 'Add',
   'app.component.list.input.placeholder': 'What do you want to add to your list?',
 
+  'app.component.settings.header.changePassword': 'Change Password',
+  'app.component.settings.input.passwordCurrent': 'Current Password',
+  'app.component.settings.input.passwordNew': 'New Password',
+  'app.component.settings.input.passwordNewConfirm': 'Confirm New Password',
+  'app.component.settings.button.changePassword': 'Change Password',
+  'app.component.settings.header.updateProfile': 'Update Profile-Information',
+  'app.component.settings.input.name': 'Name',
+  'app.component.settings.input.surname': 'Family Name',
+  'app.component.settings.input.email': 'Email',
+  'app.component.settings.button.updateProfile': 'Update Profile',
+  'app.component.settings.header.deleteAccount': 'Delete Account',
+  'app.component.settings.button.deleteAccount': 'Delete Account',
+  'app.component.settings.alert.notAvailable': 'Settings are not available for your Account. You Signed In with a third-party-provider such as Google or Github. If you want to change your password, email or name please contact your provider.',
+
   'app.component.sign-in.input.email': 'E-Mail',
   'app.component.sign-in.input.password': 'Password',
   'app.component.sign-in.noAccount.text': 'You don\'t have an account?',
@@ -42,7 +56,10 @@ export const texts = {
   'app.page.home.text.list': 'You\'re already logged in. Go back to your list.',
   'app.page.home.button.list': 'Show me my list!',
 
+  'app.page.list.header': 'My List',
   'app.page.list.alert.disclaimer': 'Disclaimer: This Website is just a demo. Please do not use this website to store any important information. Your data is not secured and can be deleted at any time. This website can go offline temporarily or permanently.',
+
+  'app.page.settings.header': 'Settings',
 
   'app.page.sign-in.header': 'Please Login',
 

@@ -1,0 +1,27 @@
+<div class="card">
+
+  <h6 class="card-header">{{ 'app.component.settings.header.deleteAccount' | text }}</h6>
+
+  <div class="card-body">
+
+    <form [formGroup]="deleteAccountForm" (submit)="deleteAccount()">
+
+      <div class="form-group">
+        <input formControlName="passwordCurrent" name="passwordCurrent" type="password" class="form-control"
+               autocomplete="current-password"
+               placeholder="{{'app.component.settings.input.passwordCurrent' | text}}">
+        <div class="alert alert-danger mt-2 text-left" role="alert"
+             *ngIf="deleteAccountForm.controls.passwordCurrent.touched && deleteAccountForm.controls.passwordCurrent.invalid">
+          {{ 'app.common.error.' + deleteAccountForm.controls.passwordCurrent.errors?.error | text }}
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-danger btn-block" [disabled]="deleteAccountForm.invalid">
+        {{'app.component.settings.button.deleteAccount' | text}}
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

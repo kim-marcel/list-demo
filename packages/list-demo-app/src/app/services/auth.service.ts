@@ -19,6 +19,10 @@ export class AuthService {
     });
   }
 
+  getProviderId() {
+    return this.user.providerData[0].providerId;
+  }
+
   getAuthState() {
     return this.afAuth.authState;
   }
@@ -28,7 +32,7 @@ export class AuthService {
   }
 
   getIdToken() {
-    return this.isAuthenticated() ? this.afAuth.auth.currentUser.getIdToken() : null;
+    return this.isAuthenticated() ? this.user.getIdToken() : null;
   }
 
   socialSignIn(provider: string) {
@@ -62,7 +66,7 @@ export class AuthService {
   emailSignUp(user) {
     this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(
       () => {
-        this.updateUserInfo(user.name, user.surname);
+        this.setProfile(user.name, user.surname);
         // TODO: Add E-Mail-Verification (send E-Mail to user)
         // this.getCurrentUser().sendEmailVerification().then(() => console.log('Email sent to: ', email));
         this.zone.run(() => this.router.navigateByUrl('/list'));
@@ -70,10 +74,33 @@ export class AuthService {
     );
   }
 
-  updateUserInfo(name: string, surname: string, photoURL = null) {
+  updateProfile(password: string, name: string, surname: string) {
+    const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
+    this.user.reauthenticateAndRetrieveDataWithCredential(cred).then(
+      () => this.setProfile(name, surname)
+    );
+  }
+
+  setProfile(name: string, surname: string, photoURL = null) {
     const displayName = [name, surname].join(' ');
     this.getAuthState().subscribe(
       (user) => user.updateProfile({displayName, photoURL})
+    );
+  }
+
+  changePassword(password: string, passwordNew: string) {
+    const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
+    this.user.reauthenticateAndRetrieveDataWithCredential(cred).then(
+      (userCred) => userCred.user.updatePassword(passwordNew)
+    );
+  }
+
+  deleteAccount(password: string) {
+    const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
+    this.user.reauthenticateAndRetrieveDataWithCredential(cred).then(
+      (userCred) => userCred.user.delete().then(
+        () => this.zone.run(() => this.router.navigateByUrl('/home'))
+      )
     );
   }
 

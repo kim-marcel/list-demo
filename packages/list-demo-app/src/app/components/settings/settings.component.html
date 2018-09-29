@@ -1,0 +1,19 @@
+<div *ngIf="isLoggedInWithEmail()" class="mb-3">
+
+  <div class="mt-3">
+    <app-change-password></app-change-password>
+  </div>
+
+  <div class="mt-3">
+    <app-update-profile></app-update-profile>
+  </div>
+
+  <div class="mt-3">
+    <app-delete-account></app-delete-account>
+  </div>
+
+</div>
+
+<div *ngIf="!isLoggedInWithEmail()" class="alert alert-info" role="alert">
+  {{ 'app.component.settings.alert.notAvailable' | text }}
+</div>
