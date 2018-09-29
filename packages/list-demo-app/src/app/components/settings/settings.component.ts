@@ -51,7 +51,10 @@ export class SettingsComponent implements OnInit {
   }
 
   deleteAccount() {
-    console.log(this.deleteAccountForm.value);
+    // TODO: delete user + all his info from the google datastore
+    this.authService.deleteAccount(
+      this.deleteAccountForm.value.passwordCurrent,
+    );
   }
 
   updateProfile() {

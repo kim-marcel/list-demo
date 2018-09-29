@@ -91,6 +91,15 @@ export class AuthService {
     );
   }
 
+  deleteAccount(password: string) {
+    const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
+    this.user.reauthenticateAndRetrieveDataWithCredential(cred).then(
+      (userCred) => userCred.user.delete().then(
+        () => this.zone.run(() => this.router.navigateByUrl('/home'))
+      )
+    );
+  }
+
   signOut() {
     this.afAuth.auth.signOut().then(
       () => this.router.navigateByUrl('/home'));
