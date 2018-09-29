@@ -1,7 +1,5 @@
 import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { PasswordValidator, StringValidator } from '../../validators';
 
 @Component({
   selector: 'app-settings',
@@ -10,59 +8,10 @@ import { PasswordValidator, StringValidator } from '../../validators';
 })
 export class SettingsComponent implements OnInit {
 
-  changePasswordForm: FormGroup;
-  deleteAccountForm: FormGroup;
-  updateProfileForm: FormGroup;
-
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
-    this.changePasswordForm = this.formBuilder.group(
-      {
-        passwordCurrent: ['', [StringValidator.minLength(6), StringValidator.required]],
-        password: ['', [StringValidator.minLength(6), StringValidator.required]],
-        passwordConfirm: ['', [StringValidator.minLength(6), StringValidator.required]],
-      }, {
-        validator: PasswordValidator.matchPassword
-      }
-    );
-
-    this.deleteAccountForm = this.formBuilder.group(
-      {
-        passwordCurrent: ['', [StringValidator.minLength(6), StringValidator.required]],
-      }
-    );
-
-    this.updateProfileForm = this.formBuilder.group(
-      {
-        name: ['', [StringValidator.isOnlyLetters, StringValidator.minLength(3), StringValidator.required]],
-        surname: ['', [StringValidator.isOnlyLetters, StringValidator.minLength(3), StringValidator.required]],
-        passwordCurrent: ['', [StringValidator.minLength(6), StringValidator.required]],
-      }
-    );
-  }
-
-  changePassword() {
-    this.authService.changePassword(
-      this.changePasswordForm.value.passwordCurrent,
-      this.changePasswordForm.value.password,
-    );
-  }
-
-  deleteAccount() {
-    // TODO: delete user + all his info from the google datastore
-    this.authService.deleteAccount(
-      this.deleteAccountForm.value.passwordCurrent,
-    );
-  }
-
-  updateProfile() {
-    this.authService.updateProfile(
-      this.updateProfileForm.value.passwordCurrent,
-      this.updateProfileForm.value.name,
-      this.updateProfileForm.value.surname,
-    );
   }
 
   isLoggedInWithEmail() {

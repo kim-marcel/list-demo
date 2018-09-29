@@ -18,13 +18,24 @@ import {
   SignInPageComponent,
   SignUpPageComponent
 } from './pages';
-import { HeaderComponent, ListComponent, SettingsComponent, SignInComponent, SignUpComponent } from './components';
+import {
+  ChangePasswordComponent,
+  DeleteAccountComponent,
+  HeaderComponent,
+  ListComponent,
+  SettingsComponent,
+  SignInComponent,
+  SignUpComponent,
+  UpdateProfileComponent
+} from './components';
 import { RoutingModule } from './modules/routing.module';
 import { TextPipe } from './pipes/text.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ChangePasswordComponent,
+    DeleteAccountComponent,
     ErrorPageComponent,
     HeaderComponent,
     HomePageComponent,
@@ -37,6 +48,7 @@ import { TextPipe } from './pipes/text.pipe';
     SignUpComponent,
     SignUpPageComponent,
     TextPipe,
+    UpdateProfileComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
