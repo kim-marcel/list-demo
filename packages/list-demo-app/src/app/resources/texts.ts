@@ -56,7 +56,7 @@ export const texts = {
   'app.page.home.text.list': 'You\'re already logged in. Go back to your list.',
   'app.page.home.button.list': 'Show me my list!',
 
-  'app.page.list.header': 'My Shopping List',
+  'app.page.list.header': 'My List',
   'app.page.list.alert.disclaimer': 'Disclaimer: This Website is just a demo. Please do not use this website to store any important information. Your data is not secured and can be deleted at any time. This website can go offline temporarily or permanently.',
 
   'app.page.settings.header': 'Settings',
