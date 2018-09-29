@@ -22,6 +22,7 @@ export const texts = {
   'app.component.settings.input.passwordNew': 'New Password',
   'app.component.settings.input.passwordNewConfirm': 'Confirm New Password',
   'app.component.settings.button.changePassword': 'Change Password',
+  'app.component.settings.button.deleteAccount': 'Delete Account',
 
   'app.component.sign-in.input.email': 'E-Mail',
   'app.component.sign-in.input.password': 'Password',
