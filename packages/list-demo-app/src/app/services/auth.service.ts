@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   getIdToken() {
-    return this.isAuthenticated() ? this.afAuth.auth.currentUser.getIdToken() : null;
+    return this.isAuthenticated() ? this.user.getIdToken() : null;
   }
 
   socialSignIn(provider: string) {
@@ -74,6 +74,17 @@ export class AuthService {
     const displayName = [name, surname].join(' ');
     this.getAuthState().subscribe(
       (user) => user.updateProfile({displayName, photoURL})
+    );
+  }
+
+  changePassword(password: string, passwordNew: string) {
+    const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
+    this.user.reauthenticateAndRetrieveDataWithCredential(cred).then(
+      (userCred) => {
+        userCred.user.updatePassword(passwordNew).then(
+          () => console.log('Password changed successfully')
+        );
+      }
     );
   }
 
