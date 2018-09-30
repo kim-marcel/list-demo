@@ -17,6 +17,10 @@ export class DeleteAccountComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initializeForm();
+  }
+
+  initializeForm() {
     this.deleteAccountForm = this.formBuilder.group(
       {
         passwordCurrent: ['', [StringValidator.minLength(6), StringValidator.required]],

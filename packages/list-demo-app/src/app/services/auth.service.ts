@@ -80,20 +80,20 @@ export class AuthService {
   }
 
   updateProfile(password: string, name: string, surname: string) {
-    this.reauthenticate(password).then(
+    return this.reauthenticate(password).then(
       () => this.setProfile(name, surname)
     );
   }
 
   setProfile(name: string, surname: string, photoURL = null) {
     const displayName = [name, surname].join(' ');
-    this.getAuthState().subscribe(
+    return this.getAuthState().subscribe(
       (user) => user.updateProfile({displayName, photoURL})
     );
   }
 
   changePassword(password: string, passwordNew: string) {
-    this.reauthenticate(password).then(
+    return this.reauthenticate(password).then(
       (userCred) => userCred.user.updatePassword(passwordNew)
     );
   }

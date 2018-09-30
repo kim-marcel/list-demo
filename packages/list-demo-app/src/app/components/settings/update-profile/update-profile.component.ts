@@ -16,6 +16,10 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initializeForm();
+  }
+
+  initializeForm() {
     this.updateProfileForm = this.formBuilder.group(
       {
         name: ['', [StringValidator.isOnlyLetters, StringValidator.minLength(3), StringValidator.required]],
@@ -30,7 +34,7 @@ export class UpdateProfileComponent implements OnInit {
       this.updateProfileForm.value.passwordCurrent,
       this.updateProfileForm.value.name,
       this.updateProfileForm.value.surname,
-    );
+    ).then(() => this.initializeForm());
   }
 
 }
