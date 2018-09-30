@@ -35,6 +35,11 @@ export class AuthService {
     return this.isAuthenticated() ? this.user.getIdToken() : null;
   }
 
+  reauthenticate(password: string) {
+    const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
+    return this.user.reauthenticateAndRetrieveDataWithCredential(cred);
+  }
+
   socialSignIn(provider: string) {
     let authProvider;
 
@@ -75,29 +80,26 @@ export class AuthService {
   }
 
   updateProfile(password: string, name: string, surname: string) {
-    const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
-    this.user.reauthenticateAndRetrieveDataWithCredential(cred).then(
+    return this.reauthenticate(password).then(
       () => this.setProfile(name, surname)
     );
   }
 
   setProfile(name: string, surname: string, photoURL = null) {
     const displayName = [name, surname].join(' ');
-    this.getAuthState().subscribe(
+    return this.getAuthState().subscribe(
       (user) => user.updateProfile({displayName, photoURL})
     );
   }
 
   changePassword(password: string, passwordNew: string) {
-    const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
-    this.user.reauthenticateAndRetrieveDataWithCredential(cred).then(
+    return this.reauthenticate(password).then(
       (userCred) => userCred.user.updatePassword(passwordNew)
     );
   }
 
-  deleteAccount(password: string) {
-    const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
-    this.user.reauthenticateAndRetrieveDataWithCredential(cred).then(
+  deleteUserAccount(password: string) {
+    this.reauthenticate(password).then(
       (userCred) => userCred.user.delete().then(
         () => this.zone.run(() => this.router.navigateByUrl('/home'))
       )

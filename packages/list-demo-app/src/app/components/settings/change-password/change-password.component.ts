@@ -16,6 +16,10 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initializeForm();
+  }
+
+  initializeForm() {
     this.changePasswordForm = this.formBuilder.group(
       {
         passwordCurrent: ['', [StringValidator.minLength(6), StringValidator.required]],
@@ -31,7 +35,7 @@ export class ChangePasswordComponent implements OnInit {
     this.authService.changePassword(
       this.changePasswordForm.value.passwordCurrent,
       this.changePasswordForm.value.password,
-    );
+    ).then(() =>  this.initializeForm());
   }
 
 }
