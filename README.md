@@ -151,6 +151,8 @@ Done:
 - ~~delete main.py in packages/list-demo-api --> not needed~~
 - ~~add proper field + form validation (e.g. ValidationService)~~
 - ~~error-messages for input-field-validation~~
+- ~~add settings, where user can change name, password and email~~
+- ~~when user-account gets deleted also delete his account + list + listentries in datastore (backend)~~
 
 Not so important:
 - write tests + run them with yarn + test-coverage
@@ -160,12 +162,15 @@ Not so important:
 - add session expired error notification
 - make alert in list-view removeable
 - use structured property in user for list (API)
+- 'greet' user with his name (Welcome back ..., here is your list:)
 
 Important:
 - add ability to "star"/ pin a list entry
-- add settings, where user can change name, password and email
+- expand user-object in api (add name, surname, ...)
+- add error-handling (display errors in the ui like e.g. 'password wrong' probably by using toasts)
 
 Very Important:
-- add email-verification when new sign-up with email
+- add email-verification when new sign-up with email (verfification in front- and backend)
 - add possibility to reset password when forgotten
+- add settings for users that use social-sign-in
 

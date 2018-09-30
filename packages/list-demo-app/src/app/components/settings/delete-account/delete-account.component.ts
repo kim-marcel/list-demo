@@ -2,6 +2,7 @@ import { AuthService } from '../../../services';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { StringValidator } from '../../../validators';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-delete-account',
@@ -12,7 +13,7 @@ export class DeleteAccountComponent implements OnInit {
 
   deleteAccountForm: FormGroup;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -24,9 +25,10 @@ export class DeleteAccountComponent implements OnInit {
   }
 
   deleteAccount() {
-    // TODO: delete user + all his info from the google datastore
-    this.authService.deleteAccount(
-      this.deleteAccountForm.value.passwordCurrent,
+    this.authService.reauthenticate(this.deleteAccountForm.value.passwordCurrent).then(
+      () => this.userService.deleteUserData().subscribe(
+        () => this.authService.deleteUserAccount(this.deleteAccountForm.value.passwordCurrent)
+      )
     );
   }
 

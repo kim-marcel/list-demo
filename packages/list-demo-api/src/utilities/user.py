@@ -57,5 +57,34 @@ def delete_element_from_user_list(user_id, element_id):
             mylistelement_key.delete()
 
 
+def delete_all_list_entries(user_id):
+    myuser = get_user_from_datastore(user_id)
+    if myuser:
+        mylist = myuser.list.get()
+        if mylist:
+            # important: copy by value!
+            mylist_elements = mylist.list_elements[:]
+            for mylist_element in mylist_elements:
+                mylist.list_elements.remove(mylist_element)
+                mylist.put()
+                mylist_element.delete()
+
+
+def delete_user_list(user_id):
+    myuser = get_user_from_datastore(user_id)
+    if myuser:
+        mylist = myuser.list.get()
+        if mylist:
+            mylist.key.delete()
+            myuser.list.delete()
+            myuser.put()
+
+
+def delete_user(user_id):
+    myuser = get_user_from_datastore(user_id)
+    if myuser:
+        myuser.key.delete()
+
+
 def is_user_authorized(user_id):
     return True if user_id else False
