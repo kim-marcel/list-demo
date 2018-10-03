@@ -1,20 +1,26 @@
-<form (submit)="addListEntry()" class="mb-3">
+<form [formGroup]="addListElementForm" (submit)="addListEntry()" class="mb-3">
+
   <div class="input-group">
-    <input [(ngModel)]="input" name="input" type="text" class="form-control"
+    <input formControlName="listInput" name="input" type="text" class="form-control"
            placeholder="{{'app.component.list.input.placeholder' | text}}">
+
     <div class="input-group-append">
       <button type="submit" class="btn btn-primary">
         {{'app.component.list.button.add' | text}}
       </button>
     </div>
+
   </div>
+
 </form>
 
 <ul class="list-group list-group-flush">
-  <li class="list-group-item" *ngFor="let listElement of list">
-    {{listElement.listElement}}
-    <button type="button" class="btn close" (click)="deleteListEntry(listElement.listElementId)">
+
+  <li *ngFor="let listElement of list" class="list-group-item">
+    {{listElement.listElementValue}}
+    <button (click)="deleteListEntry(listElement.listElementId)" type="button" class="btn close">
       <i class="fa fa-close"></i>
     </button>
   </li>
+
 </ul>

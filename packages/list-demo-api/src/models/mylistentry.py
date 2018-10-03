@@ -7,6 +7,6 @@ class MyListEntry(ndb.Model):
 
     def serialize(self):
         return {
-            'listElement': self.list_element,
+            'listElementValue': self.list_element,
             'listElementId': self.key.id(),
         }

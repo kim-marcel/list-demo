@@ -167,9 +167,9 @@ Not so important:
 Important:
 - add ability to "star"/ pin a list entry
 - expand user-object in api (add name, surname, ...)
-- add error-handling (display errors in the ui like e.g. 'password wrong' probably by using toasts)
 
 Very Important:
+- add error-handling (display errors in the ui like e.g. 'password wrong' probably by using toasts)
 - add email-verification when new sign-up with email (verfification in front- and backend)
 - add possibility to reset password when forgotten
 - add settings for users that use social-sign-in
