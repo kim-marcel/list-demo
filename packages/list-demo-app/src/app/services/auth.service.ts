@@ -3,6 +3,8 @@ import 'firebase/auth';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable, NgZone } from '@angular/core';
+import { ListUser } from '../models';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
 
@@ -14,16 +16,30 @@ export class AuthService {
   private user: User;
 
   constructor(private afAuth: AngularFireAuth, private router: Router, private zone: NgZone) {
-    afAuth.authState.subscribe((data) => {
-      this.user = data;
-    });
+    afAuth.authState.subscribe(
+      (data) => this.user = data
+    );
   }
 
-  getProviderId() {
+  static getAuthProviderById(providerId: string): firebase.auth.AuthProvider {
+    switch (providerId) {
+      case 'github': {
+        return new firebase.auth.GithubAuthProvider();
+      }
+      case 'google': {
+        return new firebase.auth.GoogleAuthProvider();
+      }
+      default: {
+        throw new Error('No valid AuthProvider provided.');
+      }
+    }
+  }
+
+  getProviderId(): string {
     return this.user.providerData[0].providerId;
   }
 
-  getAuthState() {
+  getAuthState(): Observable<firebase.User> {
     return this.afAuth.authState;
   }
 
@@ -31,45 +47,35 @@ export class AuthService {
     return !(this.user === null || this.user === undefined);
   }
 
-  getIdToken() {
+  getIdToken(): Promise<string> | null {
     return this.isAuthenticated() ? this.user.getIdToken() : null;
   }
 
-  reauthenticate(password: string) {
-    const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
-    return this.user.reauthenticateAndRetrieveDataWithCredential(cred);
-  }
+  reauthenticate(password: string = null): Promise<firebase.auth.UserCredential> {
+    const providerId = this.getProviderId();
 
-  socialSignIn(provider: string) {
-    let authProvider;
-
-    switch (provider) {
-      case 'github': {
-        authProvider = new firebase.auth.GithubAuthProvider();
-        break;
-      }
-      case 'google': {
-        authProvider = new firebase.auth.GoogleAuthProvider();
-        break;
-      }
-      default: {
-        throw new Error('No valid AuthProvider provided in socialSignIn()-method.');
-      }
+    if (providerId === 'password') {
+      const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
+      return this.user.reauthenticateAndRetrieveDataWithCredential(cred);
+    } else {
+      return this.user.reauthenticateWithPopup(AuthService.getAuthProviderById(providerId));
     }
+  }
 
-    this.afAuth.auth.signInWithPopup(authProvider).then(
+  socialSignIn(provider: string): Promise<boolean> | Error {
+    return this.afAuth.auth.signInWithPopup(AuthService.getAuthProviderById(provider)).then(
       () => this.zone.run(() => this.router.navigateByUrl('/list'))
     );
   }
 
-  emailSignIn(email: string, password: string) {
-    this.afAuth.auth.signInWithEmailAndPassword(email, password).then(
+  emailSignIn(email: string, password: string): Promise<boolean> {
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password).then(
       () => this.zone.run(() => this.router.navigateByUrl('/list'))
     );
   }
 
-  emailSignUp(user) {
-    this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(
+  emailSignUp(user: ListUser): Promise<any> {
+    return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(
       () => {
         this.setProfile(user.name, user.surname);
         // TODO: Add E-Mail-Verification (send E-Mail to user)
@@ -79,7 +85,7 @@ export class AuthService {
     );
   }
 
-  updateProfile(password: string, name: string, surname: string) {
+  updateProfile(password: string, name: string, surname: string): Promise<void> {
     return this.reauthenticate(password).then(
       () => this.setProfile(name, surname)
     );
@@ -87,27 +93,31 @@ export class AuthService {
 
   setProfile(name: string, surname: string, photoURL = null) {
     const displayName = [name, surname].join(' ');
-    return this.getAuthState().subscribe(
-      (user) => user.updateProfile({displayName, photoURL})
+    this.getAuthState().subscribe(
+      (user) => {
+        if (user) {
+          user.updateProfile({displayName, photoURL});
+        }
+      }
     );
   }
 
-  changePassword(password: string, passwordNew: string) {
+  changePassword(password: string, passwordNew: string): Promise<void> {
     return this.reauthenticate(password).then(
       (userCred) => userCred.user.updatePassword(passwordNew)
     );
   }
 
-  deleteUserAccount(password: string) {
-    this.reauthenticate(password).then(
+  deleteUserAccount(password: string): Promise<boolean> {
+    return this.reauthenticate(password).then(
       (userCred) => userCred.user.delete().then(
         () => this.zone.run(() => this.router.navigateByUrl('/home'))
       )
     );
   }
 
-  signOut() {
-    this.afAuth.auth.signOut().then(
+  signOut(): Promise<boolean> {
+    return this.afAuth.auth.signOut().then(
       () => this.router.navigateByUrl('/home'));
   }
 
