@@ -1,3 +1,4 @@
+import { AuthProviderId } from '../../enums';
 import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
 
@@ -15,7 +16,7 @@ export class SettingsComponent implements OnInit {
   }
 
   isLoggedInWithEmail() {
-    return this.authService.getProviderId() === 'password';
+    return this.authService.getProviderId() === AuthProviderId.EMAIL;
   }
 
 }

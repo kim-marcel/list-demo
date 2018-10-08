@@ -29,12 +29,12 @@
   <a [routerLink]="'/sign-up'">{{'app.component.sign-in.noAccount.link' | text}}</a>
 </p>
 
-<button button type="button" class="mt-5 btn btn-outline-primary btn-block" (click)="socialSignIn('google')">
+<button button type="button" class="mt-5 btn btn-outline-primary btn-block" (click)="socialSignIn(authProviderId.GOOGLE)">
   <i class="fa fa-google"></i>
   {{'app.component.sign-in.button.google-sign-in' | text}}
 </button>
 
-<button button type="button" class="mt-3 btn btn-outline-primary btn-block" (click)="socialSignIn('github')">
+<button button type="button" class="mt-3 btn btn-outline-primary btn-block" (click)="socialSignIn(authProviderId.GITHUB)">
   <i class="fa fa-github"></i>
   {{'app.component.sign-in.button.github-sign-in' | text}}
 </button>

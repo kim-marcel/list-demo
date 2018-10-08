@@ -1,3 +1,4 @@
+import { AuthProviderId } from '../../enums';
 import { AuthService } from '../../services';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -10,6 +11,7 @@ import { StringValidator } from '../../validators';
 })
 export class SignInComponent implements OnInit {
 
+  authProviderId = AuthProviderId;
   signInForm: FormGroup;
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder) {
@@ -28,7 +30,7 @@ export class SignInComponent implements OnInit {
     }
   }
 
-  socialSignIn(provider: string) {
+  socialSignIn(provider: AuthProviderId) {
     this.authService.socialSignIn(provider);
   }
 

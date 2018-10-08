@@ -6,7 +6,7 @@
 
     <form [formGroup]="deleteAccountForm" (submit)="deleteAccount()">
 
-      <div class="form-group">
+      <div *ngIf="userIsLoggedInWithEmail" class="form-group">
         <input formControlName="passwordCurrent" name="passwordCurrent" type="password" class="form-control"
                autocomplete="current-password"
                placeholder="{{'app.component.settings.input.passwordCurrent' | text}}">
@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-danger btn-block" [disabled]="deleteAccountForm.invalid">
+      <button type="submit" class="btn btn-danger btn-block" [disabled]="userIsLoggedInWithEmail  && deleteAccountForm.invalid">
         {{'app.component.settings.button.deleteAccount' | text}}
       </button>
 
