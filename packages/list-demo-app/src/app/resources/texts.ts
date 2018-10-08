@@ -26,7 +26,7 @@ export const texts = {
   'app.component.settings.button.updateProfile': 'Update Profile',
   'app.component.settings.header.deleteAccount': 'Delete Account',
   'app.component.settings.button.deleteAccount': 'Delete Account',
-  'app.component.settings.alert.notAvailable': 'Settings are not available for your Account. You Signed In with a third-party-provider such as Google or Github. If you want to change your password, email or name please contact your provider.',
+  'app.component.settings.alert.notAvailable': 'Advanced settings are not available for your Account. You Signed In with a third-party-provider such as Google or Github. If you want to change your password, email or name please contact your provider. You can delete your account and all your information below.',
 
   'app.component.sign-in.input.email': 'E-Mail',
   'app.component.sign-in.input.password': 'Password',

@@ -2,6 +2,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthProviderId } from '../enums';
 import { Injectable, NgZone } from '@angular/core';
 import { ListUser } from '../models';
 import { Observable } from 'rxjs';
@@ -21,22 +22,40 @@ export class AuthService {
     );
   }
 
-  static getAuthProviderById(providerId: string): firebase.auth.AuthProvider {
+  static getAuthProviderById(providerId: AuthProviderId): firebase.auth.AuthProvider {
     switch (providerId) {
-      case 'github': {
+      case AuthProviderId.GITHUB: {
         return new firebase.auth.GithubAuthProvider();
       }
-      case 'google': {
+      case AuthProviderId.GOOGLE: {
         return new firebase.auth.GoogleAuthProvider();
       }
       default: {
-        throw new Error('No valid AuthProvider provided.');
+        throw new Error('No valid AuthProviderId provided.');
       }
     }
   }
 
-  getProviderId(): string {
-    return this.user.providerData[0].providerId;
+
+  static mapStringToAuthProviderId(authPorviderId: string): AuthProviderId {
+    switch (authPorviderId) {
+      case AuthProviderId.EMAIL: {
+        return AuthProviderId.EMAIL;
+      }
+      case AuthProviderId.GITHUB: {
+        return AuthProviderId.GITHUB;
+      }
+      case AuthProviderId.GOOGLE: {
+        return AuthProviderId.GOOGLE;
+      }
+      default: {
+        throw new Error('String could not be mapped to AuthProviderId.');
+      }
+    }
+  }
+
+  getProviderId(): AuthProviderId {
+    return AuthService.mapStringToAuthProviderId(this.user.providerData[0].providerId);
   }
 
   getAuthState(): Observable<firebase.User> {
@@ -54,15 +73,23 @@ export class AuthService {
   reauthenticate(password: string = null): Promise<firebase.auth.UserCredential> {
     const providerId = this.getProviderId();
 
-    if (providerId === 'password') {
-      const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
-      return this.user.reauthenticateAndRetrieveDataWithCredential(cred);
+    if (providerId === AuthProviderId.EMAIL) {
+      return this.reauthenticateWithEmail(password);
     } else {
-      return this.user.reauthenticateWithPopup(AuthService.getAuthProviderById(providerId));
+      return this.reauthentiateWithSocialProvider(providerId);
     }
   }
 
-  socialSignIn(provider: string): Promise<boolean> | Error {
+  reauthenticateWithEmail(password: string): Promise<firebase.auth.UserCredential> {
+    const cred = firebase.auth.EmailAuthProvider.credential(this.user.email, password);
+    return this.user.reauthenticateAndRetrieveDataWithCredential(cred);
+  }
+
+  reauthentiateWithSocialProvider(socialProvider: AuthProviderId): Promise<firebase.auth.UserCredential> {
+    return this.user.reauthenticateWithPopup(AuthService.getAuthProviderById(socialProvider));
+  }
+
+  socialSignIn(provider: AuthProviderId): Promise<boolean> | Error {
     return this.afAuth.auth.signInWithPopup(AuthService.getAuthProviderById(provider)).then(
       () => this.zone.run(() => this.router.navigateByUrl('/list'))
     );
@@ -108,11 +135,9 @@ export class AuthService {
     );
   }
 
-  deleteUserAccount(password: string): Promise<boolean> {
-    return this.reauthenticate(password).then(
-      (userCred) => userCred.user.delete().then(
-        () => this.zone.run(() => this.router.navigateByUrl('/home'))
-      )
+  deleteUserAccount(): Promise<boolean> {
+    return this.user.delete().then(
+      () => this.zone.run(() => this.router.navigateByUrl('/home'))
     );
   }
 

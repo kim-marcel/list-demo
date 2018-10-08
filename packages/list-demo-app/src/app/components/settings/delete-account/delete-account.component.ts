@@ -31,7 +31,7 @@ export class DeleteAccountComponent implements OnInit {
   deleteAccount() {
     this.authService.reauthenticate(this.deleteAccountForm.value.passwordCurrent).then(
       () => this.userService.deleteUserData().subscribe(
-        () => this.authService.deleteUserAccount(this.deleteAccountForm.value.passwordCurrent)
+        () => this.authService.deleteUserAccount()
       )
     );
   }
