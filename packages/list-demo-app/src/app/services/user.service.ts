@@ -14,4 +14,5 @@ export class UserService {
   deleteUserData() {
     return this.http.delete(this.userUrl);
   }
+
 }

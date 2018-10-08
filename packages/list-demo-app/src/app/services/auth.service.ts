@@ -22,7 +22,7 @@ export class AuthService {
     );
   }
 
-  static getAuthProviderById(providerId: AuthProviderId): firebase.auth.AuthProvider {
+  static getAuthProviderByAuthProviderId(providerId: AuthProviderId): firebase.auth.AuthProvider {
     switch (providerId) {
       case AuthProviderId.GITHUB: {
         return new firebase.auth.GithubAuthProvider();
@@ -35,7 +35,6 @@ export class AuthService {
       }
     }
   }
-
 
   static mapStringToAuthProviderId(authPorviderId: string): AuthProviderId {
     switch (authPorviderId) {
@@ -86,11 +85,11 @@ export class AuthService {
   }
 
   reauthentiateWithSocialProvider(socialProvider: AuthProviderId): Promise<firebase.auth.UserCredential> {
-    return this.user.reauthenticateWithPopup(AuthService.getAuthProviderById(socialProvider));
+    return this.user.reauthenticateWithPopup(AuthService.getAuthProviderByAuthProviderId(socialProvider));
   }
 
   socialSignIn(provider: AuthProviderId): Promise<boolean> | Error {
-    return this.afAuth.auth.signInWithPopup(AuthService.getAuthProviderById(provider)).then(
+    return this.afAuth.auth.signInWithPopup(AuthService.getAuthProviderByAuthProviderId(provider)).then(
       () => this.zone.run(() => this.router.navigateByUrl('/list'))
     );
   }
