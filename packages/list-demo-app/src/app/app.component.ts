@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
+import { Message } from './models';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import { NotificationService } from './services';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +9,11 @@ import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rout
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private loading = false;
 
-  constructor(private router: Router) {
+  private loading = false;
+  notification: Message;
+
+  constructor(private notificationService: NotificationService, private router: Router, private zone: NgZone) {
     this.router.events.subscribe((event) => {
 
       switch (event.constructor) {
@@ -29,6 +33,9 @@ export class AppComponent {
       }
 
     });
+
+    notificationService.$notification.subscribe(
+      (data) => this.zone.run(() => this.notification = data));
   }
 
   isLoading(): boolean {

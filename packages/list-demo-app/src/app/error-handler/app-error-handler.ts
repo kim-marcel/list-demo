@@ -1,13 +1,15 @@
 import { ErrorHandler, Injectable, Injector, NgZone } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationService } from '../services';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class AppErrorHandler implements ErrorHandler {
 
-  constructor(private injector: Injector, private zone: NgZone) {}
+  constructor(private injector: Injector, private notificationService: NotificationService, private zone: NgZone) {}
 
   handleError(error: Error | HttpErrorResponse): void {
+    this.notificationService.error(error.toString());
     if (error instanceof HttpErrorResponse) {
       this.handleHttpError(error);
     } else {

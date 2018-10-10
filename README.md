@@ -164,13 +164,11 @@ Not so important:
 - make alert in list-view removeable
 - use structured property in user for list (API)
 - 'greet' user with his name (Welcome back ..., here is your list:)
-
-Important:
+- navigation: back- and forward-navigation (partly already exists)
 - add ability to "star"/ pin a list entry
 - expand user-object in api (add name, surname, ...)
-- navigation: back- and forward-navigation
 
-Very Important:
+Important:
 - add error-handling (display errors in the ui like e.g. 'password wrong' probably by using toasts)
 - add email-verification when new sign-up with email (verification in front- and backend)
 - add possibility to reset password when forgotten
