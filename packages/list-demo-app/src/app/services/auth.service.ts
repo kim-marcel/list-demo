@@ -88,7 +88,7 @@ export class AuthService {
     return this.user.reauthenticateWithPopup(AuthService.getAuthProviderByAuthProviderId(socialProvider));
   }
 
-  socialSignIn(provider: AuthProviderId): Promise<boolean> | Error {
+  socialSignIn(provider: AuthProviderId): Promise<boolean> {
     return this.afAuth.auth.signInWithPopup(AuthService.getAuthProviderByAuthProviderId(provider)).then(
       () => this.zone.run(() => this.router.navigateByUrl('/list'))
     );

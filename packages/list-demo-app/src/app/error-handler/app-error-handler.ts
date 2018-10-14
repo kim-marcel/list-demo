@@ -1,17 +1,25 @@
 import { ErrorHandler, Injectable, Injector, NgZone } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NotificationService } from '../services';
+import { NotificationService, TextService } from '../services';
 import { Router } from '@angular/router';
+import { AuthErrorCode } from '../enums';
 
 @Injectable()
 export class AppErrorHandler implements ErrorHandler {
 
-  constructor(private injector: Injector, private notificationService: NotificationService, private zone: NgZone) {}
+  constructor(
+    private injector: Injector,
+    private notificationService: NotificationService,
+    private textService: TextService,
+    private zone: NgZone) {
+  }
 
   handleError(error: Error | HttpErrorResponse): void {
     this.notificationService.error(error.toString());
     if (error instanceof HttpErrorResponse) {
       this.handleHttpError(error);
+    } else if (this.isFirebaseAuthError(error)) {
+      this.handleFirebaseAuthError(error);
     } else {
       console.error(error);
     }
@@ -26,4 +34,44 @@ export class AppErrorHandler implements ErrorHandler {
     }
   }
 
+  handleFirebaseAuthError(error: any): void {
+    switch (error.code) {
+      case AuthErrorCode.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL:
+        this.notificationService.error(this.textService.get('app.common.error.auth.accountExistsWithDifferentCredential'));
+        break;
+      case AuthErrorCode.EMAIL_ALREADY_IN_USE:
+        this.notificationService.error(this.textService.get('app.common.error.auth.emailAlreadyInUse'));
+        break;
+      case AuthErrorCode.INVALID_EMAIL:
+        this.notificationService.error(this.textService.get('app.common.error.auth.invaidEmail'));
+        break;
+      case AuthErrorCode.POPUP_BLOCKED:
+        this.notificationService.error(this.textService.get('app.common.error.auth.popupBlocked'));
+        break;
+      case AuthErrorCode.POPUP_CLOSED_BY_USER:
+        this.notificationService.error(this.textService.get('app.common.error.auth.popupClosedByUser'));
+        break;
+      case AuthErrorCode.USER_DISABLED:
+        this.notificationService.error(this.textService.get('app.common.error.auth.userDisabled'));
+        break;
+      case AuthErrorCode.USER_NOT_FOUND:
+        this.notificationService.error(this.textService.get('app.common.error.auth.userNotFound'));
+        break;
+      case AuthErrorCode.USER_TOKEN_EXPIRED:
+        this.notificationService.error(this.textService.get('app.common.error.auth.userTokenExpired'));
+        break;
+      case AuthErrorCode.WEAK_PASSWORD:
+        this.notificationService.error(this.textService.get('app.common.error.auth.weakPassword'));
+        break;
+      case AuthErrorCode.WRONG_PASSWORD:
+        this.notificationService.error(this.textService.get('app.common.error.auth.wrongPasword'));
+        break;
+      default:
+        this.notificationService.error(error.message);
+    }
+  }
+
+  isFirebaseAuthError(error: any): boolean {
+    return error.code ? error.code.startsWith('auth/') : false;
+  }
 }
