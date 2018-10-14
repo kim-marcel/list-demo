@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div *ngIf="notification" class="alert alert-danger" role="alert">
+<div *ngIf="notification" class="alert" [ngClass]="'alert-' + notification?.severity" role="alert">
   {{ notification?.messageBody }}
 </div>
 
