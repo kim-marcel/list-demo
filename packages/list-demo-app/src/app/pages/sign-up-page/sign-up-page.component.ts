@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { Message } from '../../models';
+import { NotificationService } from '../../services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sign-up-page',
   templateUrl: './sign-up-page.component.html',
   styleUrls: ['./sign-up-page.component.css']
 })
-export class SignUpPageComponent implements OnInit {
+export class SignUpPageComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  notification: Message;
+  notificationSubscription: Subscription;
 
-  ngOnInit() {
+  constructor(private notificationService: NotificationService, private zone: NgZone) {
   }
 
+  ngOnInit() {
+    this.notificationSubscription = this.notificationService.$notification.subscribe(
+      (data) => this.zone.run(() => this.notification = data));
+  }
+
+  ngOnDestroy() {
+    this.notificationService.reset();
+    this.notificationSubscription.unsubscribe();
+  }
 }

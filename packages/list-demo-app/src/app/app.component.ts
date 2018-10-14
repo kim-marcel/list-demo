@@ -7,6 +7,7 @@ import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rout
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   private loading = false;
 
   constructor(private router: Router) {

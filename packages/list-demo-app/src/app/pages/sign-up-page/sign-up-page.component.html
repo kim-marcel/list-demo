@@ -6,6 +6,10 @@
       {{'app.page.sign-up.header' | text}}
     </h3>
 
+    <div *ngIf="notification" class="alert" [ngClass]="'alert-' + notification?.severity" role="alert">
+      {{ notification?.messageBody }}
+    </div>
+
     <app-sign-up></app-sign-up>
 
   </div>

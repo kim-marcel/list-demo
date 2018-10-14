@@ -154,23 +154,24 @@ Done:
 - ~~add settings, where user can change name, password and email~~
 - ~~when user-account gets deleted also delete his account + list + listentries in datastore (backend)~~
 - ~~add settings for users that use social-sign-in~~
+- ~~add error-handling (display errors in the ui like e.g. 'password wrong' probably by using toasts)~~
+- ~~add session expired error notification~~
 
 Not so important:
+- expand user-object in api (add name, surname, ...)
+- add ability to "star"/ pin a list entry
 - write tests + run them with yarn + test-coverage
-- logging
 - footer
-- rename angular-app
-- add session expired error notification
-- make alert in list-view removeable
-- use structured property in user for list (API)
+- navigation: back- and forward-navigation (partly already exists)
 - 'greet' user with his name (Welcome back ..., here is your list:)
+- use structured property in user for list (API)
+- let session expire
+- rename angular-app
 
 Important:
-- add ability to "star"/ pin a list entry
-- expand user-object in api (add name, surname, ...)
-- navigation: back- and forward-navigation
-
-Very Important:
-- add error-handling (display errors in the ui like e.g. 'password wrong' probably by using toasts)
-- add email-verification when new sign-up with email (verification in front- and backend)
+- add email-verification when new sign-up with email (front- and backend)
 - add possibility to reset password when forgotten
+- make alert in list-view removeable
+
+Bugs:
+- Error 'auth/account-exists-with-different-credential' is not caught

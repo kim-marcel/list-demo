@@ -1,10 +1,29 @@
 export const texts = {
   // common
-  'app.common.error.badlyFormattedEmail': 'This is not a valid email-address.',
-  'app.common.error.notOnlyLetters': 'Only letters allowed.',
-  'app.common.error.passwordsDontMatch': 'The passwords don\'t match.',
-  'app.common.error.required': 'This field is required.',
-  'app.common.error.tooShort': 'The input is too small.',
+  // errors
+  // validation errors
+  'app.common.error.validation.badlyFormattedEmail': 'This is not a valid email-address.',
+  'app.common.error.validation.notOnlyLetters': 'Only letters allowed.',
+  'app.common.error.validation.passwordsDontMatch': 'The passwords don\'t match.',
+  'app.common.error.validation.required': 'This field is required.',
+  'app.common.error.validation.tooShort': 'The input is too small.',
+  'app.common.error.validation.auth.tooShort': 'The input is too small.',
+  // auth errors
+  'app.common.error.auth.accountExistsWithDifferentCredential': 'An account with your E-Mail already exists. Please use another one or log in to your existing account.',
+  'app.common.error.auth.emailAlreadyInUse': 'An account with your E-Mail already exists. Please log in to your existing account.',
+  'app.common.error.auth.invaidEmail': 'The E-Mail you\'ve provided is not valid.',
+  'app.common.error.auth.popupBlocked': 'You or your browser blocked popups. Please enable popups.',
+  'app.common.error.auth.popupClosedByUser': 'You could not be signed-in. Please make sure to not close the popup.',
+  'app.common.error.auth.userDisabled': 'Your account is disabled.',
+  'app.common.error.auth.userNotFound': 'For this E-Mail no account exists. Please create a new account.',
+  'app.common.error.auth.userTokenExpired': 'Your token has expired. Please sign-in.',
+  'app.common.error.auth.weakPassword': 'Your password is to weak. Please try again with a stronger password.',
+  'app.common.error.auth.wrongPasword': 'The password you\'ve provided is not correct.',
+  // http errors
+  'app.common.error.http.default': 'Something went wrong. This service is currently not available. Please try again later.',
+  // success
+  'app.common.success.changedPassword': 'Your password was changed successfully.',
+  'app.common.success.updatedProfile': 'Your profile was updated successfully.',
 
   // components
   'app.component.header.title': 'Shopping List App',

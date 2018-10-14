@@ -1,4 +1,4 @@
-import { AuthService } from '../../../services';
+import { AuthService, NotificationService, TextService } from '../../../services';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { StringValidator } from '../../../validators';
@@ -12,7 +12,11 @@ export class UpdateProfileComponent implements OnInit {
 
   updateProfileForm: FormGroup;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private notificationService: NotificationService,
+    private textService: TextService) {
   }
 
   ngOnInit() {
@@ -34,7 +38,10 @@ export class UpdateProfileComponent implements OnInit {
       this.updateProfileForm.value.passwordCurrent,
       this.updateProfileForm.value.name,
       this.updateProfileForm.value.surname,
-    ).then(() => this.initializeForm());
+    ).then(() => {
+      this.initializeForm();
+      this.notificationService.success(this.textService.get('app.common.success.updateProfile'), 5000);
+    });
   }
 
 }
