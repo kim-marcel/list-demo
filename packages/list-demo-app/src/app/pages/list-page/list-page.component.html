@@ -6,6 +6,10 @@
       {{ 'app.page.list.header' | text }}
     </h5>
 
+    <div *ngIf="notification" class="alert" [ngClass]="'alert-' + notification?.severity" role="alert">
+      {{ notification?.messageBody }}
+    </div>
+
     <div class="mt-3 alert alert-danger" role="alert">
       {{ 'app.page.list.alert.disclaimer' | text }}
     </div>

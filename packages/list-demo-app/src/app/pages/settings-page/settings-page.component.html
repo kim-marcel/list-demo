@@ -7,6 +7,10 @@
       {{ 'app.page.settings.header' | text }}
     </h5>
 
+    <div *ngIf="notification" class="alert" [ngClass]="'alert-' + notification?.severity" role="alert">
+      {{ notification?.messageBody }}
+    </div>
+
     <app-settings></app-settings>
 
   </div>
