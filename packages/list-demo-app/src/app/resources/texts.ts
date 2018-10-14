@@ -1,12 +1,13 @@
 export const texts = {
   // common
   // errors
-  'app.common.error.badlyFormattedEmail': 'This is not a valid email-address.',
-  'app.common.error.notOnlyLetters': 'Only letters allowed.',
-  'app.common.error.passwordsDontMatch': 'The passwords don\'t match.',
-  'app.common.error.required': 'This field is required.',
-  'app.common.error.tooShort': 'The input is too small.',
-  'app.common.error.auth.tooShort': 'The input is too small.',
+  // validation errors
+  'app.common.error.validation.badlyFormattedEmail': 'This is not a valid email-address.',
+  'app.common.error.validation.notOnlyLetters': 'Only letters allowed.',
+  'app.common.error.validation.passwordsDontMatch': 'The passwords don\'t match.',
+  'app.common.error.validation.required': 'This field is required.',
+  'app.common.error.validation.tooShort': 'The input is too small.',
+  'app.common.error.validation.auth.tooShort': 'The input is too small.',
   // auth errors
   'app.common.error.auth.accountExistsWithDifferentCredential': 'An account with your E-Mail already exists. Please use another one or log in to your existing account.',
   'app.common.error.auth.emailAlreadyInUse': 'An account with your E-Mail already exists. Please log in to your existing account.',
@@ -16,11 +17,13 @@ export const texts = {
   'app.common.error.auth.userDisabled': 'Your account is disabled.',
   'app.common.error.auth.userNotFound': 'For this E-Mail no account exists. Please create a new account.',
   'app.common.error.auth.userTokenExpired': 'Your token has expired. Please sign-in.',
-  'app.common.error.auth.weakPassword': 'You could not be signed up. Your password is to weak. Please try again with a stronger password.',
-  'app.common.error.auth.wrongPasword': 'You could not be signed in. Your email or password is wrong.',
+  'app.common.error.auth.weakPassword': 'Your password is to weak. Please try again with a stronger password.',
+  'app.common.error.auth.wrongPasword': 'The password you\'ve provided is not correct.',
+  // http errors
+  'app.common.error.http.default': 'Something went wrong. This service is currently not available. Please try again later.',
   // success
-  'app.common.success.changedPassword': 'Your password was successfully changed.',
-  'app.common.success.updatedProfile': 'Your profile was successfully updated.',
+  'app.common.success.changedPassword': 'Your password was changed successfully.',
+  'app.common.success.updatedProfile': 'Your profile was updated successfully.',
 
   // components
   'app.component.header.title': 'Shopping List App',

@@ -5,7 +5,7 @@
            placeholder="{{'app.component.sign-up.input.name' | text}}">
     <div class="alert alert-danger mt-2 text-left" role="alert"
          *ngIf="signUpForm.controls.name.touched && signUpForm.controls.name.invalid">
-      {{ 'app.common.error.' + signUpForm.controls.name.errors?.error | text }}
+      {{ 'app.common.error.validation.' + signUpForm.controls.name.errors?.error | text }}
     </div>
   </div>
 
@@ -14,7 +14,7 @@
            placeholder="{{'app.component.sign-up.input.surname' | text}}">
     <div class="alert alert-danger mt-2 text-left" role="alert"
          *ngIf="signUpForm.controls.surname.touched && signUpForm.controls.surname.invalid">
-      {{ 'app.common.error.' + signUpForm.controls.surname.errors?.error | text }}
+      {{ 'app.common.error.validation.' + signUpForm.controls.surname.errors?.error | text }}
     </div>
   </div>
 
@@ -23,7 +23,7 @@
            placeholder="{{'app.component.sign-up.input.email' | text}}">
     <div class="alert alert-danger mt-2 text-left" role="alert"
          *ngIf="signUpForm.controls.email.touched && signUpForm.controls.email.invalid">
-      {{ 'app.common.error.' + signUpForm.controls.email.errors?.error | text }}
+      {{ 'app.common.error.validation.' + signUpForm.controls.email.errors?.error | text }}
     </div>
   </div>
 
@@ -32,7 +32,7 @@
            placeholder="{{'app.component.sign-up.input.password' | text}}">
     <div class="alert alert-danger mt-2 text-left" role="alert"
          *ngIf="signUpForm.controls.password.touched && signUpForm.controls.password.invalid">
-      {{ 'app.common.error.' + signUpForm.controls.password.errors?.error | text }}
+      {{ 'app.common.error.validation.' + signUpForm.controls.password.errors?.error | text }}
     </div>
   </div>
 
@@ -41,13 +41,13 @@
            placeholder="{{'app.component.sign-up.input.passwordRepeated' | text}}">
     <div class="alert alert-danger mt-2 text-left" role="alert"
          *ngIf="signUpForm.controls.passwordConfirm.touched && signUpForm.controls.passwordConfirm.invalid">
-      {{ 'app.common.error.' + signUpForm.controls.passwordConfirm.errors?.error | text }}
+      {{ 'app.common.error.validation.' + signUpForm.controls.passwordConfirm.errors?.error | text }}
     </div>
   </div>
 
   <div class="alert alert-danger mt-2 text-left" role="alert"
        *ngIf="signUpForm.controls.password.touched && signUpForm.controls.passwordConfirm.touched && signUpForm.errors !== null">
-    {{ 'app.common.error.' + signUpForm.errors?.error | text }}
+    {{ 'app.common.error.validation.' + signUpForm.errors?.error | text }}
   </div>
 
   <button type="submit" class="btn btn-primary btn-block" [disabled]="signUpForm.invalid">

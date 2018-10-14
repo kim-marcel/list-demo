@@ -12,7 +12,7 @@
                placeholder="{{'app.component.settings.input.passwordCurrent' | text}}">
         <div class="alert alert-danger mt-2 text-left" role="alert"
              *ngIf="deleteAccountForm.controls.passwordCurrent.touched && deleteAccountForm.controls.passwordCurrent.invalid">
-          {{ 'app.common.error.' + deleteAccountForm.controls.passwordCurrent.errors?.error | text }}
+          {{ 'app.common.error.validation.' + deleteAccountForm.controls.passwordCurrent.errors?.error | text }}
         </div>
       </div>
 
