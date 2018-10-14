@@ -36,7 +36,7 @@ export class AppErrorHandler implements ErrorHandler {
       const router = this.injector.get(Router);
       this.zone.run(() => router.navigateByUrl('/sign-in'));
     } else {
-      this.notificationService.error(this.textService.get('app.common.error.http.default') + ` ${error.statusText}: ${error.status}`);
+      this.notificationService.error(this.textService.get('app.common.error.http.default'));
     }
   }
 
