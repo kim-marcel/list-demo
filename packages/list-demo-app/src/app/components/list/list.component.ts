@@ -33,7 +33,8 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
-    this.list = this.route.snapshot.data['listData']['body'].reverse();
+    const dataBody = this.route.snapshot.data['listData']['body'];
+    this.list = dataBody ? dataBody.reverse() : undefined;
   }
 
   getList() {
