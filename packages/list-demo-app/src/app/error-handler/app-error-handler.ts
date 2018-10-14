@@ -1,8 +1,8 @@
+import { AuthErrorCode } from '../enums';
 import { ErrorHandler, Injectable, Injector, NgZone } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService, TextService } from '../services';
 import { Router } from '@angular/router';
-import { AuthErrorCode } from '../enums';
 
 @Injectable()
 export class AppErrorHandler implements ErrorHandler {
@@ -14,14 +14,18 @@ export class AppErrorHandler implements ErrorHandler {
     private zone: NgZone) {
   }
 
+  static isFirebaseAuthError(error: any): boolean {
+    return error.code ? error.code.startsWith('auth/') : false;
+  }
+
   handleError(error: Error | HttpErrorResponse): void {
-    this.notificationService.error(error.toString());
     if (error instanceof HttpErrorResponse) {
       this.handleHttpError(error);
-    } else if (this.isFirebaseAuthError(error)) {
+    } else if (AppErrorHandler.isFirebaseAuthError(error)) {
       this.handleFirebaseAuthError(error);
     } else {
       console.error(error);
+      this.notificationService.error(`${error.name}: ${error.message}`);
     }
   }
 
@@ -31,6 +35,8 @@ export class AppErrorHandler implements ErrorHandler {
     if (error.status === 401) {
       const router = this.injector.get(Router);
       this.zone.run(() => router.navigateByUrl('/sign-in'));
+    } else {
+      this.notificationService.error(this.textService.get('app.common.error.http.default') + ` ${error.statusText}: ${error.status}`);
     }
   }
 
@@ -69,9 +75,5 @@ export class AppErrorHandler implements ErrorHandler {
       default:
         this.notificationService.error(error.message);
     }
-  }
-
-  isFirebaseAuthError(error: any): boolean {
-    return error.code ? error.code.startsWith('auth/') : false;
   }
 }
