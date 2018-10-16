@@ -167,6 +167,7 @@ Not so important:
 - use structured property in user for list (API)
 - let session expire
 - rename angular-app
+- move errors-enum to enum-folder
 
 Important:
 - add email-verification when new sign-up with email (front- and backend)
