@@ -176,3 +176,4 @@ Important:
 
 Bugs:
 - Error 'auth/account-exists-with-different-credential' is not caught
+- Success-Message update profile is not shown (missing Text)
