@@ -39,31 +39,28 @@ export class ListComponent implements OnInit {
   }
 
   getList() {
-    const httpSubscription = this.listService.getList()
+    this.listService.getList()
       .subscribe(
         (data) => {
           if (data.body) {
             this.list = data['body'].reverse();
-            httpSubscription.unsubscribe();
             this.notificationService.reset();
           }
         });
   }
 
   addListEntry() {
-    const httpSubscription = this.listService.addToList(this.addListElementForm.value.listInput)
+    this.listService.addToList(this.addListElementForm.value.listInput)
       .subscribe(() => {
         this.getList();
         this.initializeForm();
-        httpSubscription.unsubscribe();
       });
   }
 
   deleteListEntry(listElementId: string) {
-    const httpSubscription = this.listService.deleteFromList(listElementId)
+    this.listService.deleteFromList(listElementId)
       .subscribe(() => {
         this.getList();
-        httpSubscription.unsubscribe();
       });
   }
 }

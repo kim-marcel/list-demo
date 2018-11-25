@@ -160,8 +160,8 @@ Done:
 Not so important:
 - expand user-object in api (add name, surname, ...)
 - add ability to "star"/ pin a list entry
-- write tests + run them with yarn + test-coverage
 - footer
+- make alert in list-view removeable
 - navigation: back- and forward-navigation (partly already exists)
 - 'greet' user with his name (Welcome back ..., here is your list:)
 - use structured property in user for list (API)
@@ -170,9 +170,11 @@ Not so important:
 - move errors-enum to enum-folder
 
 Important:
+- write tests + run them with yarn + test-coverage
 - add email-verification when new sign-up with email (front- and backend)
 - add possibility to reset password when forgotten
-- make alert in list-view removeable
+- refactor api: use [Flask HTTPAuth](https://flask-httpauth.readthedocs.io/en/latest/)
+- refactor ui notifications
 
 Bugs:
 - Error 'auth/account-exists-with-different-credential' is not caught
