@@ -40,7 +40,7 @@ export class UpdateProfileComponent implements OnInit {
       this.updateProfileForm.value.surname,
     ).then(() => {
       this.initializeForm();
-      this.notificationService.success(this.textService.get('app.common.success.updateProfile'), 5000);
+      this.notificationService.success(this.textService.get('app.common.success.updatedProfile'), 5000);
     });
   }
 
