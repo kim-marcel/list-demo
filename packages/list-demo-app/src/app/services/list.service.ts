@@ -11,7 +11,7 @@ export class ListService {
   constructor(private http: HttpClient) {
   }
 
-  listUrl = environment.apiHost + '/list';
+  listUrl = environment.apiHost + '/lists';
 
   getList(): Observable<HttpResponse<any>> {
     return this.http.get(this.listUrl, {observe: 'response'});

@@ -9,10 +9,10 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  userUrl = environment.apiHost + '/user';
+  userUrl = environment.apiHost + '/users';
 
-  deleteUserData() {
-    return this.http.delete(this.userUrl);
+  deleteUserData(userId: string) {
+    return this.http.delete(this.userUrl + '/' + userId);
   }
 
 }

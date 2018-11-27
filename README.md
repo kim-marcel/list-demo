@@ -156,6 +156,7 @@ Done:
 - ~~add settings for users that use social-sign-in~~
 - ~~add error-handling (display errors in the ui like e.g. 'password wrong' probably by using toasts)~~
 - ~~add session expired error notification~~
+- ~~refactor api: use [Flask HTTPAuth](https://flask-httpauth.readthedocs.io/en/latest/)~~
 
 Not so important:
 - expand user-object in api (add name, surname, ...)
@@ -173,9 +174,10 @@ Important:
 - write tests + run them with yarn + test-coverage
 - add email-verification when new sign-up with email (front- and backend)
 - add possibility to reset password when forgotten
-- refactor api: use [Flask HTTPAuth](https://flask-httpauth.readthedocs.io/en/latest/)
+- refactor api
+- refactor ui
 - refactor ui notifications
 
 Bugs:
+- ~~Success-Message update profile is not shown (missing Text)~~
 - Error 'auth/account-exists-with-different-credential' is not caught
-- Success-Message update profile is not shown (missing Text)
