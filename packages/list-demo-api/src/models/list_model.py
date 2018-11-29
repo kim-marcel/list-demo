@@ -1,7 +1,7 @@
 from google.appengine.ext import ndb
 
-from listentry_model import ListEntry
+from listelement_model import ListElement
 
 
 class List(ndb.Model):
-    list_elements = ndb.KeyProperty(ListEntry, repeated=True)
+    list_elements = ndb.KeyProperty(ListElement, repeated=True)

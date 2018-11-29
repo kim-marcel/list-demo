@@ -1,12 +1,12 @@
 from google.appengine.ext import ndb
 
 
-class ListEntry(ndb.Model):
+class ListElement(ndb.Model):
     # In the future more features can be added (e.g. favorite, tagged,...)
-    list_element = ndb.StringProperty()
+    value = ndb.StringProperty()
 
     def serialize(self):
         return {
-            'listElementValue': self.list_element,
+            'listElementValue': self.value,
             'listElementId': self.key.id(),
         }

@@ -16,6 +16,7 @@ def verify_token(id_token):
 
     # check whether user is logged in and in datastore
     if user_utilities.is_user_authorized(g.current_user_id):
+        g.current_user = user_utilities.get_user_from_datastore(g.current_user_id)
         return True
     return False
 
@@ -24,9 +25,9 @@ def verify_token(id_token):
 @auth.login_required
 def delete(user_id):
     if user_id == g.current_user_id:
-        user_utilities.delete_all_list_entries(g.current_user_id)
-        user_utilities.delete_user_list(g.current_user_id)
-        user_utilities.delete_user(g.current_user_id)
+        user_utilities.delete_all_list_entries(g.current_user)
+        user_utilities.delete_user_list(g.current_user)
+        user_utilities.delete_user(g.current_user)
         return jsonify(responseCode=200, responseMessage="Successfully deleted user")
     else:
         abort(401, "Unauthorized Access")

@@ -1,3 +1,3 @@
 from list_model import List
-from listentry_model import ListEntry
+from listelement_model import ListElement
 from user_model import User
