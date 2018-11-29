@@ -157,6 +157,7 @@ Done:
 - ~~add error-handling (display errors in the ui like e.g. 'password wrong' probably by using toasts)~~
 - ~~add session expired error notification~~
 - ~~refactor api: use [Flask HTTPAuth](https://flask-httpauth.readthedocs.io/en/latest/)~~
+- ~~use urlsafe() ids~~
 
 Not so important:
 - expand user-object in api (add name, surname, ...)

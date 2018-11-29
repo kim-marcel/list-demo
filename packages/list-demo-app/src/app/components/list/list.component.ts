@@ -1,9 +1,8 @@
 import { ActivatedRoute } from '@angular/router';
-import { AuthService, NotificationService } from '../../services';
+import { AuthService, ListService, NotificationService } from '../../services';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ListElement } from '../../models';
-import { ListService } from '../../services';
+import { List } from '../../models';
 
 @Component({
   selector: 'app-list',
@@ -14,7 +13,7 @@ import { ListService } from '../../services';
 export class ListComponent implements OnInit {
 
   addListElementForm: FormGroup;
-  list: ListElement[];
+  list: List;
 
   constructor(
     private authService: AuthService,
@@ -34,23 +33,23 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
-    const dataBody = this.route.snapshot.data['listData']['body'];
-    this.list = dataBody ? dataBody.reverse() : undefined;
+    this.list = this.route.snapshot.data.listData.body;
   }
 
   getList() {
-    this.listService.getList()
+    this.listService.getList(this.authService.getUserId())
       .subscribe(
         (data) => {
           if (data.body) {
-            this.list = data['body'].reverse();
+            this.list = data.body;
             this.notificationService.reset();
+            console.log(this.list);
           }
         });
   }
 
   addListEntry() {
-    this.listService.addToList(this.addListElementForm.value.listInput)
+    this.listService.addToList(this.list.listId, this.addListElementForm.value.listInput)
       .subscribe(() => {
         this.getList();
         this.initializeForm();
@@ -58,7 +57,7 @@ export class ListComponent implements OnInit {
   }
 
   deleteListEntry(listElementId: string) {
-    this.listService.deleteFromList(listElementId)
+    this.listService.deleteFromList(this.list.listId, listElementId)
       .subscribe(() => {
         this.getList();
       });

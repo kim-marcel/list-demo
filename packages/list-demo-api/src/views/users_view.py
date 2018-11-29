@@ -2,6 +2,7 @@ from flask import abort, Blueprint, g, jsonify
 from flask_httpauth import HTTPTokenAuth
 
 from src.utilities import auth_utilities
+from src.utilities import list_utilities
 from src.utilities import user_utilities
 
 auth = HTTPTokenAuth('Bearer')
@@ -24,9 +25,9 @@ def verify_token(id_token):
 @users_bp.route('/users/<user_id>', methods=['DELETE'])
 @auth.login_required
 def delete(user_id):
-    if user_id == g.current_user_id:
-        user_utilities.delete_all_list_entries(g.current_user)
-        user_utilities.delete_user_list(g.current_user)
+    if user_id == g.current_user_id and g.current_user:
+        list = g.current_user.list.get()
+        list_utilities.delete_list(list)
         user_utilities.delete_user(g.current_user)
         return jsonify(responseCode=200, responseMessage="Successfully deleted user")
     else:

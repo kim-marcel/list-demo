@@ -16,9 +16,9 @@
 
 <ul class="list-group list-group-flush">
 
-  <li *ngFor="let listElement of list" class="list-group-item">
-    {{listElement.listElementValue}}
-    <button (click)="deleteListEntry(listElement.listElementId)" type="button" class="btn close">
+  <li *ngFor="let listElement of list?.listElements?.slice().reverse()" class="list-group-item">
+    {{listElement.value}}
+    <button (click)="deleteListEntry(listElement.id)" type="button" class="btn close">
       <i class="fa fa-close"></i>
     </button>
   </li>

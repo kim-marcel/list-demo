@@ -1,6 +1,7 @@
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { List } from '../models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,16 +14,17 @@ export class ListService {
 
   listUrl = environment.apiHost + '/lists';
 
-  getList(): Observable<HttpResponse<any>> {
-    return this.http.get(this.listUrl, {observe: 'response'});
+  getList(userId: string): Observable<HttpResponse<List>> {
+    const params = new HttpParams().set('userId', userId);
+    return this.http.get<List>(this.listUrl, {observe: 'response', params: params});
   }
 
-  addToList(listElement): Observable<any> {
-    return this.http.post(this.listUrl, {action: 'add', input: listElement});
+  addToList(listId: string, listElement: string): Observable<any> {
+    return this.http.post(this.listUrl + '/' + listId, {input: listElement});
   }
 
-  deleteFromList(listElementId): Observable<any> {
-    return this.http.post(this.listUrl, {action: 'delete', id: listElementId});
+  deleteFromList(listId, listElementId): Observable<any> {
+    return this.http.delete(this.listUrl + '/' + listId + '/' + listElementId);
   }
 
 }

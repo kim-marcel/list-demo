@@ -1,4 +1,4 @@
 export class ListElement {
-  listElementValue: string;
-  listElementId: string;
+  value: string;
+  id: string;
 }

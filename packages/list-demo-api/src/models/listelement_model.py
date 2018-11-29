@@ -7,6 +7,6 @@ class ListElement(ndb.Model):
 
     def serialize(self):
         return {
-            'listElementValue': self.value,
-            'listElementId': self.key.id(),
+            'value': self.value,
+            'id': self.key.urlsafe(),
         }

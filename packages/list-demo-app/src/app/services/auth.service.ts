@@ -53,6 +53,10 @@ export class AuthService {
     }
   }
 
+  getUserId(): string {
+    return this.user.uid;
+  }
+
   getProviderId(): AuthProviderId {
     return AuthService.mapStringToAuthProviderId(this.user.providerData[0].providerId);
   }
