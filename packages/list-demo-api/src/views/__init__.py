@@ -1,2 +1,2 @@
-from lists import lists_bp
-from users import users_bp
+from lists_view import lists_bp
+from users_view import users_bp

@@ -1,3 +1,3 @@
-from mylist import MyList
-from mylistentry import MyListEntry
-from myuser import MyUser
+from list_model import List
+from listentry_model import ListEntry
+from user_model import User

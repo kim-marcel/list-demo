@@ -2,8 +2,8 @@ from google.oauth2 import id_token
 from google.auth.transport import requests
 from requests_toolbelt.adapters import appengine
 
-# Patch to use requests module with GAE (see: https://stackoverflow.com/questions/9604799/can-python-requests-library
-# -be-used-on-google-app-engine/37304524#37304524)
+# Patch to use requests module with GAE, see:
+# https://stackoverflow.com/questions/9604799/can-python-requests-library-be-used-on-google-app-engine/37304524#37304524
 appengine.monkeypatch()
 
 HTTP_REQUEST = requests.Request()

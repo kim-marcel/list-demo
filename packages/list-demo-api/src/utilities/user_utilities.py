@@ -1,8 +1,8 @@
 from google.appengine.ext import ndb
 
-from src.models import MyList
-from src.models import MyListEntry
-from src.models import MyUser
+from src.models import List
+from src.models import ListEntry
+from src.models import User
 
 
 def get_user_id(id_info):
@@ -15,16 +15,16 @@ def is_user_in_datastore(user_id):
 
 def get_user_from_datastore(user_id):
     if user_id:
-        myuser_key = ndb.Key(MyUser, user_id)
+        myuser_key = ndb.Key(User, user_id)
         return myuser_key.get()
 
 
 def add_user_to_datastore(user_id):
-    myuser = MyUser(id=user_id)
-    myuser.list = ndb.Key(MyList, user_id + "/list")
+    myuser = User(id=user_id)
+    myuser.list = ndb.Key(List, user_id + "/list")
     # commit to datastore
     myuser.put()
-    mylist = MyList(id=user_id + "/list")
+    mylist = List(id=user_id + "/list")
     mylist.put()
 
 
@@ -39,7 +39,7 @@ def get_list_of_user(user_id):
 def add_element_to_user_list(user_id, element):
     myuser = get_user_from_datastore(user_id)
     if myuser:
-        mylistentry = MyListEntry(list_element=element)
+        mylistentry = ListEntry(list_element=element)
         mylistentry.put()
         mylist = myuser.list.get()
         mylist.list_elements.append(mylistentry.key)
@@ -49,7 +49,7 @@ def add_element_to_user_list(user_id, element):
 def delete_element_from_user_list(user_id, element_id):
     myuser = get_user_from_datastore(user_id)
     if myuser:
-        mylistelement_key = ndb.Key(MyListEntry, element_id)
+        mylistelement_key = ndb.Key(ListEntry, element_id)
         mylist = myuser.list.get()
         if mylistelement_key.get():
             mylist.list_elements.remove(mylistelement_key)

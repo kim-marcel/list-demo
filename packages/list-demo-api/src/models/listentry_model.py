@@ -1,7 +1,7 @@
 from google.appengine.ext import ndb
 
 
-class MyListEntry(ndb.Model):
+class ListEntry(ndb.Model):
     # In the future more features can be added (e.g. favorite, tagged,...)
     list_element = ndb.StringProperty()
 

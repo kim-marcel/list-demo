@@ -1,9 +1,9 @@
 from google.appengine.ext import ndb
 
-from mylist import MyList
+from list_model import List
 
 
-class MyUser(ndb.Model):
+class User(ndb.Model):
     # Reference the users list with the key of the list (key = user id + "/list")
     # use StructuredProperty??
-    list = ndb.KeyProperty(MyList)
+    list = ndb.KeyProperty(List)
