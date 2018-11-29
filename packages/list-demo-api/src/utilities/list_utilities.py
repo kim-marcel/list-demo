@@ -1,6 +1,6 @@
 from google.appengine.ext import ndb
 
-from src.models import ListElement, User, List
+from src.models import ListElement, User
 
 
 def get_list_by_user_id(myuser_id):

@@ -12,15 +12,7 @@ HTTP_REQUEST = requests.Request()
 # Returns id_info if token can be successfully verified, else None
 def verify_token(token):
     try:
-        claims = id_token.verify_firebase_token(token, HTTP_REQUEST)
-
-        if claims:
-            return claims
-
+        return id_token.verify_firebase_token(token, HTTP_REQUEST)
     except (ValueError, TypeError):
         # invalid id_token
         return None
-
-
-def get_id_info(token):
-    return verify_token(token)
