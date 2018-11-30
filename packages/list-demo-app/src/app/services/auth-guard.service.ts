@@ -15,11 +15,15 @@ export class AuthGuardService implements CanActivate {
     return this.authService.getAuthState().pipe(map(
       (user) => {
         if (user) {
-          return true;
+          if (user.emailVerified) {
+            return true;
+          } else {
+            this.router.navigateByUrl('/verify-email');
+          }
         } else {
           this.router.navigateByUrl('/sign-in');
-          return false;
         }
+        return false;
       }
     ));
   }

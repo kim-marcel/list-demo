@@ -9,7 +9,8 @@ import {
   ListPageComponent,
   SettingsPageComponent,
   SignInPageComponent,
-  SignUpPageComponent
+  SignUpPageComponent,
+  VerifyEmailPageComponent
 } from '../pages';
 
 const appRoutes: Routes = [
@@ -33,6 +34,12 @@ const appRoutes: Routes = [
     path: 'settings',
     component: SettingsPageComponent,
     canActivate: [AuthGuardService],
+  },
+  {
+    path: 'verify-email',
+    component: VerifyEmailPageComponent,
+    // TODO
+    // canActivate: [AuthGuardService],
   },
   {
     path: 'home',

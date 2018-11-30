@@ -170,6 +170,7 @@ Not so important:
 - let session expire
 - rename angular-app
 - move errors-enum to enum-folder
+- Firebase Cloud Functions
 
 Important:
 - write tests + run them with yarn + test-coverage
@@ -181,4 +182,4 @@ Important:
 
 Bugs:
 - ~~Success-Message update profile is not shown (missing Text)~~
-- Error 'auth/account-exists-with-different-credential' is not caught
+- ~~Error 'auth/account-exists-with-different-credential' is not caught~~

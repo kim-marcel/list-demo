@@ -106,11 +106,12 @@ export class AuthService {
 
   emailSignUp(user: ListUser): Promise<any> {
     return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(
-      () => {
+      (data) => {
         this.setProfile(user.name, user.surname);
-        // TODO: Add E-Mail-Verification (send E-Mail to user)
-        // this.getCurrentUser().sendEmailVerification().then(() => console.log('Email sent to: ', email));
-        this.zone.run(() => this.router.navigateByUrl('/list'));
+        data.user.sendEmailVerification().then(() => {
+          // TODO: Refresh token
+          this.zone.run(() => this.router.navigateByUrl('/list'));
+        });
       }
     );
   }

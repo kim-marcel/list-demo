@@ -16,7 +16,8 @@ import {
   ListPageComponent,
   SettingsPageComponent,
   SignInPageComponent,
-  SignUpPageComponent
+  SignUpPageComponent,
+  VerifyEmailPageComponent
 } from './pages';
 import {
   ChangePasswordComponent,
@@ -49,6 +50,7 @@ import { TextPipe } from './pipes/text.pipe';
     SignUpPageComponent,
     TextPipe,
     UpdateProfileComponent,
+    VerifyEmailPageComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
