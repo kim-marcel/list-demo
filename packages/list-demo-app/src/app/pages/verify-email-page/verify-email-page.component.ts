@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'firebase';
+import { Observable } from 'rxjs';
+import { AuthService } from '../../services';
 
 @Component({
   selector: 'app-verify-email-page',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerifyEmailPageComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  $user: Observable<User>;
+
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit() {
   }
 
+  resendVerificationEmail() {
+    console.log('Resending Email verification');
+  }
 }

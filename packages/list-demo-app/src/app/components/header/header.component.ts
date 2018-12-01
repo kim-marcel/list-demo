@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isUserSignedIn() {
-    return this.authService.isAuthenticated();
+    return this.authService.isSignedIn();
   }
 
   signOut() {

@@ -31,6 +31,7 @@ export const texts = {
   'app.component.header.button.logout': 'Logout',
 
   'app.component.list.button.add': 'Add',
+  'app.component.list.alert.disclaimer': 'Disclaimer: This Website is just a demo. Please do not use this website to store any important information. Your data is not secured and can be deleted at any time. This website can go offline temporarily or permanently.',
   'app.component.list.input.placeholder': 'What do you want to add to your list?',
 
   'app.component.settings.header.changePassword': 'Change Password',
@@ -76,7 +77,6 @@ export const texts = {
   'app.page.home.button.list': 'Show me my list!',
 
   'app.page.list.header': 'My List',
-  'app.page.list.alert.disclaimer': 'Disclaimer: This Website is just a demo. Please do not use this website to store any important information. Your data is not secured and can be deleted at any time. This website can go offline temporarily or permanently.',
 
   'app.page.settings.header': 'Settings',
 

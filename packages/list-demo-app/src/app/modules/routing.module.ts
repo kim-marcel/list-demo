@@ -2,7 +2,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuardService, ListResolver } from '../services';
+import {
+  SignedInAndEmailNotVerifiedGuard,
+  ListResolver,
+  SignedInAndEmailVerifiedGuardGuard,
+  SignedInGuard,
+  NotSignedInGuard
+} from '../services';
 import {
   ErrorPageComponent,
   HomePageComponent,
@@ -10,22 +16,29 @@ import {
   SettingsPageComponent,
   SignInPageComponent,
   SignUpPageComponent,
-  VerifyEmailPageComponent
+  VerifyEmailPageComponent,
 } from '../pages';
 
 const appRoutes: Routes = [
   {
     path: 'sign-in',
     component: SignInPageComponent,
+    canActivate: [NotSignedInGuard],
   },
   {
     path: 'sign-up',
     component: SignUpPageComponent,
+    canActivate: [NotSignedInGuard],
+  },
+  {
+    path: 'verify-email',
+    component: VerifyEmailPageComponent,
+    canActivate: [SignedInAndEmailNotVerifiedGuard],
   },
   {
     path: 'list',
     component: ListPageComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [SignedInAndEmailVerifiedGuardGuard],
     resolve: {
       listData: ListResolver,
     }
@@ -33,13 +46,7 @@ const appRoutes: Routes = [
   {
     path: 'settings',
     component: SettingsPageComponent,
-    canActivate: [AuthGuardService],
-  },
-  {
-    path: 'verify-email',
-    component: VerifyEmailPageComponent,
-    // TODO
-    // canActivate: [AuthGuardService],
+    canActivate: [SignedInGuard],
   },
   {
     path: 'home',

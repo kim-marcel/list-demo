@@ -16,6 +16,7 @@ export class ListComponent implements OnInit {
   list: List;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private listService: ListService,
@@ -33,7 +34,17 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
-    this.list = this.route.snapshot.data.listData.body;
+    // TODO: remove resolver
+    // this.list = this.route.snapshot.data.listData.body;
+    this.activatedRoute.queryParams.subscribe(
+      (params) => {
+        if (params['forceRefresh']) {
+          this.authService.getIdToken(true).then(() => this.getList());
+        } else {
+          this.getList(); // this.route.snapshot.data.listData.body;
+        }
+      }
+    );
   }
 
   getList() {
@@ -43,7 +54,6 @@ export class ListComponent implements OnInit {
           if (data.body) {
             this.list = data.body;
             this.notificationService.reset();
-            console.log(this.list);
           }
         });
   }

@@ -1,3 +1,8 @@
-<p>
-  verify-email-page works!
-</p>
+<div class="alert alert-warning" role="alert">
+  You didn't verify your email yet, please check your mail account and follow the instructions to activate your account!
+</div>
+
+<div *ngIf="!($user | async)?.emailVerified">
+  Didn't get an E-Mail?
+  <button (click)="resendVerificationEmail()">Resend Verification Mail</button>
+</div>

@@ -17,7 +17,7 @@ import {
   SettingsPageComponent,
   SignInPageComponent,
   SignUpPageComponent,
-  VerifyEmailPageComponent
+  VerifyEmailPageComponent,
 } from './pages';
 import {
   ChangePasswordComponent,
@@ -27,7 +27,7 @@ import {
   SettingsComponent,
   SignInComponent,
   SignUpComponent,
-  UpdateProfileComponent
+  UpdateProfileComponent,
 } from './components';
 import { RoutingModule } from './modules/routing.module';
 import { TextPipe } from './pipes/text.pipe';

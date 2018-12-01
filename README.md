@@ -171,6 +171,8 @@ Not so important:
 - rename angular-app
 - move errors-enum to enum-folder
 - Firebase Cloud Functions
+- set display name on email sign-in
+- same email different accounts allowed?
 
 Important:
 - write tests + run them with yarn + test-coverage
@@ -179,6 +181,7 @@ Important:
 - refactor api
 - refactor ui
 - refactor ui notifications
+- user should be able to delete account when e-mail is not verified yet
 
 Bugs:
 - ~~Success-Message update profile is not shown (missing Text)~~

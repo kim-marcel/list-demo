@@ -14,8 +14,9 @@ export class ListResolver implements Resolve<Observable<HttpResponse<List>>> {
   constructor(private authService: AuthService, private listService: ListService) {
   }
 
+  // TODO: remove resolver
   resolve(): Observable<HttpResponse<List>> {
-    return this.listService.getList(this.authService.getUserId());
+    return null; // this.listService.getList(this.authService.getUserId());
   }
 
 }

@@ -33,6 +33,7 @@ export class AppErrorHandler implements ErrorHandler {
     console.error(`${error.statusText}: ${error.status}`);
     console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
     if (error.status === 401) {
+      // TODO: check if user is logged in, if he is don't redirect to sig-in
       const router = this.injector.get(Router);
       this.zone.run(() => router.navigateByUrl('/sign-in'));
     } else {
