@@ -116,6 +116,10 @@ export class AuthService {
     );
   }
 
+  resendEmailVerification() {
+    return this.user.sendEmailVerification({url: environment.appHost + '/list?forceRefresh=true'});
+  }
+
   updateProfile(password: string, name: string, surname: string): Promise<void> {
     return this.reauthenticate(password).then(
       () => this.setProfile(name, surname)

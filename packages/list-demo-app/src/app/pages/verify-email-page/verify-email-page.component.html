@@ -1,8 +1,21 @@
-<div class="alert alert-warning" role="alert">
-  You didn't verify your email yet, please check your mail account and follow the instructions to activate your account!
-</div>
+<div class="row justify-content-center">
 
-<div *ngIf="!($user | async)?.emailVerified">
-  Didn't get an E-Mail?
-  <button (click)="resendVerificationEmail()">Resend Verification Mail</button>
+  <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9">
+
+    <h5 class="pb-2 mt-4 mb-2 border-bottom">
+      {{ 'app.page.verify-email.header' | text }}
+    </h5>
+
+    <div class="alert alert-warning" role="alert">
+      {{ 'app.page.verify-email.alert.text1' | text }}
+      <hr>
+      {{ 'app.page.verify-email.alert.text2' | text }}
+    </div>
+
+    <p>{{ 'app.page.verify-email.question' | text }}</p>
+    <button type="button" class="btn btn-block btn-primary" (click)="resendEmailVerification()">
+      {{ 'app.page.verify-email.button' | text }}
+    </button>
+
+  </div>
 </div>

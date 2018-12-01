@@ -1,6 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { User } from 'firebase';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services';
 
 @Component({
@@ -10,16 +8,13 @@ import { AuthService } from '../../services';
 })
 export class VerifyEmailPageComponent implements OnInit {
 
-  @Input()
-  $user: Observable<User>;
-
   constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
   }
 
-  resendVerificationEmail() {
-    console.log('Resending Email verification');
+  resendEmailVerification() {
+    this.authService.resendEmailVerification();
   }
 }
