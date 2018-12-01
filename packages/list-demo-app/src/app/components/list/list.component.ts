@@ -20,8 +20,7 @@ export class ListComponent implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private listService: ListService,
-    private notificationService: NotificationService,
-    private route: ActivatedRoute) {
+    private notificationService: NotificationService) {
   }
 
   private initializeForm() {
@@ -34,14 +33,12 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
-    // TODO: remove resolver
-    // this.list = this.route.snapshot.data.listData.body;
     this.activatedRoute.queryParams.subscribe(
       (params) => {
         if (params['forceRefresh']) {
           this.authService.getIdToken(true).then(() => this.getList());
         } else {
-          this.getList(); // this.route.snapshot.data.listData.body;
+          this.getList();
         }
       }
     );

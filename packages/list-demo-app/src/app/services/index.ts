@@ -2,7 +2,6 @@ export * from './guards/not-signed-in.guard';
 export * from './guards/signed-in-and-email-not-verified.guard';
 export * from './guards/signed-in-and-email-verified-guard.guard';
 export * from './guards/signed-in.guard';
-export * from './resolver/list-resolver';
 export * from './auth.service';
 export * from './list.service';
 export * from './notification.service';

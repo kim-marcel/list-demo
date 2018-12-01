@@ -8,7 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppErrorHandler } from './error-handler/app-error-handler';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { AuthService, ListResolver, ListService, TextService } from './services';
+import { AuthService, ListService, TextService } from './services';
 import { environment } from '../environments/environment';
 import {
   ErrorPageComponent,
@@ -72,7 +72,6 @@ import { TextPipe } from './pipes/text.pipe';
       multi   : true,
     },
     AuthService,
-    ListResolver,
     ListService,
     TextService,
   ],

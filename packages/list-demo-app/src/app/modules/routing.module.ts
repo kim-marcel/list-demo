@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {
   SignedInAndEmailNotVerifiedGuard,
-  ListResolver,
   SignedInAndEmailVerifiedGuardGuard,
   SignedInGuard,
   NotSignedInGuard
@@ -39,9 +38,6 @@ const appRoutes: Routes = [
     path: 'list',
     component: ListPageComponent,
     canActivate: [SignedInAndEmailVerifiedGuardGuard],
-    resolve: {
-      listData: ListResolver,
-    }
   },
   {
     path: 'settings',
