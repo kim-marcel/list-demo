@@ -158,6 +158,8 @@ Done:
 - ~~add session expired error notification~~
 - ~~refactor api: use [Flask HTTPAuth](https://flask-httpauth.readthedocs.io/en/latest/)~~
 - ~~use urlsafe() ids~~
+- ~~add email-verification when new sign-up with email (front- and backend)~~
+- ~~user should be able to delete account when e-mail is not verified yet~~
 
 Not so important:
 - expand user-object in api (add name, surname, ...)
@@ -176,12 +178,11 @@ Not so important:
 
 Important:
 - write tests + run them with yarn + test-coverage
-- add email-verification when new sign-up with email (front- and backend)
 - add possibility to reset password when forgotten
+- change email
 - refactor api
 - refactor ui
 - refactor ui notifications
-- user should be able to delete account when e-mail is not verified yet
 
 Bugs:
 - ~~Success-Message update profile is not shown (missing Text)~~
