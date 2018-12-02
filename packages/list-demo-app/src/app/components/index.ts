@@ -6,4 +6,3 @@ export * from './settings/update-profile/update-profile.component';
 export * from './settings/settings.component';
 export * from './sign-in/sign-in.component';
 export * from './sign-up/sign-up.component';
-

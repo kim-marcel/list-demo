@@ -8,6 +8,7 @@ import { ListUser } from '../models';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -65,12 +66,12 @@ export class AuthService {
     return this.afAuth.authState;
   }
 
-  isAuthenticated(): boolean {
+  isSignedIn(): boolean {
     return !(this.user === null || this.user === undefined);
   }
 
-  getIdToken(): Promise<string> | null {
-    return this.isAuthenticated() ? this.user.getIdToken() : null;
+  getIdToken(forceRefresh = false): Promise<string> | null {
+    return this.isSignedIn() ? this.user.getIdToken(forceRefresh) : null;
   }
 
   reauthenticate(password: string = null): Promise<firebase.auth.UserCredential> {
@@ -106,13 +107,17 @@ export class AuthService {
 
   emailSignUp(user: ListUser): Promise<any> {
     return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(
-      () => {
+      (data) => {
         this.setProfile(user.name, user.surname);
-        // TODO: Add E-Mail-Verification (send E-Mail to user)
-        // this.getCurrentUser().sendEmailVerification().then(() => console.log('Email sent to: ', email));
-        this.zone.run(() => this.router.navigateByUrl('/list'));
+        data.user.sendEmailVerification({url: environment.appHost + '/list?forceRefresh=true'}).then(() => {
+          this.zone.run(() => this.router.navigateByUrl('/verify-email'));
+        });
       }
     );
+  }
+
+  resendEmailVerification() {
+    return this.user.sendEmailVerification({url: environment.appHost + '/list?forceRefresh=true'});
   }
 
   updateProfile(password: string, name: string, surname: string): Promise<void> {

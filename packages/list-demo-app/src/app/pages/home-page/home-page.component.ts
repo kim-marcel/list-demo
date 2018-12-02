@@ -23,7 +23,7 @@ export class HomePageComponent implements OnInit {
   }
 
   isUserSignedIn() {
-    return this.authService.isAuthenticated();
+    return this.authService.isSignedIn();
   }
 
 }

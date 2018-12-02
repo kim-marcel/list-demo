@@ -14,6 +14,7 @@ def get_current_user(id_token):
         return {
             'user': get_user_from_datastore(current_user_id),
             'user_id': current_user_id,
+            'user_info': user_info,
         }
     return None
 
@@ -45,3 +46,7 @@ def delete_user(myuser):
 
 def is_users_list(myuser, mylist_id):
     return myuser.list == ndb.Key(urlsafe=mylist_id)
+
+
+def is_email_verified(user_info):
+    return user_info['email_verified']

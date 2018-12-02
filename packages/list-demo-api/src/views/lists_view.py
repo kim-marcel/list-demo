@@ -15,6 +15,7 @@ def verify_token(id_token):
         # save the the current user to the application context g
         g.current_user = current_user['user']
         g.current_user_id = current_user['user_id']
+        g.current_user_info = current_user['user_info']
         return True
     return False
 
@@ -23,7 +24,7 @@ def verify_token(id_token):
 @auth.login_required
 def get():
     user_id = request.args.get('userId')
-    if user_id == g.current_user_id:
+    if user_id == g.current_user_id and user_utilities.is_email_verified(g.current_user_info):
         # if user is not yet in the datastore add user to datastore
         if not user_utilities.is_user_in_datastore(user_id):
             user_utilities.add_user_to_datastore(user_id)
@@ -35,7 +36,7 @@ def get():
 @auth.login_required
 def post(list_id):
     # make sure that a user can only manipulate his own list
-    if user_utilities.is_users_list(g.current_user, list_id):
+    if user_utilities.is_users_list(g.current_user, list_id) and user_utilities.is_email_verified(g.current_user_info):
         list_element = request.get_json()['input']
         if list_utilities.add_to_list(list_id, list_element):
             return Response(status=200)
@@ -48,7 +49,7 @@ def post(list_id):
 @auth.login_required
 def delete(list_id, list_element_id):
     # make sure that a user can only manipulate his own list
-    if user_utilities.is_users_list(g.current_user, list_id):
+    if user_utilities.is_users_list(g.current_user, list_id) and user_utilities.is_email_verified(g.current_user_info):
         if list_utilities.delete_from_list(list_id, list_element_id):
             return Response(status=200)
     else:

@@ -31,6 +31,7 @@ export const texts = {
   'app.component.header.button.logout': 'Logout',
 
   'app.component.list.button.add': 'Add',
+  'app.component.list.alert.disclaimer': 'Disclaimer: This Website is just a demo. Please do not use this website to store any important information. Your data is not secured and can be deleted at any time. This website can go offline temporarily or permanently.',
   'app.component.list.input.placeholder': 'What do you want to add to your list?',
 
   'app.component.settings.header.changePassword': 'Change Password',
@@ -76,11 +77,17 @@ export const texts = {
   'app.page.home.button.list': 'Show me my list!',
 
   'app.page.list.header': 'My List',
-  'app.page.list.alert.disclaimer': 'Disclaimer: This Website is just a demo. Please do not use this website to store any important information. Your data is not secured and can be deleted at any time. This website can go offline temporarily or permanently.',
 
   'app.page.settings.header': 'Settings',
 
   'app.page.sign-in.header': 'Please Login',
 
   'app.page.sign-up.header': 'Sign Up',
+
+  'app.page.verify-email.header': 'Email Verification',
+  'app.page.verify-email.alert.text1': 'Your email hasn\'t been verified yet. To use this application your email has to be verified. Please go to your mail-account and follow the instructions to verify your email.',
+  'app.page.verify-email.alert.text2': 'It can take a couple of minutes until you receive the verification-mail. Sometimes our mails end up in the spam-folder, make sure to check there, too.',
+  'app.page.verify-email.question': 'You didn\'t receive a verification E-Mail?',
+  'app.page.verify-email.button': 'Resend Verification-Mail',
+
 };

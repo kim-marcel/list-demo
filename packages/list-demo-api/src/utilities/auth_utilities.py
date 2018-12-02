@@ -13,6 +13,7 @@ HTTP_REQUEST = requests.Request()
 def verify_token(token):
     try:
         return id_token.verify_firebase_token(token, HTTP_REQUEST)
+        # return result if result['email_verified'] else None
     except (ValueError, TypeError):
         # invalid id_token
         return None

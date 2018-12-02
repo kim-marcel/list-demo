@@ -8,7 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppErrorHandler } from './error-handler/app-error-handler';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { AuthService, ListResolver, ListService, TextService } from './services';
+import { AuthService, ListService, TextService } from './services';
 import { environment } from '../environments/environment';
 import {
   ErrorPageComponent,
@@ -16,7 +16,8 @@ import {
   ListPageComponent,
   SettingsPageComponent,
   SignInPageComponent,
-  SignUpPageComponent
+  SignUpPageComponent,
+  VerifyEmailPageComponent,
 } from './pages';
 import {
   ChangePasswordComponent,
@@ -26,7 +27,7 @@ import {
   SettingsComponent,
   SignInComponent,
   SignUpComponent,
-  UpdateProfileComponent
+  UpdateProfileComponent,
 } from './components';
 import { RoutingModule } from './modules/routing.module';
 import { TextPipe } from './pipes/text.pipe';
@@ -49,6 +50,7 @@ import { TextPipe } from './pipes/text.pipe';
     SignUpPageComponent,
     TextPipe,
     UpdateProfileComponent,
+    VerifyEmailPageComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -70,7 +72,6 @@ import { TextPipe } from './pipes/text.pipe';
       multi   : true,
     },
     AuthService,
-    ListResolver,
     ListService,
     TextService,
   ],

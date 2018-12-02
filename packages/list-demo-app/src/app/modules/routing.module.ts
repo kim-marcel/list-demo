@@ -2,37 +2,47 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuardService, ListResolver } from '../services';
+import {
+  SignedInAndEmailNotVerifiedGuard,
+  SignedInAndEmailVerifiedGuardGuard,
+  SignedInGuard,
+  NotSignedInGuard
+} from '../services';
 import {
   ErrorPageComponent,
   HomePageComponent,
   ListPageComponent,
   SettingsPageComponent,
   SignInPageComponent,
-  SignUpPageComponent
+  SignUpPageComponent,
+  VerifyEmailPageComponent,
 } from '../pages';
 
 const appRoutes: Routes = [
   {
     path: 'sign-in',
     component: SignInPageComponent,
+    canActivate: [NotSignedInGuard],
   },
   {
     path: 'sign-up',
     component: SignUpPageComponent,
+    canActivate: [NotSignedInGuard],
+  },
+  {
+    path: 'verify-email',
+    component: VerifyEmailPageComponent,
+    canActivate: [SignedInAndEmailNotVerifiedGuard],
   },
   {
     path: 'list',
     component: ListPageComponent,
-    canActivate: [AuthGuardService],
-    resolve: {
-      listData: ListResolver,
-    }
+    canActivate: [SignedInAndEmailVerifiedGuardGuard],
   },
   {
     path: 'settings',
     component: SettingsPageComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [SignedInGuard],
   },
   {
     path: 'home',
