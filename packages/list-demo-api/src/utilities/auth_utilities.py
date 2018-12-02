@@ -12,8 +12,8 @@ HTTP_REQUEST = requests.Request()
 # Returns id_info if token can be successfully verified, else None
 def verify_token(token):
     try:
-        result = id_token.verify_firebase_token(token, HTTP_REQUEST)
-        return result if result['email_verified'] else None
+        return id_token.verify_firebase_token(token, HTTP_REQUEST)
+        # return result if result['email_verified'] else None
     except (ValueError, TypeError):
         # invalid id_token
         return None
